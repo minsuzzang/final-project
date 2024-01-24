@@ -65,8 +65,6 @@
 				alt="로고"></a>
 		</h1>
 
-
-
 		<!--메뉴 버튼-->
 		<h2 id="menu_btn">
 			<span id="t_stick"></span> <span id="m_stick"></span> <span
@@ -117,7 +115,6 @@
 									style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
 								<li><a href="#">카드 도난 • 분실신고</a></li>
 							</ul></li>
-
 					</ul>
 				</nav>
 
@@ -177,23 +174,21 @@
 		</div>
 	</div>
 	<div class="right1">
-		<select name="" id="">
-			<option value="" selected disabled hidden>선택해주세요.</option>
-			<option value="">디자인 1</option>
-			<option value="">다자인 2</option>
-			<option value="">디자인 3</option>
-			<option value="">디자인 4</option>
-			<option value="">디자인 5</option>
-		</select><br>
-		<br>
-		<p class="fff1">영문이름</p>
-		<br> <input type="text"><br>
-		<br>
-		<p class="fff1">카드받을주소</p>
-		<br> <input type="text"> <br>
-		<br>
-		<br>
-		<button>신청</button>
+		<form action="/card/apply.do" method="post">
+			<select name="design" id="" required>
+				<option value="" selected disabled hidden>선택해주세요.</option>
+				<option value="d1">디자인 1</option>
+				<option value="d2">다자인 2</option>
+				<option value="d3">디자인 3</option>
+				<option value="d4">디자인 4</option>
+				<option value="d5">디자인 5</option>
+			</select><br> <br>
+			<p class="fff1">영문이름</p>
+			<br> <input type="text" name="englishName" required><br> <br>
+			<p class="fff1">카드받을주소</p>
+			<br> <input type="text" name="address" required> <br> <br> <br>
+			<button type="submit">신청</button>
+		</form>
 	</div>
 
 	<!-- /main -->
@@ -204,3 +199,7 @@
 </body>
 
 </html>
+
+
+
+
