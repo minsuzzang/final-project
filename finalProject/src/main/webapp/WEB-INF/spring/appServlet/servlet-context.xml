@@ -37,7 +37,7 @@
 				class="kr.co.green.common.interceptor.AccessInterceptor">
 	</beans:bean>
 	
-	<interceptors>
+	<!--<interceptors> 
 		<interceptor>
 			<mapping path="/free/*" />
 			<mapping path="/info/*" />
@@ -48,22 +48,22 @@
 	
 	
 		<interceptor>
-			<!-- 인터셉터를 적용할 경로,  /** : 모든 경로 -->
+			인터셉터를 적용할 경로,  /** : 모든 경로
 			<mapping path="/**" />  
 			
-			<!-- 인터셉터를 제외할 경로 -->
+			인터셉터를 제외할 경로
 			<exclude-mapping path="/member/**" /> 
 			<exclude-mapping path="/**/*.css" />
 			<exclude-mapping path="/**/*.js" />
 			
-			<!-- 이 설정이 어떤 Bean(객체)을 참조할껀지 -->
+			이 설정이 어떤 Bean(객체)을 참조할껀지
 			<beans:ref bean="loginCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 	
 	
 	
-	<context:component-scan base-package="kr.co.green" />
+	<context:component-scan base-package="kr.co.green" /> -->
 	
 	
 	
