@@ -21,7 +21,6 @@
 		<mapper resource="mappers/card/card-mapper.xml" />
 		<mapper resource="mappers/member/member-mapper.xml" />
 		<mapper resource="/mappers/userService/customerboard-mapper.xml" />
-
 	</mappers>
 
 </configuration>
