@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "card/greenSelect";
+		return "common/index";
 	}
 	
 }
