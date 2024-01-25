@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,109 +17,14 @@
     <script src="/resources/js/visual_slide.js"></script>
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-    <script src="/resources/js/common/alert.js"></script>	
-	<script>
-		/* const msg = "로그인 되었습니다."; */
-		const msg='<%= request.getAttribute("msg") %>';
-		const status='<%= request.getAttribute("status") %>';
-		
-		if(msg !== "null" && status !== "null") {
-			$(document).ready(function() {
-				alertFunc(msg, status);
-			})
-		}
-	</script>
 </head>
 
 <body class="ofh">
-    <!--로딩화면-->
-    <!-- <div class="loader_bg">
-        <div class="loader"></div>
-        <p>페이지 로딩중</p>
-    </div> -->
 
     <header>
-        <!--로고삽입-->
-        <h1 id="logo">
-            <a href="/"><img src="/resources/images/logo.png" alt="로고"></a>
-        </h1>
-
-        <!--메뉴 버튼-->
-        <h2 id="menu_btn">
-            <span id="t_stick"></span>
-            <span id="m_stick"></span>
-            <span id="b_stick"></span>
-        </h2>
-        <h2 id="log_btn">
-            <a href="/member/loginForm.do">로그인</a>
-            <a href="/member/registerForm.do">회원가입</a>
-        </h2>
-
-        <!--메뉴-->
-        <div id="menu_wrap">
-            <nav id="main_nav">
-                <h2 class="hidden">메인메뉴</h2>
-                <ul id="menu">
-                    <li><a>기업 소개</a>
-                        <ul id="sub_menu">
-                            <li><a href="#">현대카드 소개</a></li>
-                            <li><a href="#">기업 문화</a></li>
-                            <li><a href="#">인사 철학</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
-                        <ul id="sub_menu">
-                            <li><a href="#">내 정보</a></li>
-                            <li><a href="#">내 카드</a></li>
-                            <li><a href="#">내 등급</a></li>
-                            <li><a href="#">이용내역</a></li>
-                            <li><a href="#">마일리지</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a>카드</a>
-                        <ul id="sub_menu">
-                            <li><a href="#">카드 안내</a></li>
-                            <li><a href="#">카드 신청</a></li>
-                            <li><a href="#">카드 신청 조회</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a>혜택</a>
-                        <ul id="sub_menu">
-                            <li><a href="#">할인 혜택</a></li>
-                            <li><a href="#">적립 혜택</a></li>
-                            <li><a href="#">제휴 상품</a></li>
-                        </ul>
-
-                    </li>
-
-                    <li><a>고객 지원</a>
-                        <ul id="sub_menu">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="/userService.jsp">고객 문의</a></li>
-                            <li><a href="#" style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
-                            <li><a href="#">카드 도난 • 분실신고</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <!--SNS 아이콘 영역-->
-            <div id="sns">
-                <ul id="icon_list">
-                    <li><a href="#"><img src="/resources/images/icon_01.png" alt="인스타그램 바로가기"></a></li>
-                    <li><a href="#"><img src="/resources/images/icon_02.png" alt="페이스북 바로가기"></a></li>
-                    <li><a href="#"><img src="/resources/images/icon_03.png" alt="트위터 바로가기"></a></li>
-                    <li><a href="#"><img src="/resources/images/icon_04.png" alt="유투브 바로가기"></a></li>
-                </ul>
-            </div>
-        </div>
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
     </header>
+    
     <div id="visual_wrap">
         <!--비주얼 버튼(공통영역)-->
         <div id="visual_btn">
@@ -226,9 +132,9 @@
 
     <!--푸터 영역-->
     <footer>
-	    
+
     </footer>
 
 </body>
-</html>
 
+</html>

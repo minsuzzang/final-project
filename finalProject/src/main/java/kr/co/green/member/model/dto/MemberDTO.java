@@ -14,8 +14,9 @@ public class MemberDTO {
 	private String m_email;
 	private String m_phone;
 	private Date m_in_date;
-	private Date m_type;
-
+	private String m_type;
+	private String m_address;
+	private String m_english_name;
 	public MemberDTO() {
 		super();
 	}

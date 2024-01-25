@@ -3,15 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -27,43 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 파일업로드 관련 빈 생성 -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
-	
-	<!-- 인터셉터 설정 -->
-	<beans:bean id="loginCheckInterceptor" 
-				class="kr.co.green.common.interceptor.LoginCheckInterceptor"> </beans:bean>
-	<beans:bean id="accessInterceptor"
-				class="kr.co.green.common.interceptor.AccessInterceptor">
-	</beans:bean>
-	
-	<!--<interceptors> 
-		<interceptor>
-			<mapping path="/free/*" />
-			<mapping path="/info/*" />
-			<exclude-mapping path="/**/*.css" />
-			<exclude-mapping path="/**/*.js" />
-			<beans:ref bean="accessInterceptor" />
-		</interceptor>
-	
-	
-		<interceptor>
-			인터셉터를 적용할 경로,  /** : 모든 경로
-			<mapping path="/**" />  
-			
-			인터셉터를 제외할 경로
-			<exclude-mapping path="/member/**" /> 
-			<exclude-mapping path="/**/*.css" />
-			<exclude-mapping path="/**/*.js" />
-			
-			이 설정이 어떤 Bean(객체)을 참조할껀지
-			<beans:ref bean="loginCheckInterceptor" />
-		</interceptor>
-	</interceptors>
-	
-	
-	
-	<context:component-scan base-package="kr.co.green" /> -->
+	<context:component-scan base-package="kr.co.green" />
 	
 	
 	

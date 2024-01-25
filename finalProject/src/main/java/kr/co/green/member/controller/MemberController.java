@@ -26,11 +26,6 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
-	@GetMapping("/redirect.do")
-	public String redirectIndex() {
-		return "member/login";
-	}
-
 	@GetMapping("/loginForm.do")
 	public String loginForm() {
 		return "member/login";
@@ -41,18 +36,10 @@ public class MemberController {
 		MemberDTO loginUser = memberService.loginMember(member);
 		// loginUser 객체가 비어있지 않을 때 (로그인 성공)
 		if (!Objects.isNull(loginUser) && bcryptPasswordEncoder.matches(member.getM_pwd(), loginUser.getM_pwd())) {
-			session.setAttribute("memberIdx", loginUser.getM_idx());
-
-			session.setAttribute("memberName", loginUser.getM_name());
-
-			session.setAttribute("msg", "로그인 되었습니다.");
-			session.setAttribute("status", "success");
-
+			session.setAttribute("m_Idx", loginUser.getM_idx());
+			session.setAttribute("m_Name", loginUser.getM_name());
 			return "common/index";
 		} else {
-			model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
-			model.addAttribute("status", "error");
-			// 컨트롤 -> jsp를 호출할 때
 			return "member/login";
 		}
 	}

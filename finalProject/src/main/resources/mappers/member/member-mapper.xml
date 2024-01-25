@@ -10,36 +10,37 @@
 		<result column="M_PHONE" property="m_phone"></result>
 		<result column="M_IN_DATE" property="m_in_date"></result>
 		<result column="M_TYPE" property="m_type"></result>
+		<result column="M_ADDRESS" property="m_address"></result>
+		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
 	</resultMap>
 	
-	<!-- <select id="findMember" resultMap="memberResultSet">
-		SELECT * FROM member
-		WHERE member_idx = #{idx}
-	</select> -->
-	
-	<!-- <select id="checkEmail" resultType="_int"> 
+	<!--이메일 중복 체크-->
+	 <select id="checkEmail" resultType="_int"> 
 		SELECT COUNT(*) FROM member
-		WHERE member_email = #{email}
-	</select> -->
+		WHERE m_email = #{email}
+	</select>
 	
-	<!-- resultType = _int -->
-	
+	<!--로그인-->
 	<select id="loginMember" resultMap="memberResultSet">
     	SELECT *
     	FROM member
     	WHERE m_email = #{m_email} 
 	</select>
+	
+	<!--회원가입-->
 	<insert id="registerMember">
-		INSERT INTO member VALUES(member_seq.NEXTVAL,
-								  #{m_email},
-								  #{m_pwd},
-								  #{m_name},
-								  #{m_phone},
-								  SYSDATE,
-								  null)
+    INSERT INTO member VALUES (
+        member_seq.NEXTVAL,
+        #{m_email},
+        #{m_pwd},
+        #{m_name},
+        #{m_phone},
+        SYSDATE,
+        'BASIC',
+        #{m_address},
+        #{m_english_name}
+    	)
 	</insert>
-
-
 </mapper>
 
 
