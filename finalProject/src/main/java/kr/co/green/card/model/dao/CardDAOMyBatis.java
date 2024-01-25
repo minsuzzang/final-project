@@ -1,3 +1,4 @@
+
 package kr.co.green.card.model.dao;
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class CardDAOMyBatis implements CardDAO {
 	@Override
 	// 카드 신청을 위한 신청정보 저장 메소드
 	public int insertCardApplyInfo(int m_idx, String cd_color, String cd_design, String m_english_name, String m_address) {
-
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("m_idx", m_idx);
 		params.put("cd_color", cd_color);
@@ -53,11 +54,12 @@ public class CardDAOMyBatis implements CardDAO {
 			int memberResult = sqlSession.update("cardMapper.member_cardApply", params);
 			if (memberResult > 0) {
 				int cardResult = sqlSession.insert("cardMapper.card_cardApply", params);
-				if (cardResult == 1)
+				if (cardResult == 1) {
 					transactionManager.commit(status);
+					return cardResult;
+				}
 				else
 					transactionManager.rollback(status);
-
 			} else
 				transactionManager.rollback(status);
 

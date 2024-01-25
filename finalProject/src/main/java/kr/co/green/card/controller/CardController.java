@@ -29,8 +29,7 @@ public class CardController {
 	@PostMapping("/apply.do")
 	public String submitApplication(HttpServletRequest request, @RequestParam("design") String design,
 			@RequestParam("englishName") String englishName, @RequestParam("address") String address, Model model) {
-
-		System.out.println(design + ", " + englishName + ", " + address);
+		
 		StringBuilder sb = new StringBuilder();
 
 		HttpSession session = request.getSession();
@@ -39,13 +38,13 @@ public class CardController {
 		memberidx.ifPresentOrElse(idx -> {
 			int result = cardService.cardApply(idx, "green", design, englishName, address);
 			if (result > 0)
-				sb.append("/");
+				sb.append("/nextPage");
 			else
-				sb.append("common/error");
+				sb.append("common/error/");
 		}, () -> {
 			sb.append("common/error");
 		});
-
+		
 		return sb.toString();
 
 	}
