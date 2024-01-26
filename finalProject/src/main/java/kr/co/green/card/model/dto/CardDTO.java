@@ -9,8 +9,8 @@ public class CardDTO {
 	
 	private int cd_idx ;
 	private String cd_number;
-	private int cd_cvc ;
-	private int cd_pwd;
+	private String cd_cvc ;
+	private String cd_pwd;
 	private String cd_color;
 	private String cd_approve;
 	private String cd_design;

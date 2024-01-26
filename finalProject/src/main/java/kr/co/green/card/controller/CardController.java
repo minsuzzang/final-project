@@ -1,5 +1,7 @@
 package kr.co.green.card.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,18 +29,28 @@ public class CardController {
 	}
 
 	@PostMapping("/apply.do")
-	public String submitApplication(HttpServletRequest request, @RequestParam("design") String design,
+	public String submitApplication(HttpServletRequest request, HttpSession session, @RequestParam("design") String design,
 			@RequestParam("englishName") String englishName, @RequestParam("address") String address, Model model) {
 		
 		StringBuilder sb = new StringBuilder();
 
-		HttpSession session = request.getSession();
-		Optional<Integer> memberidx = Optional.ofNullable((Integer) session.getAttribute("m_idx"));
+		Optional<Integer> memberidx = Optional.ofNullable((Integer)session.getAttribute("m_idx"));
+		String memberName = Optional.ofNullable((String)session.getAttribute("m_name")).orElse("이름을 조회할 수 없습니다.");
 		
 		memberidx.ifPresentOrElse(idx -> {
 			int result = cardService.cardApply(idx, "green", design, englishName, address);
-			if (result > 0)
-				sb.append("/nextPage");
+			if (result > 0) {
+				
+				Map<String, String> resultMap = new HashMap<>();
+				resultMap.put("cd_design", design);
+				resultMap.put("m_english_name", englishName);
+				resultMap.put("m_address", address);
+				resultMap.put("m_name", memberName);
+				
+				model.addAllAttributes(resultMap);
+				
+				sb.append("card/cardApplyResult");
+			}
 			else
 				sb.append("common/error/");
 		}, () -> {

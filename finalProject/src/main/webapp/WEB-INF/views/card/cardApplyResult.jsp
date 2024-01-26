@@ -123,11 +123,13 @@
     <div class="right3">
         <div class="cresult">
             <p class="fff3"><b>카드신청 완료</b></p><br><br>
-            <pre class="fff1">  카드명  : <b>Hyundai the Black</b></pre><br>
-            <pre class="fff1">  디자인  : <b>Design 1</b></pre><br>
-            <pre class="fff1">   성함    : <b>손민수</b></pre><br>
-            <pre class="fff1">영문성함 : <b>Cool Guy Son</b></pre><br>
-            <pre class="fff1">   주소    : <b>내가 가는곳 어디든</b></pre>
+            
+	            <pre class="fff1">  카드명  : <b>Hyundai the Black</b></pre><br>
+	            <pre class="fff1">  디자인  : <b><c:out value="${cd_design}"/></b></pre><br>
+	            <pre class="fff1">   성함    : <b><c:out value="${m_name}"/></b></pre><br>
+	            <pre class="fff1">영문성함 : <b><c:out value="${m_english_name}"/></b></pre><br>
+	            <pre class="fff1">   주소    : <b><c:out value="${m_address}"/></b></pre>
+            
         </div>
     </div>
 
