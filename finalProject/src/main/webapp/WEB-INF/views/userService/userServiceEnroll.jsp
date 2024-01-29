@@ -46,12 +46,12 @@
 
                         <p class="egft5">Title</p><br>
                         <div class="dfjc">
-                            <input type="text" name="cb_title" class="ip" placeholder="제목을 입력해주세요.">
+                            <input type="text" name="cb_title" class="ip" placeholder="제목을 입력해주세요." minlength="1" maxlength="30">
                         </div>
                         <br>
                         <p class="egft5">Content</p><br>
                         <div>
-                            <textarea id="summernote" name="cb_content"></textarea>
+                            <textarea id="summernote" name="cb_content" minlength="1" maxlength="1000"></textarea>
                         </div>
                         <script>
                             $('#summernote').summernote({

@@ -153,6 +153,10 @@
     width: 250px;
     border-radius: 10px;
 }
+.testimonials .item img{
+    width: 250px;
+    border-radius: 10px;
+}
 .testimonials .item h1{font-size: 114px; color: white;}
 .dots{display: flex; justify-content: center;align-items: center;}
 .dots label{
