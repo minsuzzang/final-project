@@ -19,6 +19,7 @@
     <script src="/resources/js/visual_slide.js"></script>
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
+	<%@ include file="/WEB-INF/views/common/alert.jsp"%>
 </head>
 
 <body>
@@ -39,9 +40,9 @@
             <br><br><br>
             <div id="board-search">
                 <div class="search-window">
-                    <form action="">
+                    <form action="/notice/list.do" method="get">
                         <div class="search-wrap">
-                            <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+                            <input id="search" type="search" name="searchText" placeholder="검색어를 입력해주세요." value="">
                             <button type="submit" class="btn btn-dark">Search</button>
                         </div>
                     </form>
@@ -58,27 +59,65 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr onclick="location.href='/announcementDetail.html'">
-                            <td>1</td>
-                            <th>[공지] 최근 손민수 고객님이 배민을 너무 많이시킵니다.</th>
-                            <td>관리자</td>
-                            <td>1</td>
-                        </tr>
+						<c:choose>
+							<c:when test="${empty list}">
+								<tr>
+									<td colspan="4">
+										<h3 class="text-center">등록된 글이 없습니다.</h3>
+									</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="item" items="${list}">
+									<tr onclick="location.href='/notice/detail.do?idx='+${item.n_idx}">
+										<td>${row}</td>
+										<th>${item.n_title}</th>
+										<td>${item.m_name}</td>
+										<td>${item.n_views}</td>
+									</tr>
+									<c:set var="row" value="${row-1}"/>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
                     </tbody>
                 </table>
             </div>
-            <a href="announcementEnroll.html">
-                <button class="custom-btn-b btn-9-b">공지등록</button>
+            <a href="enrollForm.do">
+            	<c:if test="${sessionScope.m_type eq 'ADMIN'}">
+            	    <button class="custom-btn-b btn-9-b">공지등록</button>
+            	</c:if>              
             </a>
             <!-- <button class="custom-btn-r btn-9-r">Delete</button> -->
             <div class="pagination dfjc">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">&raquo;</a>
+						<c:choose>
+							<c:when test="${pi.cpage eq 1}">
+								<a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="list.do?cpage=${pi.cpage-1}" aria-label="Previous"> 
+								<span aria-hidden="true">&laquo;</span>
+								</a>
+							</c:otherwise>
+						</c:choose>
+
+						<c:forEach var="page" begin="${pi.startPage}" end="${pi.endPage}">
+							<a class="page-link" href="list.do?cpage=${page}">${page}</a>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pi.cpage eq pi.maxPage}">
+								<a class="page-link" href="#" aria-label="Next"> 
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="list.do?cpage=${pi.cpage+1}" aria-label="Next"> 
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</c:otherwise>
+						</c:choose>
             </div>
         </section>
     </div>

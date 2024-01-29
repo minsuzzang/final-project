@@ -53,7 +53,7 @@
                         <ul id="sub_menu">
                             <li><a href="#">할인 혜택</a></li>
                             <li><a href="#">적립 혜택</a></li>
-                            <li><a href="#">제휴 상품</a></li>
+                            <li><a href="/product/list.do">제휴 상품</a></li>
                         </ul>
 
                     </li>

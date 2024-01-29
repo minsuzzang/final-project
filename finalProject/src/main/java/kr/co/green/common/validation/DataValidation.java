@@ -9,9 +9,6 @@ public class DataValidation {
 		}
 	}
 	
-	
-	
-	
 	public static Boolean CheckLength(String data, int length) {
 		int byteLength = 0;
 		
@@ -30,15 +27,5 @@ public class DataValidation {
 		} else {
 			return false;
 		}
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

@@ -76,7 +76,7 @@ public class CustomerBoardServiceImpl implements CustomerBoardService{
 			}
 		}catch(Exception e) {
 			transactionManager.rollback(status);
-			throw e;
+//			throw e;
 		}
 		return null;
 	}	
