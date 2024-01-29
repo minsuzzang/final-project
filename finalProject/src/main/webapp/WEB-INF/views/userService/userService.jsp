@@ -20,6 +20,7 @@
     <script src="/resources/js/visual_slide.js"></script>
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
+    <%@ include file="/WEB-INF/views/common/alert.jsp"%>
 </head>
 
 <body>

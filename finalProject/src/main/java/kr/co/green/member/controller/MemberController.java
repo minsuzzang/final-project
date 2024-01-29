@@ -36,8 +36,10 @@ public class MemberController {
 		MemberDTO loginUser = memberService.loginMember(member);
 		// loginUser 객체가 비어있지 않을 때 (로그인 성공)
 		if (!Objects.isNull(loginUser) && bcryptPasswordEncoder.matches(member.getM_pwd(), loginUser.getM_pwd())) {
-			session.setAttribute("m_Idx", loginUser.getM_idx());
-			session.setAttribute("m_Name", loginUser.getM_name());
+			session.setAttribute("m_idx", loginUser.getM_idx());
+			System.out.println(loginUser.getM_idx());
+			session.setAttribute("m_name", loginUser.getM_name());
+			session.setAttribute("m_type", loginUser.getM_type());
 			return "common/index";
 		} else {
 			return "member/login";

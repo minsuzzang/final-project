@@ -19,9 +19,8 @@ public class CustomerBoardDAO {
 	//목록 불러오기
 	public List<CustomerBoardDTO> selectListAll(SqlSessionTemplate sqlSession, PageInfo pi, CustomerBoardDTO board) {
 		//현재 페이지의 게시글을 불러오기 위한 변수
-		int offset = (pi.getCpage()-1) * pi.getBoardLimit();
 		//작은 규모일 때만 사용권장
-		RowBounds rb = new RowBounds(offset, pi.getBoardLimit());
+		RowBounds rb = new RowBounds(pi.getOffset(), pi.getBoardLimit());
 		
 		return sqlSession.selectList("customerboardMapper.selectListAll", board, rb);
 	}

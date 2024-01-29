@@ -14,8 +14,8 @@
             <span id="b_stick"></span>
         </h2>
         <h2 id="log_btn">
-            <a href="login.html">로그인</a>
-            <a href="register.html">회원가입</a>
+            <a href="/member/loginForm.do">로그인</a>
+            <a href="/member/registerForm.do">회원가입</a>
         </h2>
 
         <!--메뉴-->
@@ -53,7 +53,7 @@
                         <ul id="sub_menu">
                             <li><a href="#">할인 혜택</a></li>
                             <li><a href="#">적립 혜택</a></li>
-                            <li><a href="#">제휴 상품</a></li>
+                            <li><a href="/product/list.do">제휴 상품</a></li>
                         </ul>
 
                     </li>

@@ -112,7 +112,8 @@ video {
     color: #F1F1F2;
     position: relative;
     width: 50%;
-    top: 20%;
+    top: 10%;
+    height: 400px;
   }
   .right2 {
     background: #3b233bc0;
@@ -121,6 +122,43 @@ video {
     position: relative;
     width: 50%;
     top: -5%;
+    height: 580px;
+  }
+  .right3 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: 1%;
+    height: 470px;
+  }
+  .right4 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: -18%;
+    height: 650px;
+  }
+  .right5 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: -18%;
+    height: 650px;
+  }
+  .right6 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: 3%;
+    height: 430px;
   }
   @media (max-width: 767px) {
     .right {
@@ -174,6 +212,21 @@ video {
     margin-bottom: 5px;
     font-family: 'YouandiModernTR', sans-serif;
     text-align: center;
+  }
+  .aaa:hover {
+    color: gray;
+  }
+  .aaaa {
+    color:  #c2c2c5;
+    padding: 24px;
+    font-size: 14px;
+    height: 16px;
+    margin-bottom: 5px;
+    font-family: 'YouandiModernTR', sans-serif;
+    text-align: center;
+  }
+  .aaaa:hover {
+    color: gray;
   }
   input::-moz-focus-inner { 
     border: 0; 
