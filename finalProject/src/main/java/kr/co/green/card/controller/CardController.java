@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,9 +27,16 @@ public class CardController {
 		super();
 		this.cardService = cardService;
 	}
+	
+	@GetMapping("/cardApplyForm.do")
+	public String cardApplyForm() {
+		
+		return "card/cardApply";
+	}
+	
 
 	@PostMapping("/apply.do")
-	public String submitApplication(HttpServletRequest request, HttpSession session, @RequestParam("design") String design,
+	public String submitApplication(HttpSession session, @RequestParam("design") String design,
 			@RequestParam("englishName") String englishName, @RequestParam("address") String address, Model model) {
 		
 		StringBuilder sb = new StringBuilder();
@@ -52,7 +59,7 @@ public class CardController {
 				sb.append("card/cardApplyResult");
 			}
 			else
-				sb.append("common/error/");
+				sb.append("common/error"); 
 		}, () -> {
 			sb.append("common/error");
 		});

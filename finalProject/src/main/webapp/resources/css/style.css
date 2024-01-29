@@ -991,6 +991,19 @@ footer p a {
 .imggg:hover {
     rotate: -15deg;
 }
+.imgggg {
+    width: 220px;
+    height: auto;
+    background-color: none;
+    margin-top: 15%;
+    border-radius: 10px;
+    box-shadow: 15px 15px 15px gray;
+    transition: .5s;
+}
+
+.imgggg:hover {
+    rotate: -15deg;
+}
 
 
 

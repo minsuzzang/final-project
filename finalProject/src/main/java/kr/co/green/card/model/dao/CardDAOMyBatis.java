@@ -45,9 +45,9 @@ public class CardDAOMyBatis implements CardDAO {
 		TransactionStatus status = transactionManager.getTransaction(transactionDefinition);
 
 		try {
-			int memberResult = sqlSession.update("cardMapper.member_cardApply", params);
+			int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", params);
 			if (memberResult > 0) {
-				int cardResult = sqlSession.insert("cardMapper.card_cardApply", params);
+				int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", params);
 				if (cardResult == 1) {
 					transactionManager.commit(status);
 					return cardResult;
@@ -62,5 +62,4 @@ public class CardDAOMyBatis implements CardDAO {
 
 		return 0;
 	}
-
 }

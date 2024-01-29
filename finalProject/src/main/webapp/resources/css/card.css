@@ -31,6 +31,18 @@
     height: auto;
     margin-right: 10%;
 }
+.left3 {
+    float: left;
+    width: 40%;
+    height: auto;
+    margin-left: 3%;
+}
+.right3 {
+    float: right;
+    width: 40%;
+    height: auto;
+    margin-right: 5%;
+}
 .dimg {
     width: 100%;
     float: right;
@@ -40,6 +52,13 @@
     text-align: left;
     font-weight: bold;
     font-size: 15px;
+    padding: 10px 0;
+}
+.fff0-1 {
+    font-family: 'YouandiModernTR', sans-serif;
+    text-align: left;
+    font-weight: bold;
+    font-size: 12px;
     padding: 2px 0;
 }
 .fff1 {
@@ -65,8 +84,16 @@
 }
 .yhb {
     padding: 15px;
-    width: 70%;
-    height: 120px;
+    width: 80%;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-family: 'YouandiModernTR', sans-serif;
+}
+.cresult {
+    padding: 15px;
+    width: 80%;
+    height: 500px;
     border: 1px solid black;
     border-radius: 20px;
     font-family: 'YouandiModernTR', sans-serif;
@@ -79,7 +106,7 @@
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	min-height: 400px;
+	min-height: 500px;
 	perspective: 1000px;
 	overflow: hidden;
 }
@@ -94,6 +121,10 @@
 	transition: transform 0.4s;
 	user-select: none;
 	cursor: pointer;
+}
+.testimonials .item img{
+    width: 250px;
+    border-radius: 10px;
 }
 .testimonials .item h1{font-size: 114px; color: white;}
 .dots{display: flex; justify-content: center;align-items: center;}

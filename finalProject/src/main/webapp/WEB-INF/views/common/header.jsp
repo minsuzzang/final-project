@@ -31,7 +31,8 @@
                         </ul>
                     </li>
 
-                    <li><a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
+                    <li>
+                    	<a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
                         <ul id="sub_menu">
                             <li><a href="#">내 정보</a></li>
                             <li><a href="#">내 카드</a></li>
@@ -44,7 +45,7 @@
                     <li><a>카드</a>
                         <ul id="sub_menu">
                             <li><a href="#">카드 안내</a></li>
-                            <li><a href="#">카드 신청</a></li>
+                            <li><a href="/card/cardApplyForm.do">카드 신청</a></li>
                             <li><a href="#">카드 신청 조회</a></li>
                         </ul>
                     </li>
@@ -53,9 +54,8 @@
                         <ul id="sub_menu">
                             <li><a href="#">할인 혜택</a></li>
                             <li><a href="#">적립 혜택</a></li>
-                            <li><a href="#">제휴 상품</a></li>
+                            <li><a href="/product/list.do">제휴 상품</a></li>
                         </ul>
-
                     </li>
 
                     <li><a>고객 지원</a>
