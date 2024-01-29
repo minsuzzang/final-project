@@ -219,4 +219,5 @@ function checkEmail() {
    
    flagCheck();
 }
+
 </script>
