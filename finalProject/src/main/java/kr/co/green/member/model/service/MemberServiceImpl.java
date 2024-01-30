@@ -35,8 +35,8 @@ public class MemberServiceImpl implements MemberService {
 
 	// 아이디 찾기
 	@Override
-	public String findMemberId(String name, String phone) {
-		return memberDao.findMemberId(sqlSession, name, phone);
+	public MemberDTO findMemberId(MemberDTO member) {
+		return memberDao.findMemberId(sqlSession, member);
 	}
 
 }

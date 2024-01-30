@@ -19,8 +19,8 @@ public class MemberDAO {
 		return sqlSession.insert("memberMapper.registerMember", member);
 	}
 
-	public String findMemberId(SqlSessionTemplate sqlSession, String name, String phone) {
-		return sqlSession.selectMap("memberMapper.findMemberId", name, phone);
+	public MemberDTO findMemberId(SqlSessionTemplate sqlSession, MemberDTO member) {
+		return sqlSession.selectOne("memberMapper.findMemberId", member);
 	}
 
 }

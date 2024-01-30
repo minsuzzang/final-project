@@ -26,19 +26,22 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
-	@GetMapping("/emailFindForm.do")
+	@GetMapping("/findIdForm.do")
 	public String emailFindForm() {
 		return "member/emailFind";
 	}
 
 	// 아이디 찾기
-	@PostMapping("/emailFind.do")
+	@PostMapping("/findId.do")
 	@ResponseBody
-	public String emailFind(String name, String phone) {
-		// 이메일 중복검사
-		String result = memberService.findMemberId(name, phone);
+	public String findId(MemberDTO member, Model model) {
 
-		return "member/emailFind";
+		MemberDTO foundMember = memberService.findMemberId(member);
+		if (foundMember != null) {
+			return foundMember.getM_email();
+		} else {
+			return "";
+		}
 	}
 
 	@GetMapping("/loginForm.do")

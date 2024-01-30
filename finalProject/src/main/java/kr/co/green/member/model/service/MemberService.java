@@ -14,5 +14,5 @@ public interface MemberService {
 	public int registerMember(MemberDTO member);
 
 	// 아이디 찾기
-	public String findMemberId(String name, String phone);
+	public MemberDTO findMemberId(MemberDTO member);
 }

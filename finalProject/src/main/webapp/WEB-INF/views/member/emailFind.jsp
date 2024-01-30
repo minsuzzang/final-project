@@ -20,6 +20,8 @@
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
     <script src="/resources/js/login.js"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="ofh">
@@ -58,7 +60,7 @@
                     <path
                         d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
                 </svg>
-                <form action="/member/emailFind.do" method="post">
+                
                     <div class="form">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="m_name" required>
@@ -67,59 +69,47 @@
                         <label for="code">Email</label>
                         <input type="text" id="email" name="m_email" required value="#" disabled>
 						 <span id="emailError" class="error"></span>
-						<input type="submit" id="submit" value="Find" >
+						<input type="button" id="submit" value="Find" onclick="findId()">
                         <a class="aaa" href="/member/loginForm.do">Login</a>
                         <div><br><br>
-                            <a class="aaaa" href="/member/emailFindForm.do">아이디찾기</a>
+                            <a class="aaaa" href="/member/findIdForm.do">아이디찾기</a>
                             <a class="aaaa" href="/member/pwdFindForm.do">비밀번호찾기</a>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
-
     <!-- /main -->
-
     <!--푸터 영역-->
     <footer>
-
     </footer>
 </body>
 </html>
 <script>
-$(document).ready(function() {
-    $('#name, #phone').on('input', function() {
-        // Update email field dynamically using AJAX
-        var name = $('#name').val();
-        var phone = $('#phone').val();
+function findId(){
+    var name = $('#name').val();
+    var phone = $('#phone').val();
 
-        $.ajax({
-            type: 'POST',
-            url: '/member/emailFind.do',
-            data: { name: name, phone: phone },
-            success: function(response) {
-                if (response === 'available') {
-                    $('#email').val(''); // Clear the email field if available
-                    $('#emailError').text(''); // Clear any previous errors
-                } else {
-                    $('#email').val(response);
-                    $('#emailError').text(''); // Clear any previous errors
-                }
-            },
-            error: function() {
-                $('#email').val('');
-                $('#emailError').text('Error fetching email.'); // Display error message
+    $.ajax({
+        type: 'POST',
+        url: '/member/findId.do',
+        data: { m_name: name, m_phone: phone },
+        success: function(response) {
+        	console.log(response);
+            if (response == '') {
+                $('#email').val('#존재하지 않는 회원입니다.'); 
+                $('#emailError').text('');
+            } else {
+                $('#email').val(response);
+                $('#emailError').text('');
             }
-        });
-    });
-
-    // Prevent form submission if email is not available
-    $('#emailFindForm').submit(function(event) {
-        if ($('#email').val() === '') {
-            $('#emailError').text('Email is not available.');
-            event.preventDefault();
+        },
+        error: function() {
+            $('#email').val('');
+            $('#emailError').text('Error fetching email.'); 
         }
-    });
-});
-</script>
+
+	
+	})
+}
+ </script>
