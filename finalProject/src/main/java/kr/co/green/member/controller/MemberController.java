@@ -26,6 +26,21 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
+	@GetMapping("/emailFindForm.do")
+	public String emailFindForm() {
+		return "member/emailFind";
+	}
+
+	// 아이디 찾기
+	@PostMapping("/emailFind.do")
+	@ResponseBody
+	public String emailFind(String name, String phone) {
+		// 이메일 중복검사
+		String result = memberService.findMemberId(name, phone);
+
+		return "member/emailFind";
+	}
+
 	@GetMapping("/loginForm.do")
 	public String loginForm() {
 		return "member/login";
@@ -36,8 +51,8 @@ public class MemberController {
 		MemberDTO loginUser = memberService.loginMember(member);
 		// loginUser 객체가 비어있지 않을 때 (로그인 성공)
 		if (!Objects.isNull(loginUser) && bcryptPasswordEncoder.matches(member.getM_pwd(), loginUser.getM_pwd())) {
-			session.setAttribute("m_Idx", loginUser.getM_idx());
-			session.setAttribute("m_Name", loginUser.getM_name());
+			session.setAttribute("m_idx", loginUser.getM_idx());
+			session.setAttribute("m_name", loginUser.getM_name());
 			return "common/index";
 		} else {
 			return "member/login";

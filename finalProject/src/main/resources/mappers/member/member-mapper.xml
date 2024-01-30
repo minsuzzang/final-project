@@ -14,6 +14,13 @@
 		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
 	</resultMap>
 	
+	<select id="findMemberId" resultMap="memberResultSet">
+		SELECT m_email FROM member
+        WHERE m_name = #{name} AND m_phone = #{phone}
+	
+	</select>
+	
+	
 	<!--이메일 중복 체크-->
 	 <select id="checkEmail" resultType="_int"> 
 		SELECT COUNT(*) FROM member

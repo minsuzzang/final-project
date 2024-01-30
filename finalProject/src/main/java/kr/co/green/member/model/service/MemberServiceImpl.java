@@ -11,16 +11,16 @@ import kr.co.green.member.model.dto.MemberDTO;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	@Autowired
 	private MemberDAO memberDao;
-	
+
 	// 로그인
 	@Override
 	public MemberDTO loginMember(MemberDTO member) {
 		return memberDao.loginMember(sqlSession, member);
 	}
-	
+
 	// 이메일 중복체크
 	@Override
 	public int checkEmail(String email) {
@@ -31,6 +31,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int registerMember(MemberDTO member) {
 		return memberDao.registerMember(sqlSession, member);
+	}
+
+	// 아이디 찾기
+	@Override
+	public String findMemberId(String name, String phone) {
+		return memberDao.findMemberId(sqlSession, name, phone);
 	}
 
 }
