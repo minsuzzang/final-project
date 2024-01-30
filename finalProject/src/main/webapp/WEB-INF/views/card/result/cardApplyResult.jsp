@@ -112,13 +112,16 @@
 
     <!-- main -->
     <br><br><br>
-    <p class="fff4">카드 발급신청 완료</p><br>
-    <p class="fff5">승인을 기다려주세요.</p><br><br><br>
-    <p class="fff6">[ <b>the Black</b> ]</p>
-    <div class="dfjc">
-            <img class="imgggg" src="/images/theBlack/theBlack1.png" alt="">
-            <img class="imgggg" src="/images/theBlack/blackb.png" alt="" style="margin-left: 50px;">
-        </div>
+    <div class="tac">
+	    <p class="fff4">카드 발급신청 완료</p><br>
+	    <p class="fff5">승인을 기다려주세요.</p><br><br><br>
+	    <p class="fff5">[ <b>the ${cd_color_upper}</b> ]</p>
+    </div>
+    <div class="dfjc3">
+            <img class="imgggg" src="/resources/images/the${cd_color_upper}/the${cd_color_upper}${cd_design_num}.png" alt="">
+            <img class="imgggg" src="/resources/images/the${cd_color_upper}/${cd_color_lower}b.png" alt="" style="margin-left: 50px;">
+    </div>
+    <br><br><br><br>
    
 
     <!-- /main -->

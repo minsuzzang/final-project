@@ -23,6 +23,7 @@
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
     <script src="/resources/js/visual_slide.js"></script>
+    <script src="/resources/js/card/cardApply.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
@@ -116,31 +117,31 @@
 
     <div class="left1">
         <div class="slider">
-            <input type="radio" name="testimonial" id="t-1">
-            <input type="radio" name="testimonial" id="t-2">
-            <input type="radio" name="testimonial" id="t-3" checked>
-            <input type="radio" name="testimonial" id="t-4">
-            <input type="radio" name="testimonial" id="t-5">
+            <input type="radio" name="testimonial" id="t-1" value="design4">
+            <input type="radio" name="testimonial" id="t-2" value="design5">
+            <input type="radio" name="testimonial" id="t-3" value="design1" checked>
+            <input type="radio" name="testimonial" id="t-4" value="design2">
+            <input type="radio" name="testimonial" id="t-5" value="design3">
             <div class="testimonials">
                 <label class="item" for="t-1">
                     <p class="fff2">Design 4</p>
-                    <img src="/resources/images/thePink/thePink3.png" alt="">
+                    <img src="/resources/images/thePink/thePink3.png" alt="" onclick="radioCheck('t-1')">
                 </label>
                 <label class="item" for="t-2">
                     <p class="fff2">Design 5</p>
-                    <img src="/resources/images/thePink/thePink2.png" alt="">
+                    <img src="/resources/images/thePink/thePink2.png" alt="" onclick="radioCheck('t-2')">
                 </label>
                 <label class="item" for="t-3">
                     <p class="fff2">Design 1</p>
-                    <img src="/resources/images/thePink/thePink1.png" alt="">
+                    <img src="/resources/images/thePink/thePink1.png" alt="" onclick="radioCheck('t-3')">
                 </label>
                 <label class="item" for="t-4">
                     <p class="fff2">Design 2</p>
-                    <img src="/resources/images/thePink/thePink4.png" alt="">
+                    <img src="/resources/images/thePink/thePink4.png" alt="" onclick="radioCheck('t-4')">
                 </label>
                 <label class="item" for="t-5">
                     <p class="fff2">Design 3</p>
-                    <img src="/resources/images/thePink/thePink5.png" alt="">
+                    <img src="/resources/images/thePink/thePink5.png" alt="" onclick="radioCheck('t-5')">
                 </label>
             </div>
             <br />
@@ -154,22 +155,21 @@
         </div>
     </div>
     <div class="right1">
-        <input type="text" name="" id="" hidden disabled value="(디자인 값)">
         <br><br>
         <p class="egft1">카드 신청</p><br><br><br>
         <div class="yhb2">
             <div class="dv">
-                <input class="ipp" type="text" required>
+                <input class="ipp" type="text" name="englishName" required>
                 <label class="lb">English Name</label>
                 <span class="sp"></span>
             </div>
             <div class="dv">
-                <input class="ipp" type="text" required>
+                <input class="ipp" type="text" name="address" required>
                 <label class="lb">Address</label>
                 <span class="sp"></span>
             </div>
             <br><br><br>
-            <button class="custom-btn-b btn-9-b" formaction="/blackSelect.html">신청</button>
+            <button class="custom-btn-b btn-9-b" id="custom-btn-b">신청</button>
         </div>
     </div>
 

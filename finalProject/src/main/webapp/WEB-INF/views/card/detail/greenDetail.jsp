@@ -124,7 +124,7 @@
             <p class="fff1">자유와 모험을 즐기는</p>
             <p class="fff1">나의 첫 "럭셔리 카드"</p>
             <p class="fff1"> </p><br><br><br>
-                <button class="custom-btn-b btn-9-b" formaction="/greenSelect.html">신청하기</button>
+                <button class="custom-btn-b btn-9-b" formaction="/card/design/green">신청하기</button>
             <br><br><br><br>
             <div class="yhb">
                 <p class="fff1">연회비 150,000</p><br>

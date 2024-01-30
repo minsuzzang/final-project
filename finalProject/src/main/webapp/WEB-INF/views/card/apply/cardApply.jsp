@@ -122,10 +122,10 @@
         <div class="shop">
             <p class="egft3-1" style="color: black;">the Black</p>
             <figure class="slide5">
-                <a href="/card/color/black"><img class="imggg" src="/resources/images/theBlack/theBlack1.png"></a>
+                <a href="/card/color/Black"><img class="imggg" src="/resources/images/theBlack/theBlack1.png"></a>
             </figure>
             <figure class="slide5">
-                <a href="/card/color/black"><img class="imggg" src="/resources/images/theBlack/theBlack2.png"></a>
+                <a href="/card/color/Black"><img class="imggg" src="/resources/images/theBlack/theBlack2.png"></a>
             </figure>
             <p class="egft3-2" style="color: black;">단 1,000명에게</p>
             <p class="egft3-2-1" style="color: black;">선사하는</p>
@@ -134,13 +134,13 @@
         <div class="shop">
             <p class="egft3-1" style="color: rgb(95, 0, 95);">the Purple</p>
             <figure class="slide1">
-                <a href="/card/color/purple"><img class="imggg" src="/resources/images/thePurple/thePurple1.png"></a>
+                <a href="/card/color/Purple"><img class="imggg" src="/resources/images/thePurple/thePurple1.png"></a>
             </figure>
             <figure class="slide1">
-                <a href="/card/color/purple"><img class="imggg" src="/resources/images/thePurple/thePurple2.png"></a>
+                <a href="/card/color/Purple"><img class="imggg" src="/resources/images/thePurple/thePurple2.png"></a>
             </figure>
             <figure class="slide1">
-                <a href="/card/color/purple"><img class="imggg" src="/resources/images/thePurple/thePurple3.png"></a>
+                <a href="/card/color/Purple"><img class="imggg" src="/resources/images/thePurple/thePurple3.png"></a>
             </figure>
             <p class="egft3-2" style="color: rgb(95, 0, 95);">아무나 가질 수 없는</p>
             <p class="egft3-2-1" style="color: rgb(95, 0, 95);">럭셔리 그 이상의 카드</p>
@@ -149,19 +149,19 @@
         <div class="shop">
             <p class="egft3-1" style="color: rgb(187, 0, 0);">the Red</p>
             <figure class="slide2">
-                <a href="/card/color/red"><img class="imggg" src="/resources/images/theRed/theRed1.png"></a>
+                <a href="/card/color/Red"><img class="imggg" src="/resources/images/theRed/theRed1.png"></a>
             </figure>
             <figure class="slide2">
-                <a href="/card/color/red"><img class="imggg" src="/resources/images/theRed/theRed2.png"></a>
+                <a href="/card/color/Red"><img class="imggg" src="/resources/images/theRed/theRed2.png"></a>
             </figure>
             <figure class="slide2">
-                <a href="/card/color/red"><img class="imggg" src="/resources/images/theRed/theRed3.png"></a>
+                <a href="/card/color/Red"><img class="imggg" src="/resources/images/theRed/theRed3.png"></a>
             </figure>
             <figure class="slide2">
-                <a href="/card/color/red"><img class="imggg" src="/resources/images/theRed/thered4.png"></a>
+                <a href="/card/color/Red"><img class="imggg" src="/resources/images/theRed/thered4.png"></a>
             </figure>
             <figure class="slide2">
-                <a href="/card/selectColor?color=red"><img class="imggg" src="/resources/images/theRed/theRed5.png"></a>
+                <a href="/card/color/Red"><img class="imggg" src="/resources/images/theRed/theRed5.png"></a>
             </figure>
             <p class="egft3-2" style="color: rgb(187, 0, 0);">핫한 라이프를 완성하는</p>
             <p class="egft3-2-1" style="color: rgb(187, 0, 0);">고성능</p>
@@ -170,19 +170,19 @@
         <div class="shop">
             <p class="egft3-1" style="color: green;">the Green</p>
             <figure class="slide3">
-                <a href="/card/color/green"><img class="imggg" src="/resources/images/theGreen/theGreen5.png"></a>
+                <a href="/card/color/Green"><img class="imggg" src="/resources/images/theGreen/theGreen5.png"></a>
             </figure>
             <figure class="slide3">
-                <a href="/card/color/green"><img class="imggg" src="/resources/images/theGreen/theGreen2.png"></a>
+                <a href="/card/color/Green"><img class="imggg" src="/resources/images/theGreen/theGreen2.png"></a>
             </figure>
             <figure class="slide3">
-                <a href="/card/color/green"><img class="imggg" src="/resources/images/theGreen/theGreen3.png"></a>
+                <a href="/card/color/Green"><img class="imggg" src="/resources/images/theGreen/theGreen3.png"></a>
             </figure>
             <figure class="slide3">
-                <a href="/card/color/green"><img class="imggg" src="/resources/images/theGreen/theGreen4.png"></a>
+                <a href="/card/color/Green"><img class="imggg" src="/resources/images/theGreen/theGreen4.png"></a>
             </figure>
             <figure class="slide3">
-                <a href="/card/color/green"><img class="imggg" src="/resources/images/theGreen/theGreen1.png"></a>
+                <a href="/card/color/Green"><img class="imggg" src="/resources/images/theGreen/theGreen1.png"></a>
             </figure>
             <p class="egft3-2" style="color: green;">자유와 모험을 즐기는</p>
             <p class="egft3-2-1" style="color: green;">나의 첫</p>
@@ -191,19 +191,19 @@
         <div class="shop">
             <p class="egft3-1" style="color: rgb(252, 71, 102);">the Pink</p>
             <figure class="slide4">
-                <a href="/card/color/pink"><img class="imggg" src="/resources/images/thePink/thePink5.png"></a>
+                <a href="/card/color/Pink"><img class="imggg" src="/resources/images/thePink/thePink5.png"></a>
             </figure>
             <figure class="slide4">
-                <a href="/card/color/pink"><img class="imggg" src="/resources/images/thePink/thePink2.png"></a>
+                <a href="/card/color/Pink"><img class="imggg" src="/resources/images/thePink/thePink2.png"></a>
             </figure>
             <figure class="slide4">
-                <a href="/card/color/pink"><img class="imggg" src="/resources/images/thePink/thePink3.png"></a>
+                <a href="/card/color/Pink"><img class="imggg" src="/resources/images/thePink/thePink3.png"></a>
             </figure>
             <figure class="slide4">
-                <a href="/card/color/pink"><img class="imggg" src="/resources/images/thePink/thePink4.png"></a>
+                <a href="/card/color/Pink"><img class="imggg" src="/resources/images/thePink/thePink4.png"></a>
             </figure>
             <figure class="slide4">
-                <a href="/card/color/pink"><img class="imggg" src="/resources/images/thePink/thePink1.png"></a>
+                <a href="/card/color/Pink"><img class="imggg" src="/resources/images/thePink/thePink1.png"></a>
             </figure>
             <p class="egft3-2" style="color: rgb(252, 71, 102);">프로 쇼펴들의</p>
             <p class="egft3-2-1" style="color: rgb(252, 71, 102);">필수</p>

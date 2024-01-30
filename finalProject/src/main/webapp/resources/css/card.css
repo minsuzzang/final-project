@@ -98,8 +98,22 @@
     font-family: 'YouandiModernTR', sans-serif;
     text-align: center;
     font-weight: 1000;
-    font-size: 30px;
-    margin-bottom: -12%;
+    font-size: 25px;
+    margin-bottom: -5%;
+    width: 600px;
+}
+.fff6 img {
+  width: 30%;
+}
+.fff7 {
+  font-family: 'YouandiModernTR', sans-serif;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 25px;
+    margin-bottom: -5%;
+    width: 600px;
+    display: flex;
+    justify-content: center;
 }
 .yhb {
     padding: 15px;
@@ -148,10 +162,6 @@
    transition: transform 0.4s;
    user-select: none;
    cursor: pointer;
-}
-.testimonials .item img{
-    width: 250px;
-    border-radius: 10px;
 }
 .testimonials .item img{
     width: 250px;
@@ -344,4 +354,22 @@
     width: 300px;
     margin-top: 50px;
     border: none;
+  }
+  .dfjc2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+  }
+  .dfjc {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tac {
+    text-align: center;
+  }
+  .dfjc3 {
+    display: flex;
+    justify-content: center;
+    margin-top: -10%;
   }
