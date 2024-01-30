@@ -81,5 +81,11 @@ public class MemberController {
 		}
 
 	}
+	
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "common/index";
+	}
 
 }

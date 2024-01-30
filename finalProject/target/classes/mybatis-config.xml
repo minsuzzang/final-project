@@ -12,6 +12,7 @@
 		<typeAlias type="kr.co.green.customerBoard.dto.CustomerBoardDTO" alias="customerboard"/>
 		<typeAlias type="kr.co.green.notice.model.dto.NoticeDTO" alias="notice"/>
 		<typeAlias type="kr.co.green.card.model.dto.CardDTO" alias="card" />
+		<typeAlias type="kr.co.green.product.model.dto.ProductDTO" alias="product" />
 
 	</typeAliases>
 
@@ -21,6 +22,7 @@
 		<mapper resource="/mappers/userService/customerboard-mapper.xml"/>
 		<mapper resource="/mappers/notice/notice-mapper.xml"/>
 		<mapper resource="/mappers/card/card-mapper.xml" />
+		<mapper resource="/mappers/product/product-mapper.xml" />
 
 	</mappers>
 
