@@ -73,7 +73,7 @@
                         <a class="aaa" href="/member/loginForm.do">Login</a>
                         <div><br><br>
                             <a class="aaaa" href="/member/findIdForm.do">아이디찾기</a>
-                            <a class="aaaa" href="/member/pwdFindForm.do">비밀번호찾기</a>
+                            <a class="aaaa" href="/member/findPwdForm.do">비밀번호찾기</a>
                         </div>
                     </div>
             </div>

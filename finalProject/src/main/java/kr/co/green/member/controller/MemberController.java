@@ -26,6 +26,11 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
+	@GetMapping("/findPwdForm.do")
+	public String findPwdForm() {
+		return "member/pwdFind";
+	}
+
 	@GetMapping("/findIdForm.do")
 	public String emailFindForm() {
 		return "member/emailFind";
@@ -49,6 +54,7 @@ public class MemberController {
 		return "member/login";
 	}
 
+	// 로그인
 	@PostMapping("/login.do")
 	public String loginIndex(MemberDTO member, HttpSession session, Model model) {
 		MemberDTO loginUser = memberService.loginMember(member);
@@ -67,10 +73,11 @@ public class MemberController {
 		return "member/register";
 	}
 
+	// 이메일 중복검사
 	@PostMapping("/checkEmail.do")
 	@ResponseBody
 	public String checkEmail(String email) {
-		// 이메일 중복검사
+
 		int result = memberService.checkEmail(email);
 
 		if (result == 1) {
@@ -80,6 +87,7 @@ public class MemberController {
 		}
 	}
 
+	// 회원가입
 	@PostMapping("/register.do")
 	public String register(MemberDTO member) {
 		// 패스워드 암호화

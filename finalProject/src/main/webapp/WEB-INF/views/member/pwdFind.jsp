@@ -76,20 +76,17 @@
                         <input type="submit" id="submit" value="Update PWD" style="font-size: 15px;">
                         <a class="aaa" href="/member/loginForm.do">Login</a>
                         <div><br><br>
-                            <a class="aaaa" href="/member/emailFindForm.do">아이디찾기</a>
-                            <a class="aaaa" href="/member/pwdFindForm.do">비밀번호찾기</a>
+                            <a class="aaaa" href="/member/findIdForm.do">아이디찾기</a>
+                            <a class="aaaa" href="/member/findPwdForm.do">비밀번호찾기</a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
     <!-- /main -->
-
     <!--푸터 영역-->
     <footer>
-
     </footer>
 
 </body>
