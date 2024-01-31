@@ -73,7 +73,7 @@
                         
                         <label for="password">Password</label>
                         <input type="password" id="password" name="m_pwd" onkeyup="validatePassword()" required>
-                        <span id="pwdMsg">영어, 숫자, 특수문자 1개 이상, 6~20자리</span>
+                        <span id="pwdMsg">대소문자 1개 이상, 특수문자 1개 이상, 6~20자리</span>
                         
                         <label for="password">PasswordCheck</label>
                         <input type="password" id="passwordcheck" name="pwdchk" onkeyup="validatePassword()" required>
@@ -89,10 +89,6 @@
                         
                         <input type="submit" id="submit" value="Submit">
                         <a class="aaa" href="/member/loginForm.do">Login</a>
-                        <div><br><br>
-                            <a class="aaaa" href="/emailFind.html">아이디찾기</a>
-                            <a class="aaaa" href="/pwdFind.html">비밀번호찾기</a>
-                        </div>
                     </div>
                 </form>
             </div>

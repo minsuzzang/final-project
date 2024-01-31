@@ -22,6 +22,7 @@
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <%@ include file="/WEB-INF/views/common/alert.jsp"%>
 
 
 </head>
@@ -59,15 +60,15 @@
                     </tr>
                     <tr>
                         <th width=20% class="text-center">Title</th>
-                        <td colspan="3" width=30% class="text-center" style="text-align: left;"><input class="ip1"
-                                type="text" value="${board.cb_title}" name="cb_title"></td>
+                        <td colspan="3" width=30% class="text-center" style="text-align: left;">
+                        <input class="ip1" name="cb_title" type="text" value="${board.cb_title}"  minlength="1" maxlength="30"></td>
                     </tr>
                     <tr>
                     <tr>
                         <th width=20% class="text-center">Content</th>
                         <td colspan="4" class="text-left" valign="top" height="280">
                             <div class="text-left">
-                                <textarea id="summernote" name="cb_content">${board.cb_content}</textarea>
+                                <textarea id="summernote" name="cb_content" minlength="1" maxlength="1000">${board.cb_content}</textarea>
                             </div>
                             <script>
                                 $('#summernote').summernote({

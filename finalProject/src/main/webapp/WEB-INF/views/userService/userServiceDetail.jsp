@@ -22,6 +22,7 @@
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <%@ include file="/WEB-INF/views/common/alert.jsp"%>
 
 
 </head>
@@ -76,10 +77,12 @@
                         <input class="ip2" type="text" value="#" disabled>
                       </td>
                     </tr>
-                  </table>
-                <button class="custom-btn-b btn-9-b" formaction="/customerboard/editForm.do?idx=${board.cb_idx}">수정하기</button>
-                <button class="custom-btn-r btn-9-r" formaction="/customerboard/delete.do">삭제하기</button>
-                <button class="custom-btn-b btn-9-b" type="button" onclick="history.back()">돌아가기</button>
+                </table>
+                <c:if test="${sessionScope.m_idx eq board.m_idx}">
+                	<button class="custom-btn-b btn-9-b" formaction="/customerboard/editForm.do?idx=${board.cb_idx}">수정하기</button>
+                	<button class="custom-btn-r btn-9-r" formaction="/customerboard/delete.do">삭제하기</button>
+                </c:if>
+                	<button class="custom-btn-b btn-9-b" type="button" onclick="history.back()">돌아가기</button>
             </section>
         </form>
     </div>
