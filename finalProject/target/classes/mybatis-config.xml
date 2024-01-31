@@ -7,21 +7,17 @@
 	</settings>
 
 	<typeAliases>
-
 		<typeAlias type="kr.co.green.member.model.dto.MemberDTO" alias="member"/>
 		<typeAlias type="kr.co.green.customerBoard.dto.CustomerBoardDTO" alias="customerboard"/>
 		<typeAlias type="kr.co.green.notice.model.dto.NoticeDTO" alias="notice"/>
 		<typeAlias type="kr.co.green.card.model.dto.CardDTO" alias="card" />
-
 	</typeAliases>
-
 	<mappers>
-
 		<mapper resource="/mappers/member/member-mapper.xml"/>
 		<mapper resource="/mappers/userService/customerboard-mapper.xml"/>
+		<mapper resource="/mappers/member/member-mapper.xml"/>
 		<mapper resource="/mappers/notice/notice-mapper.xml"/>
 		<mapper resource="/mappers/card/card-mapper.xml" />
-
 	</mappers>
 
 </configuration>
