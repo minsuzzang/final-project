@@ -26,7 +26,7 @@ public class CardApplyController {
 	@PostMapping("/card/apply")
 	public Map<String, Object> applyCard(@RequestBody Map<String, Object> applyMap, HttpSession session) {
 
-		String cd_color = (String) session.getAttribute("cd_color"); 
+		String cd_color = (String) session.getAttribute("cd_color");
 		String cd_design = (String) applyMap.get("cd_design");
 		String m_english_name = (String) applyMap.get("m_english_name");
 		String m_address = (String) applyMap.get("m_address");
@@ -35,13 +35,14 @@ public class CardApplyController {
 		Map<String, Object> resultMap = new HashMap<>();
 
 		memberidx.ifPresentOrElse(idx -> {
-			int applyResult = cardService.cardApply(idx, cd_color, cd_design, m_english_name, m_address);
-			if (applyResult > 0) {
+			try {
+				cardService.cardApply(idx, cd_color, cd_design, m_english_name, m_address);
 				session.setAttribute("cd_design", cd_design);
 				resultMap.put("success", true);
 				resultMap.put("redirectUrl", "/card/result.do");
-			} else
+			} catch (Exception e) {
 				resultMap.put("success", false);
+			}
 		}, () -> {
 			resultMap.put("success", false);
 		});
