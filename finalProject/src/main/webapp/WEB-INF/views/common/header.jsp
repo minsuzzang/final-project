@@ -4,7 +4,7 @@
     <!-- 헤더시작 -->
         <!--로고삽입-->
         <h1 id="logo">
-            <a href="index.html"><img src="/resources/images/logo.png" alt="로고"></a>
+            <a href="/"><img src="/resources/images/logo.png" alt="로고"></a>
         </h1>
 
         <!--메뉴 버튼-->
@@ -14,9 +14,20 @@
             <span id="b_stick"></span>
         </h2>
         <h2 id="log_btn">
-            <a href="/member/loginForm.do">로그인</a>
-            <a href="/member/registerForm.do">회원가입</a>
-        </h2>
+           <c:choose>
+                <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'BASIC'}">
+                       <a href="/member/logout.do">로그아웃</a>
+                </c:when>
+              <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'ADMIN'}">
+                       <a href="/member/logout.do">관리자</a>
+                       <a href="/member/logout.do">로그아웃</a>
+                </c:when>
+                <c:otherwise>
+                       <a href="/member/loginForm.do">로그인</a>
+                       <a href="/member/registerForm.do">회원가입</a>
+                </c:otherwise>
+           </c:choose>
+         </h2>
 
         <!--메뉴-->
         <div id="menu_wrap">
@@ -31,8 +42,7 @@
                         </ul>
                     </li>
 
-                    <li>
-                    	<a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
+                    <li><a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
                         <ul id="sub_menu">
                             <li><a href="#">내 정보</a></li>
                             <li><a href="#">내 카드</a></li>
@@ -56,6 +66,7 @@
                             <li><a href="#">적립 혜택</a></li>
                             <li><a href="/product/list.do">제휴 상품</a></li>
                         </ul>
+
                     </li>
 
                     <li><a>고객 지원</a>

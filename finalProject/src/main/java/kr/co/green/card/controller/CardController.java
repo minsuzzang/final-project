@@ -5,27 +5,16 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.green.card.model.service.CardService;
-
 @Controller
 @RequestMapping("/card")
 public class CardController {
 
-	private final CardService cardService;
-
-	@Autowired
-	public CardController(CardService cardService) {
-		super();
-		this.cardService = cardService;
-	}
-	
 	@GetMapping("/cardApplyForm.do")
 	public String cardApplyForm() {
 		
@@ -47,7 +36,7 @@ public class CardController {
 	public String design(@PathVariable("color")  Optional<String> color, HttpSession session) {
 		
 		if (!color.isPresent()) {
-			return"common/error";	//color 값이 없는 경우의 처리
+			return"common/error";
 	    }
 		
 	    session.setAttribute("cd_color", color.get());
@@ -56,9 +45,7 @@ public class CardController {
 	
 	@GetMapping("/result.do")
 	public String cardApplyResult(HttpSession session, Model model) {
-		
-		// 현재: 세션에서 가져온 color의 0번 인덱스에 해당하는 문자를 전부 대문자로 변환
-		// 변경할 로직: 세션에서 가져온 color의 0번 인덱스만 추출해서 대문자로 변환 후 1 ~ 끝 인덱스와 합침
+		//upload파일을 동적으로 가져오기 위한 데이터 바인딩
 		
 		String color = (String)session.getAttribute("cd_color");
 		String design = (String)session.getAttribute("cd_design");

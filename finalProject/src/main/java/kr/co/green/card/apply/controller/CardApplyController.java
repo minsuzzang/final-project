@@ -7,7 +7,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,30 +24,29 @@ public class CardApplyController {
 	}
 
 	@PostMapping("/card/apply")
-	public Map<String, Object> applyCard(@RequestBody Map<String, Object> applyMap, HttpSession session, Model model) {
+	public Map<String, Object> applyCard(@RequestBody Map<String, Object> applyMap, HttpSession session) {
 
-		String cd_color = (String) session.getAttribute("cd_color"); // 세션에서 지우기
+		String cd_color = (String) session.getAttribute("cd_color"); 
 		String cd_design = (String) applyMap.get("cd_design");
 		String m_english_name = (String) applyMap.get("m_english_name");
 		String m_address = (String) applyMap.get("m_address");
 
 		Optional<Integer> memberidx = Optional.ofNullable((Integer) session.getAttribute("m_idx"));
-		Map<String, Object> result = new HashMap<>();
+		Map<String, Object> resultMap = new HashMap<>();
 
 		memberidx.ifPresentOrElse(idx -> {
 			int applyResult = cardService.cardApply(idx, cd_color, cd_design, m_english_name, m_address);
 			if (applyResult > 0) {
-				session.setAttribute("cd_color", cd_color);
 				session.setAttribute("cd_design", cd_design);
-				result.put("success", true);
-				result.put("redirectUrl", "/card/result.do");
+				resultMap.put("success", true);
+				resultMap.put("redirectUrl", "/card/result.do");
 			} else
-				result.put("success", false);
+				resultMap.put("success", false);
 		}, () -> {
-			result.put("success", false);
+			resultMap.put("success", false);
 		});
 
-		return result;
+		return resultMap;
 	}
 
 }
