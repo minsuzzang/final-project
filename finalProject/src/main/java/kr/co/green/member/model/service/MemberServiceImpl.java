@@ -39,4 +39,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.findMemberId(sqlSession, member);
 	}
 
+	// 비밀번호 찾기
+	@Override
+	public MemberDTO findMemberPwd(MemberDTO member) {
+		return memberDao.findMemberPwd(sqlSession, member);
+	}
+
 }

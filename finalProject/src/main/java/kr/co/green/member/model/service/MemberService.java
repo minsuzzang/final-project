@@ -15,4 +15,7 @@ public interface MemberService {
 
 	// 아이디 찾기
 	public MemberDTO findMemberId(MemberDTO member);
+
+	// 비밀번호 찾기
+	public MemberDTO findMemberPwd(MemberDTO member);
 }

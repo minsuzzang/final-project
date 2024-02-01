@@ -31,6 +31,19 @@ public class MemberController {
 		return "member/pwdFind";
 	}
 
+	// 비밀번호 찾기
+	@PostMapping("/findPwd.do")
+	@ResponseBody
+	public String findPwd(MemberDTO member, Model model) {
+
+		MemberDTO PwdMember = memberService.findMemberPwd(member);
+		if (PwdMember != null) {
+			return PwdMember.getM_email();
+		} else {
+			return "";
+		}
+	}
+
 	@GetMapping("/findIdForm.do")
 	public String emailFindForm() {
 		return "member/emailFind";

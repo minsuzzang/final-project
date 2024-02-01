@@ -92,5 +92,29 @@
 </html>
 
 <script>
+function findPwd(){
+	var email = $('#email').val();
+	var name = $('#name').val();
+    var phone = $('#phone').val();
 
+    $.ajax({
+        type: 'POST',
+        url: '/member/findPwd.do',
+        data: { m_name: name, m_phone: phone, m_email: email },
+        success: function(response) {
+        	console.log(response);
+            if (response == '') {
+                $('#email').val(''); 
+                $('#emailError').text('');
+            } else {
+                $('#email').val(response);
+                $('#emailError').text('');
+            }
+        },
+        error: function() {
+            $('#email').val('');
+            $('#emailError').text('Error fetching email.'); 
+        }	
+	})
+}
 </script>

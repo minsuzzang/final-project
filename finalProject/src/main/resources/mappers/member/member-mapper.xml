@@ -14,6 +14,14 @@
 		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
 	</resultMap>
 	
+	<!--비밀번호 찾기-->
+	<select id="findMemberId" resultMap="memberResultSet">
+		SELECT m_email FROM member 
+		WHERE m_email = {m_email} AND m_name = {m_name} AND m_phone = {m_phone}
+	</select>
+	
+	
+	<!--아이디 찾기-->
 	<select id="findMemberId" resultMap="memberResultSet">
 		SELECT m_email FROM member
         WHERE m_name = #{m_name} AND m_phone = #{m_phone}

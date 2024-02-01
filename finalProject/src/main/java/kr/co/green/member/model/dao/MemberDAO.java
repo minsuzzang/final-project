@@ -23,4 +23,8 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.findMemberId", member);
 	}
 
+	public MemberDTO findMemberPwd(SqlSessionTemplate sqlSession, MemberDTO member) {
+		return sqlSession.selectOne("memberMapper.findMemberPwd", member);
+	}
+
 }
