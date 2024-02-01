@@ -128,7 +128,7 @@
   .product .textBox__price {
     transition: all 0.4s ease-in-out;
   }
-
+  
   .container {
     width: 90%;
     margin: 10px auto;
@@ -138,13 +138,17 @@
   
   .first {
     width: 40%;
-    margin-right: 20%;
+    margin-right: 10%;
     text-align: center;
     display: block;
   } /* 화면을 이분할하기 위해 width에 50% 적용 */
   .second {
     width: 50%;
+    margin-right: 5%;
   } /* 화면을 이분할하기 위해 width에 50% 적용 */
+  .second img {
+    width: 20%;
+  }
   
   .left {
     font-size: 20px;
@@ -154,15 +158,16 @@
   .pn {
     font-size: 23px;
     font-weight: bold;
+  
+  }
+  .mgg {
+    width: 25%;
   }
   
   #one {
     display: flex;
   } /* container div중 하나를 선택하기 위한 id태그*/
   
-  #one img {
-    width: 95%;
-  }
   
   .gray {
     text-align: right;
@@ -208,6 +213,11 @@
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 0;
+    width: 50%;
+  }
+  .productdetail span img {
+    width: 60%;
+    float: right;
   }
   .productdetail2 {
     display: flex;
@@ -248,13 +258,6 @@
     padding-left: 10px;
     border-radius: 3px;
     font-weight: bold;
-  }
-  .reviewnav {
-    font-size: 20px;
-    font-weight: bold;
-    border-bottom: 1px solid lightgray;
-    padding-top: 10px;
-    padding-bottom: 15px;
   }
   
   .id {
@@ -298,3 +301,11 @@
   .bottomzone li {
     padding-bottom: 8px;
   }
+.www {
+  width: 95%;
+}
+span .wwww {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}

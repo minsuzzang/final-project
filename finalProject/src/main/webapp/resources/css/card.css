@@ -115,6 +115,7 @@
     display: flex;
     justify-content: center;
 }
+
 .yhb {
     padding: 15px;
     width: 80%;
@@ -365,6 +366,8 @@
     justify-content: center;
   }
 
+<<<<<<< HEAD
+=======
   .tac {
     text-align: center;
   }
@@ -373,3 +376,4 @@
     justify-content: center;
     margin-top: -10%;
   }
+>>>>>>> branch 'master' of https://github.com/minsuzzang/final-project.git

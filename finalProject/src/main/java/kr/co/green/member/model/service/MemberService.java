@@ -18,4 +18,8 @@ public interface MemberService {
 
 	// 비밀번호 찾기
 	public MemberDTO findMemberPwd(MemberDTO member);
+
+	// 멤버정보가져오기
+	public MemberDTO memberDetail(int m_idx);
+
 }

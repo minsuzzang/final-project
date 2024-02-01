@@ -13,21 +13,22 @@
             <span id="m_stick"></span>
             <span id="b_stick"></span>
         </h2>
-        <h2 id="log_btn">
-           <c:choose>
-                <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'BASIC'}">
-                       <a href="/member/logout.do">로그아웃</a>
-                </c:when>
-              <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'ADMIN'}">
-                       <a href="/member/logout.do">관리자</a>
-                       <a href="/member/logout.do">로그아웃</a>
-                </c:when>
-                <c:otherwise>
-                       <a href="/member/loginForm.do">로그인</a>
-                       <a href="/member/registerForm.do">회원가입</a>
-                </c:otherwise>
-           </c:choose>
-         </h2>
+
+     	<h2 id="log_btn">
+	        <c:choose>
+		       	<c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'BASIC'}">
+		           		<a href="/member/logout.do">로그아웃</a>
+		       	</c:when>
+		        <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'ADMIN'}">
+		           		<a href="/admin">관리자</a>
+		           		<a href="/member/logout.do">로그아웃</a>
+		       	</c:when>
+		       	<c:otherwise>
+		           		<a href="/member/loginForm.do">로그인</a>
+		           		<a href="/member/registerForm.do">회원가입</a>
+		       	</c:otherwise>
+	        </c:choose>
+      	</h2>
 
         <!--메뉴-->
         <div id="menu_wrap">
