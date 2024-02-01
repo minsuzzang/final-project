@@ -32,9 +32,27 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
+	<beans:bean id="loginCheckInterceptor"
+		class="kr.co.green.common.interceptor.LoginCheckInterceptor">
+	</beans:bean>
+
+	<interceptors>
+		<interceptor>
+			<!-- 인터셉터를 적용할 경로, /** : 모든 경로 -->
+			<mapping path="/card/*" />
+
+			<!-- 인터셉터를 제외할 경로 -->
+			<exclude-mapping path="/member/**" />
+			<exclude-mapping path="/**/*.css" />
+			<exclude-mapping path="/**/*.js" />
+
+			<!-- 이 설정이 어떤 Bean(객체)을 참조할껀지 -->
+			<beans:ref bean="loginCheckInterceptor" />
+		</interceptor>
+	</interceptors>
+
+
 	<context:component-scan
 		base-package="kr.co.green" />
-
-
 
 </beans:beans>

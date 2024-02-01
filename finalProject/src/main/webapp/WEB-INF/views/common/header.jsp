@@ -13,6 +13,7 @@
             <span id="m_stick"></span>
             <span id="b_stick"></span>
         </h2>
+
      	<h2 id="log_btn">
 	        <c:choose>
 		       	<c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'BASIC'}">

@@ -19,8 +19,8 @@ public class CardServiceImpl implements CardService{
 
 	@Override
 	// 카드 신청을 위한 신청정보 저장 메소드
-	public int cardApply(int m_idx, String cd_color, String cd_design, String m_english_name, String m_address) {
-		return cardDAO.insertCardApplyInfo(m_idx, cd_color, cd_design, m_english_name, m_address);
+	public void cardApply(int m_idx, String cd_color, String cd_design, String m_english_name, String m_address) {
+		cardDAO.insertCardApplyInfo(m_idx, cd_color, cd_design, m_english_name, m_address);
 	}
 
 }
