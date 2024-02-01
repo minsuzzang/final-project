@@ -12,6 +12,7 @@ public interface MemberService {
 	
 	// 회원가입
 	public int registerMember(MemberDTO member);
-
 	
+	//멤버정보가져오기
+	public MemberDTO memberDetail(int m_idx);
 }

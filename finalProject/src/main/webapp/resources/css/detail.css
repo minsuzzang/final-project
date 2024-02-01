@@ -5,7 +5,8 @@ table {
   
   section.notice {
     padding: 80px 0;
-    margin-left: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     width: 80%;
     font-family: 'YouandiModernTR', sans-serif;
   }

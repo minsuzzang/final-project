@@ -20,4 +20,7 @@ public int registerMember(SqlSessionTemplate sqlSession, MemberDTO member) {
 return sqlSession.insert("memberMapper.registerMember", member);
 }
 
+public MemberDTO memberDetail(SqlSessionTemplate sqlSession, int m_idx) {
+	return sqlSession.selectOne("memberMapper.memberDetail", m_idx);
+}
 }

@@ -135,13 +135,16 @@ public class CustomerBoardController {
 	public String editBoard(CustomerBoardDTO board,  HttpSession session) {
 		String getWriter = customerboardService.selectWriter(board.getCb_idx()); //게시글 작성자
 		String loginWriter = (String) session.getAttribute("m_name"); //로그인한 유저
+		String adminWriter = (String) session.getAttribute("m_type");
+		
+		board.setM_type(adminWriter);
 		
 		//제목 길이 검사
 		boolean titleLengthCheck = DataValidation.CheckLength(board.getCb_title(), 150);
 		//제목이 비어있는지 검사
 		boolean titleEmptyCheck = DataValidation.emptyCheck(board.getCb_title());
 		
-		if(getWriter.equals(loginWriter)) {
+		if(getWriter.equals(loginWriter) || adminWriter.equals("ADMIN")) {
 			if(titleLengthCheck && titleEmptyCheck) {
 				int result = 0;
 				result = customerboardService.editBoard(board);
