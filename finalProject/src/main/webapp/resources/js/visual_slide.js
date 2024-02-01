@@ -129,22 +129,32 @@ $(window).load(function () {
 
 });
 
-var index = 0;   //이미지에 접근하는 인덱스
-    window.onload = function(){
-        slideShow();
-    }
-    
-    function slideShow() {
-    var i;
-    var x = document.getElementsByClassName("slide1");  //slide1에 대한 dom 참조
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";   //처음에 전부 display를 none으로 한다.
-    }
-    index++;
-    if (index > x.length) {
-        index = 1;  //인덱스가 초과되면 1로 변경
-    }   
-    x[index-1].style.display = "block";  //해당 인덱스는 block으로
-    setTimeout(slideShow, 4000);   //함수를 4초마다 호출
- 
+var indices = {};   // 각 슬라이드 쇼의 인덱스를 저장하는 객체
+
+window.onload = function(){
+    slideShow("slide1");
+    slideShow("slide2");
+    slideShow("slide3");
+    slideShow("slide4");
+    slideShow("slide5");
 }
+
+function slideShow(slideClassName) {
+    if(!indices.hasOwnProperty(slideClassName)) { // 만약 해당 슬라이드 쇼의 인덱스가 없다면
+        indices[slideClassName] = 0; // 초기 인덱스를 설정
+    }
+
+    var i;
+    var x = document.getElementsByClassName(slideClassName);
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+
+    indices[slideClassName]++; // 해당 슬라이드 쇼의 인덱스를 증가
+    if (indices[slideClassName] > x.length) {
+        indices[slideClassName] = 1;
+    }   
+    x[indices[slideClassName]-1].style.display = "block";
+    setTimeout(function() { slideShow(slideClassName); }, 4000);
+}
+

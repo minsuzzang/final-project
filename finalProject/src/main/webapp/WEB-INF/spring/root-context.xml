@@ -5,9 +5,9 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    
+
+	xmlns:tx="http://www.springframework.org/schema/tx"
+
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc 
 						http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd 
 						http://mybatis.org/schema/mybatis-spring 
@@ -24,8 +24,17 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
+	<!-- 전역 설정: 클래스 기반 프록시를 사용 -->
+	<aop:config proxy-target-class="true" />
+
+	<!-- 인터페이스를 사용하는 패키지에 대한 설정: JDK Dynamic Proxy를 사용 -->
+	<aop:config proxy-target-class="false">
+    <aop:pointcut id="interfaceServiceOperations" expression="execution(* kr.co.green.card.controller..*.*(..)) || execution(* kr.co.green.card.apply.controller..*.*(..)) || execution(* kr.co.green.card.model.service..*.*(..)) || execution(* kr.co.green.card.model.dao..*.*(..))" />
+</aop:config>
+
 	<!-- DB 연결 -->
-	<context:property-placeholder location="/config/*.properties" />
+	<context:property-placeholder
+		location="/config/*.properties" />
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 		id="dataSource" destroy-method="close">
 		<property name="driverClassName"
@@ -45,13 +54,15 @@
 		id="sqlSession">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
-	 <!-- 트랜잭션 관리자 설정 -->
-   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-       <property name="dataSource" ref="dataSource" />
-   </bean>
 
-   <!-- 트랜잭션 설정 -->
-   <tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 트랜잭션 관리자 설정 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 트랜잭션 설정 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
 
 </beans>
