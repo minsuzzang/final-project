@@ -17,13 +17,11 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 public class CardDAOMyBatis implements CardDAO {
 
 	private final SqlSessionTemplate sqlSession;
-	private final PlatformTransactionManager transactionManager;
 
 	@Autowired
 	public CardDAOMyBatis(SqlSessionTemplate sqlSession, PlatformTransactionManager transactionManager) {
 		super();
 		this.sqlSession = sqlSession;
-		this.transactionManager = transactionManager;
 	}
 
 	@Transactional

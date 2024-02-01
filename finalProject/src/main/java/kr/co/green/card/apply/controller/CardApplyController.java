@@ -45,6 +45,7 @@ public class CardApplyController {
 			}
 		}, () -> {
 			resultMap.put("success", false);
+			resultMap.put("redirectUrl", "/common/error");
 		});
 
 		return resultMap;
