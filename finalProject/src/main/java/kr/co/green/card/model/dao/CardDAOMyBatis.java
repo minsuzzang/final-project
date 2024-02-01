@@ -1,17 +1,16 @@
 
 package kr.co.green.card.model.dao;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Repository
 public class CardDAOMyBatis implements CardDAO {
@@ -37,14 +36,18 @@ public class CardDAOMyBatis implements CardDAO {
 		params.put("m_english_name", m_english_name);
 		params.put("m_address", m_address);
 
-		int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", params);
-	    if (memberResult <= 0) {
-	        throw new RuntimeException("Member information update failed");
-	    }
+		try {
+	        int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", params);
+	        if (memberResult <= 0) {
+	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
+	        }
 
-	    int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", params);
-	    if (cardResult != 1) {
-	        throw new RuntimeException("Card information insert failed");
+	        int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", params);
+	        if (cardResult != 1) {
+	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
+	        }	
+	    } catch (SQLException e) {
+	        throw new DataAccessResourceFailureException("서버 오류 또는 입력값이 잘못되었습니다.", e);
 	    }		
 		
 	}
