@@ -38,7 +38,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/samsung1.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=1'"><img src="/resources/images/product/samsung1.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/samsungLogo1.png" alt=""></p><br><br>
@@ -52,7 +52,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/samsung2.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=2'"><img src="/resources/images/product/samsung2.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/samsungLogo1.png" alt=""></p><br><br>
@@ -65,7 +65,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/samsung3.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=3'"><img src="/resources/images/product/samsung3.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/samsungLogo1.png" alt=""></p><br><br>
@@ -78,7 +78,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/samsung4.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=4'"><img src="/resources/images/product/samsung4.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/samsungLogo1.png" alt=""></p><br><br>
@@ -91,7 +91,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/lg1.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=5'"><img src="/resources/images/product/lg1.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/lgLogo1.png" alt=""></p><br><br>
@@ -104,7 +104,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/lg2.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=6'"><img src="/resources/images/product/lg2.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/lgLogo1.png" alt=""></p><br><br>
@@ -117,7 +117,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/lg3.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=7'"><img src="/resources/images/product/lg3.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/lgLogo1.png" alt=""></p><br><br>
@@ -130,7 +130,7 @@
 
             <div class="product">
                 <div class="imgBox">
-                    <a href="/productDetail.html"><img src="/resources/images/product/lg4.png"></a>
+                    <a onclick="location.href='/product/detail.do?idx=8'"><img src="/resources/images/product/lg4.png"></a>
                 </div>
                 <div class="textBox">
                     <p class="textBox__name"><img src="/resources/images/product/lgLogo1.png" alt=""></p><br><br>

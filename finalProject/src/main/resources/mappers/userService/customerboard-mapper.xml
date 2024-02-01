@@ -17,6 +17,7 @@
 		<result column="CB_REPLY_CHECK" property="cb_reply_check"></result>
 		<result column="M_IDX" property="m_idx"></result>
 		<result column="M_NAME" property="m_name"></result>
+		<result column="M_TYPE" property="m_type"></result>
 	</resultMap>
 	
 	<select id = "selectListCount" parameterType="customerboard" resultType="_int">
@@ -63,8 +64,19 @@
 	</update>
 	
 	<update id = "editBoard" parameterType="customerboard">
-		Update CUSTOMERBOARD 
-		SET CB_title = #{cb_title}, CB_content = #{cb_content}
+		Update CUSTOMERBOARD
+		<choose>
+			<when test="m_type.equals('BASIC')">
+				SET CB_title = #{cb_title}, 
+					CB_content = #{cb_content}
+			</when> 
+			<when test="m_type.equals('ADMIN')">
+				SET CB_title = #{cb_title}, 
+					CB_content = #{cb_content},
+					CB_reply = #{cb_reply},
+					CB_reply_check = 'Y'
+			</when> 
+		</choose>
 		WHERE CB_idx = #{cb_idx}
 	</update>
 	

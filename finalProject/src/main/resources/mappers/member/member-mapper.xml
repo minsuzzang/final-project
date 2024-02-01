@@ -41,6 +41,12 @@
         #{m_english_name}
     	)
 	</insert>
+	
+	<select id="memberDetail" resultMap="memberResultSet">
+		SELECT *
+		FROM member
+		WHERE m_idx = #{m_idx}
+	</select>
 </mapper>
 
 

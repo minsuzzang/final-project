@@ -39,6 +39,7 @@ public class MemberController {
 			session.setAttribute("m_idx", loginUser.getM_idx());
 			session.setAttribute("m_name", loginUser.getM_name());
 			session.setAttribute("m_type", loginUser.getM_type());
+			System.out.println("sex");
 
 			return "common/index";
 		} else {
@@ -78,6 +79,12 @@ public class MemberController {
 			return "common/error";
 		}
 
+	}
+	
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "common/index";
 	}
 
 }
