@@ -19,7 +19,7 @@
 		           		<a href="/member/logout.do">로그아웃</a>
 		       	</c:when>
 		        <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'ADMIN'}">
-		           		<a href="/member/logout.do">관리자페이지</a>
+		           		<a href="/admin">관리자</a>
 		           		<a href="/member/logout.do">로그아웃</a>
 		       	</c:when>
 		       	<c:otherwise>

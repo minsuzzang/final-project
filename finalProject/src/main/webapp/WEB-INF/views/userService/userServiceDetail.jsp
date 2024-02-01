@@ -74,12 +74,16 @@
                     <tr>
                       <th width=20% class="text-cente">Answer</th>
                       <td colspan="4" class="text-left" valign="top" height="100">
-                        <input class="ip2" type="text" value="#" disabled>
+                        <input class="ip2" type="text" value="${board.cb_reply}" disabled>
                       </td>
                     </tr>
                 </table>
                 <c:if test="${sessionScope.m_idx eq board.m_idx}">
                 	<button class="custom-btn-b btn-9-b" formaction="/customerboard/editForm.do?idx=${board.cb_idx}">수정하기</button>
+                	<button class="custom-btn-r btn-9-r" formaction="/customerboard/delete.do">삭제하기</button>
+                </c:if>
+                <c:if test="${sessionScope.m_type eq 'ADMIN'}">
+                	<button class="custom-btn-b btn-9-b" formaction="/customerboard/editForm.do?idx=${board.cb_idx}">답변하기</button>
                 	<button class="custom-btn-r btn-9-r" formaction="/customerboard/delete.do">삭제하기</button>
                 </c:if>
                 	<button class="custom-btn-b btn-9-b" type="button" onclick="history.back()">돌아가기</button>
