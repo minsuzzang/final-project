@@ -88,7 +88,9 @@
     <!--푸터 영역-->
     <footer>
     </footer>
-
 </body>
-
 </html>
+
+<script>
+
+</script>
