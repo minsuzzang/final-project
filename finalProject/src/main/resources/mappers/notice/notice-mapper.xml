@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="noticeMapper">
+	
+	<resultMap id= "noticeResultSet" type="notice">
+		<result column="N_IDX" property="n_idx"></result>
+		<result column="N_TITLE" property="n_title"></result>
+		<result column="N_CONTENT" property="n_content"></result>
+		<result column="N_VIEWS" property="n_views"></result>
+		<result column="N_IN_DATE" property="n_in_date"></result>
+		<result column="N_UPDATE_DATE" property="n_update_date"></result>
+		<result column="N_DELETE_DATE" property="n_delete_date"></result>
+		
+		<result column="M_IDX" property="m_idx"></result>
+		<result column="M_NAME" property="m_name"></result>
+	</resultMap>
+	
+	<select id = "selectListCount" parameterType="notice" resultType="_int">
+		SELECT COUNT(*) 
+		FROM NOTICE
+		WHERE n_title LIKE '%' || #{searchText} || '%'
+	</select>
+	
+	<select id = "selectListAll" parameterType="notice" resultMap="noticeResultSet">
+		SELECT * 
+		FROM NOTICE n
+		JOIN MEMBER m
+		ON n.m_idx=m.m_idx
+		WHERE n_title LIKE '%' || #{searchText} || '%'
+		ORDER BY N_IDX DESC
+	</select>
+	
+	<insert id = "enrollBoard" parameterType="notice">
+		INSERT INTO NOTICE VALUES(notice_seq.NextVAL,
+								#{n_title},
+								#{n_content},
+								#{n_views},
+								SYSDATE,
+								null,
+								null,
+								#{m_idx}
+								)
+	</insert>
+	
+	<select id = "detailBoard" resultMap="noticeResultSet">
+		SELECT * 
+		FROM NOTICE n
+		JOIN MEMBER m
+		ON n.m_idx=m.m_idx
+		WHERE N_IDX = #{n_idx}
+	</select>
+	
+	<update id = "views" parameterType="notice">
+		UPDATE NOTICE 
+		SET N_VIEWS = #{n_views}
+		WHERE N_IDX = #{n_idx}
+	</update>
+	
+	<update id = "editBoard" parameterType="notice">
+		Update NOTICE 
+		SET N_title = #{n_title}, N_content = #{n_content}
+		WHERE N_idx = #{n_idx}
+	</update>
+	
+	<delete id = "deleteBoard" parameterType="notice">
+		DELETE FROM NOTICE
+		WHERE N_IDX = #{n_idx}
+	</delete>
+	
+	<select id = "selectWriter" resultType="string">
+		SELECT m.m_name
+		FROM member m
+		JOIN notice n
+		ON m.m_idx = n.m_idx
+		WHERE n_idx = #{n_idx}
+	</select>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="productMapper">
+	
+	<resultMap id= "productResultSet" type="product">
+		<result column="P_IDX" property="p_idx"></result>
+		<result column="P_NAME" property="p_name"></result>
+		<result column="P_ENG_NAME" property="p_eng_name"></result>
+		<result column="P_CONTENT" property="p_content"></result>
+		<result column="P_BRAND" property="p_brand"></result>
+		<result column="P_PRICE1" property="p_price1"></result>
+		<result column="P_PRICE2" property="p_price2"></result>
+		<result column="P_FILE_PATH" property="p_file_path"></result>
+	</resultMap>
+
+	
+	<select id = "productDetail" resultMap="productResultSet">
+		SELECT * 
+		FROM PRODUCT
+		WHERE P_IDX = #{p_idx}
+	</select>
+
+</mapper>
