@@ -106,7 +106,7 @@
   .product:hover .imgBox img {
     transform: scale(1.1);
     /* 블러 처리하기. */
-    filter: blur(6px);
+    filter: blur(2px);
   }
   
   /* 기능 2 : 상품 정보 보이면서 위로 올라가기. */

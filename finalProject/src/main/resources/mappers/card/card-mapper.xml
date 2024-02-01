@@ -3,12 +3,12 @@
 
 <mapper namespace="cardMapper">
 
-	<insert id="card_cardApply" parameterType="map">
+	<insert id="cardApplyCardInfo" parameterType="map">
 		INSERT INTO card (cd_idx, cd_color, cd_design, cd_approve, m_idx)
 		VALUES (card_seq.nextval, #{cd_color}, #{cd_design}, DEFAULT, #{m_idx})
 	</insert>
 	
-	<update id="member_cardApply" parameterType="map">
+	<update id="cardApplyMemberInfo" parameterType="map">
 		UPDATE member SET m_english_name = #{m_english_name},
 						  m_address = #{m_address}
 					WHERE m_idx = #{m_idx}

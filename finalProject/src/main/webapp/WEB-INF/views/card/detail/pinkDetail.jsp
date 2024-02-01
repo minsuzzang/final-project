@@ -11,19 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css&font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/media_query.css">
-    <link rel="stylesheet" href="/css/detail.css">
-    <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/media_query.css">
+    <link rel="stylesheet" href="/resources/css/detail.css">
+    <link rel="stylesheet" href="/resources/css/card.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- js -->
-    <script src="/lib/jquery-1.11.1.min.js"></script>
-    <script src="/lib/jquery.easing.1.3.min.js"></script>
-    <script src="/js/menuEffect.js"></script>
-    <script src="/js/mousecursor.js"></script>
-    <script src="/js/visual_slide.js"></script>
+    <script src="/resources/lib/jquery-1.11.1.min.js"></script>
+    <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
+    <script src="/resources/js/menuEffect.js"></script>
+    <script src="/resources/js/mousecursor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 
 </head>
 
@@ -45,6 +45,7 @@
             <span id="m_stick"></span>
             <span id="b_stick"></span>
         </h2>
+
         <!--메뉴-->
         <div id="menu_wrap">
             <nav id="main_nav">
@@ -87,7 +88,7 @@
 
                     <li><a>고객 지원</a>
                         <ul id="sub_menu">
-                            <li><a href="/announcement.html">공지사항</a></li>
+                            <li><a href="#">공지사항</a></li>
                             <li><a href="/userService.html">고객 문의</a></li>
                             <li><a href="#" style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
                             <li><a href="#">카드 도난 • 분실신고</a></li>
@@ -112,26 +113,30 @@
 
     <!-- main -->
     <br><br><br>
+   
+    <form action="">
+        <div class="left2">
+            <img class="dimg" src="/resources/images/thePink/pinkBack1.png" alt="">
+        </div>
+        <div class="right2">
+            <br><br><br><br>
+            <p class="fff3"><b>the Pink</b></p><br><br>
+            <p class="fff1">프로 쇼퍼들의</p>
+            <p class="fff1">필수 "럭셔리 카드"</p>
+            <p class="fff1"> </p><br><br><br>
+                <button class="custom-btn-b btn-9-b" formaction="/card/design/pink">신청하기</button>
+            <br><br><br><br>
+            <div class="yhb">
+                <p class="fff1">연회비 150,000</p><br>
+                <p class="fff0">국내전용</p>
+                <p class="fff0-1">기본연회비 50,000원 + 제휴연회비 100,000원</p>
+                <p class="fff0">국내외겸용(VISA)</p>
+                <p class="fff0-1">기본연회비 50,000원 + 제휴연회비 100,000원</p>
+            </div>
+        </div>
+    </form>
 
 
-    <div class="left3">
-        <div class="dfjc">
-            <img class="imgggg" src="/images/theBlack/theBlack1.png" alt="">
-            <img class="imgggg" src="/images/theBlack/blackb.png" alt="" style="margin-left: 50px;">
-        </div>
-    </div>
-    <div class="right3">
-        <div class="cresult">
-            <p class="fff3"><b>카드신청 완료</b></p><br><br>
-            
-	            <pre class="fff1">  카드명  : <b>Hyundai the Black</b></pre><br>
-	            <pre class="fff1">  디자인  : <b><c:out value="${cd_design}"/></b></pre><br>
-	            <pre class="fff1">   성함    : <b><c:out value="${m_name}"/></b></pre><br>
-	            <pre class="fff1">영문성함 : <b><c:out value="${m_english_name}"/></b></pre><br>
-	            <pre class="fff1">   주소    : <b><c:out value="${m_address}"/></b></pre>
-            
-        </div>
-    </div>
 
     <!-- /main -->
 
