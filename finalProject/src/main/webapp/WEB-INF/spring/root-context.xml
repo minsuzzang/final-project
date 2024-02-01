@@ -54,4 +54,12 @@
    <!-- 트랜잭션 설정 -->
    <tx:annotation-driven transaction-manager="transactionManager" />
 
+		<!-- 전역 설정: 클래스 기반 프록시를 사용 -->
+   <aop:config proxy-target-class="true" />
+	<!-- 인터페이스를 사용하는 패키지에 대한 설정: JDK Dynamic Proxy를 사용 -->
+   	<aop:config proxy-target-class="false">
+    	<aop:pointcut id="interfaceServiceOperations" expression="execution(* kr.co.green.card.controller..*.*(..)) || execution(* kr.co.green.card.apply.controller..*.*(..)) || execution(* kr.co.green.card.model.service..*.*(..)) || execution(* kr.co.green.card.model.dao..*.*(..))" />
+ 	</aop:config>
+	
+
 </beans>
