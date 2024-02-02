@@ -1,0 +1,109 @@
+.opener {
+  display: block;
+  text-align: center;
+  background-color: #fff;
+  width: 300px;
+  margin: 10px auto;
+  padding: 10px 30px;
+  border-radius: 30px;
+  transition: all 0.2s ease-in-out;
+}
+
+.opener:hover {
+  background-color: #666;
+  color: #fff;
+}
+
+.layer {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.layer .box {
+  position: relative;
+  padding: 20px 20px 60px;
+  margin: 20px;
+  width: 60%;
+  height: 60%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px gray;
+}
+
+
+
+.layer .box .close:hover {
+  transform: scale(1.1);
+}
+
+.layer:target {
+  display: flex;
+  animation: open 0.5s;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.jbjb {
+  margin-top: 2.5%;
+  margin-left: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.jbjbj {
+  margin-left: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.fr {
+  float: right;
+}
+
+.left10 {
+  width: 30%;
+  float: left;
+}
+
+.right10 {
+  width: 60%;
+  float: right;
+}
+
+.yhbb {
+  padding: 15px;
+  height: 90%;
+  border-radius: 20px;
+  font-family: 'YouandiModernTR', sans-serif;
+}
+
+.imgg12 {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 15px 15px 15px gray;
+  transition: .5s;
+}
+
+.imgg12:hover {
+  rotate: -5deg;
+}

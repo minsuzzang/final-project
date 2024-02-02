@@ -58,7 +58,7 @@
                         <td onclick="location.href='/customerboard/list.do'">
                             <img src="/resources/images/customerBoard.png" alt="" style="width: 50%;">
                         </td>
-                        <td onclick="location.href='/announcementDetail.html'">
+                        <td onclick="location.href='/admin/approveList.do'">
                             <img src="/resources/images/cardApprove.png" alt="" style="width: 50%;">
                         </td>
                     </tr>
