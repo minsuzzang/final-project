@@ -26,25 +26,29 @@ public class CardApplyController {
 	@PostMapping("/card/apply")
 	public Map<String, Object> applyCard(@RequestBody Map<String, Object> applyMap, HttpSession session) {
 
+		Map<String, Object> resultMap = new HashMap<>();
+
+		for (Object value : applyMap.values()) {
+			if (value.equals("")) {
+				throw new NullPointerException("예외 발생");
+			}
+		}
+
 		String cd_color = (String) session.getAttribute("cd_color");
 		String cd_design = (String) applyMap.get("cd_design");
 		String m_english_name = (String) applyMap.get("m_english_name");
 		String m_address = (String) applyMap.get("m_address");
 
 		Optional<Integer> memberidx = Optional.ofNullable((Integer) session.getAttribute("m_idx"));
-		Map<String, Object> resultMap = new HashMap<>();
 
 		memberidx.ifPresentOrElse(idx -> {
-			try {
-				cardService.cardApply(idx, cd_color, cd_design, m_english_name, m_address);
-				session.setAttribute("cd_design", cd_design);
-				resultMap.put("success", true);
-				resultMap.put("redirectUrl", "/card/result.do");
-			} catch (Exception e) {
-				resultMap.put("success", false);
-			}
+			cardService.cardApply(idx, cd_color, cd_design, m_english_name, m_address);
+			session.setAttribute("cd_design", cd_design);
+			resultMap.put("success", true);
+			resultMap.put("redirectUrl", "/card/result.do");
 		}, () -> {
 			resultMap.put("success", false);
+			resultMap.put("redirectUrl", "/exception/dataAccessResourceFailureException.do");
 		});
 
 		return resultMap;

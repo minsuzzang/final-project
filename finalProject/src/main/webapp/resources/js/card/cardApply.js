@@ -31,7 +31,7 @@ function submitCardInfo(){
             if (response.success) {
                 window.location.href = response.redirectUrl;
             } else {
-                alert('오류가 발생했습니다.');
+                window.location.href = response.redirectUrl;
             }
         }
     };
