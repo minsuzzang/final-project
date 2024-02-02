@@ -38,13 +38,13 @@ public class GlobalExceptionHandler {
 //	@ExceptionHandler(value = NullPointerException.class)
 //	@ResponseBody
 //	public Map<String, Object> handleNullPointerException(NullPointerException e, HttpServletRequest request) {
-//	    Map<String, Object> resultMap = new HashMap<>();
 //	    String headerValue = request.getHeader("X-Requested-With");  // 비동기 요청인지 확인하기 위해 헤더 정보를 확인합니다.
+//	    Map<String, Object> resultMap = new HashMap<>();
 //
 //	    if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 //	        // 비동기 요청인 경우 처리할 코드 작성
 //	        resultMap.put("success", false);
-//	        resultMap.put("message", "널 포인터 익셉션 발생 - 비동기 요청");
+//	        resultMap.put("message", "값을 입력해 주세요");
 //	        // 추가적인 비동기 처리 코드 작성
 //	    } else {
 //	        // 동기 요청인 경우 처리할 코드 작성
