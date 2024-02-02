@@ -62,7 +62,6 @@
                     <path
                         d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
                 </svg>
-                <form action="/member/pwdFind.do">
                     <div class="form">
                         <label for="Email">Email</label>
                         <input type="email" id="email" name="m_email" required>
@@ -70,7 +69,7 @@
                         <input type="text" id="name" name="m_name" required>
                         <label for="phone">Phone</label>
                         <input type="text" id="phone" name="m_phone" required>
-                        <input type="submit" id="submit" value="Code 전송">
+                        <input type="button" id="submit" value="Code 전송" onclick="findPwd()">
                         <label for="code">code</label>
                         <input type="text" id="code" name="m_code">
                         <input type="submit" id="submit" value="Update PWD" style="font-size: 15px;">
@@ -80,7 +79,6 @@
                             <a class="aaaa" href="/member/findPwdForm.do">비밀번호찾기</a>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
@@ -90,7 +88,6 @@
     </footer>
 </body>
 </html>
-
 <script>
 function findPwd(){
 	var email = $('#email').val();

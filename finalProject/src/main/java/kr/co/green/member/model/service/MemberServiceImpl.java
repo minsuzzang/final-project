@@ -32,12 +32,11 @@ public class MemberServiceImpl implements MemberService {
 	public int registerMember(MemberDTO member) {
 		return memberDao.registerMember(sqlSession, member);
 	}
-	
+
 	@Override
 	public MemberDTO memberDetail(int m_idx) {
 		return memberDao.memberDetail(sqlSession, m_idx);
 	}
-	
 
 	// 아이디 찾기
 	@Override

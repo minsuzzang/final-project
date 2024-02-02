@@ -1,7 +1,9 @@
 package kr.co.green.member.controller;
 
+import java.security.SecureRandom;
 import java.util.Objects;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.green.email.util.EmailSender;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
@@ -35,13 +38,42 @@ public class MemberController {
 	@PostMapping("/findPwd.do")
 	@ResponseBody
 	public String findPwd(MemberDTO member, Model model) {
+		MemberDTO foundMember = memberService.findMemberPwd(member);
+		if (foundMember != null) {
+			// Generate a new password
+			String newPassword = generateRandomPassword();
 
-		MemberDTO PwdMember = memberService.findMemberPwd(member);
-		if (PwdMember != null) {
-			return PwdMember.getM_email();
+			// Update member's password in the database
+			String hashedPassword = bcryptPasswordEncoder.encode(newPassword);
+			foundMember.setM_pwd(hashedPassword);
+			memberService.updateMemberPassword(foundMember);
+
+			// Optionally, send the new password to the member's email address
+			try {
+				EmailSender.sendNewPassword(foundMember.getM_email(), newPassword);
+			} catch (MessagingException e) {
+				// Handle email sending exception
+				e.printStackTrace();
+				// You may want to inform the user that the new password could not be sent
+			}
+
+			return "member/pwdFind";
 		} else {
-			return "";
+			return ""; // Handle the case where member details are not found
 		}
+	}
+
+	private String generateRandomPassword() {
+		String combinedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*()_+-=[]|,./?><";
+		SecureRandom secureRandom = new SecureRandom();
+		StringBuilder password = new StringBuilder();
+
+		for (int i = 0; i < 12; i++) {
+			int randomIndex = secureRandom.nextInt(combinedChars.length());
+			password.append(combinedChars.charAt(randomIndex));
+		}
+
+		return password.toString();
 	}
 
 	@GetMapping("/findIdForm.do")
@@ -122,7 +154,7 @@ public class MemberController {
 		}
 
 	}
-	
+
 	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();

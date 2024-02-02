@@ -42,7 +42,7 @@ public class EmailSender {
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(fromEmail));
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-		message.setSubject("새로운 비밀번호 안내");
+		message.setSubject("임시 비밀번호 안내");
 		message.setText("안녕하세요,\n\n새로운 임시 비밀번호는 " + newPassword + "입니다.");
 
 		// 메시지 전송
