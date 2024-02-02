@@ -47,7 +47,7 @@ public class CardController {
 	public String cardApplyResult(HttpSession session, Model model) {
 		//upload파일을 동적으로 가져오기 위한 데이터 바인딩
 		
-		String color = (String)session.getAttribute("cd_color");
+		String color = (String)session.getAttribute("cd_color");	// color = red
 		String design = (String)session.getAttribute("cd_design");
 		String cd_color_upper = String.valueOf(color.charAt(0)).toUpperCase() + color.substring(1, color.length());
 		
@@ -60,6 +60,5 @@ public class CardController {
 		
 		return "card/result/cardApplyResult";
 	}
-	
 
 }
