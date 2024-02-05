@@ -57,7 +57,7 @@
                         <ul id="sub_menu">
                             <li><a href="#">카드 안내</a></li>
                             <li><a href="/card/cardApplyForm.do">카드 신청</a></li>
-                            <li><a href="#">카드 신청 조회</a></li>
+                            <li><a href="/card/setCardInfo">카드 신청 조회</a></li>
                         </ul>
                     </li>
 

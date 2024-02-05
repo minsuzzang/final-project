@@ -12,6 +12,11 @@ function submitCardInfo(){
 	
     var englishName = document.querySelector('input[name="englishName"]').value;
     var address = document.querySelector('input[name="address"]').value;
+    
+    if (!englishName || !address) {
+        alert("모든 항목을 입력해주세요.");
+        return;
+    }
 	
     var url = "/card/apply";
 	
@@ -24,10 +29,12 @@ function submitCardInfo(){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
+            var responseJson = xhr.responseText;
+            let response = JSON.parse(responseJson);
             if (response.success) {
                 window.location.href = response.redirectUrl;
             } else {
@@ -35,7 +42,6 @@ function submitCardInfo(){
             }
         }
     };
-
     xhr.send(data);
 }
 

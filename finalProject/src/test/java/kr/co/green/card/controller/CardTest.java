@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +16,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
@@ -37,8 +41,8 @@ public class CardTest {
 	}
 
 	@Test
-	public void testCardApplyForm() throws Exception {
-		String viewName = cardController.cardApplyForm();
+	public void testCardApplyForm(HttpSession session, RedirectAttributes redirectAttributes) throws Exception {
+		String viewName = cardController.cardApplyForm(session, redirectAttributes);
 		assertEquals("card/apply/cardApply", viewName);
 	}
 

@@ -115,7 +115,6 @@
     display: flex;
     justify-content: center;
 }
-
 .yhb {
     padding: 15px;
     width: 80%;
@@ -144,25 +143,25 @@
 .slider{width: 100%}
 .slider input{display: none;}
 .testimonials{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: relative;
-   min-height: 500px;
-   perspective: 1000px;
-   overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	min-height: 500px;
+	perspective: 1000px;
+	overflow: hidden;
 }
 .testimonials .item{
-   padding: 30px;
+	padding: 30px;
     height: 500px;
-   border-radius: 5px;
-   position: absolute;
-   top: 0;
-   box-sizing: border-box;
-   text-align: center;
-   transition: transform 0.4s;
-   user-select: none;
-   cursor: pointer;
+	border-radius: 5px;
+	position: absolute;
+	top: 0;
+	box-sizing: border-box;
+	text-align: center;
+	transition: transform 0.4s;
+	user-select: none;
+	cursor: pointer;
 }
 .testimonials .item img{
     width: 250px;
@@ -171,22 +170,22 @@
 .testimonials .item h1{font-size: 114px; color: white;}
 .dots{display: flex; justify-content: center;align-items: center;}
 .dots label{
-   height: 5px;
-   width: 5px;
-   border-radius: 50%;
-   cursor: pointer;
-   background-color: #413B52;
-   margin: 7px;
-   transition-duration: 0.2s;
+	height: 5px;
+	width: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #413B52;
+	margin: 7px;
+	transition-duration: 0.2s;
 }
 #t-1:checked ~ .dots label[for="t-1"],
 #t-2:checked ~ .dots label[for="t-2"],
 #t-3:checked ~ .dots label[for="t-3"],
 #t-4:checked ~ .dots label[for="t-4"],
 #t-5:checked ~ .dots label[for="t-5"]{
-   transform: scale(2);
-   background-color: #fff;
-   box-shadow: 0px 0px 0px 3px #dddddd24;
+	transform: scale(2);
+	background-color: #fff;
+	box-shadow: 0px 0px 0px 3px #dddddd24;
 }
 
 #t-1:checked ~ .dots label[for="t-2"],
@@ -197,7 +196,7 @@
 #t-4:checked ~ .dots label[for="t-3"],
 #t-4:checked ~ .dots label[for="t-5"],
 #t-5:checked ~ .dots label[for="t-4"]{
-   transform: scale(1.5);
+	transform: scale(1.5);
 }
 
 #t-1:checked ~ .testimonials label[for="t-3"],
@@ -205,8 +204,8 @@
 #t-3:checked ~ .testimonials label[for="t-5"],
 #t-4:checked ~ .testimonials label[for="t-1"],
 #t-5:checked ~ .testimonials label[for="t-2"]{
-   transform: translate3d(600px, 0, -180px) rotateY(-25deg);
-   z-index: 2;
+	transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+	z-index: 2;
 }
 
 #t-1:checked ~ .testimonials label[for="t-2"],
@@ -214,8 +213,8 @@
 #t-3:checked ~ .testimonials label[for="t-4"],
 #t-4:checked ~ .testimonials label[for="t-5"],
 #t-5:checked ~ .testimonials label[for="t-1"]{
-   transform: translate3d(300px, 0, -90px) rotateY(-15deg);
-   z-index: 3;
+	transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+	z-index: 3;
 }
 
 #t-2:checked ~ .testimonials label[for="t-1"],
@@ -223,8 +222,8 @@
 #t-4:checked ~ .testimonials label[for="t-3"],
 #t-5:checked ~ .testimonials label[for="t-4"],
 #t-1:checked ~ .testimonials label[for="t-5"]{
-   transform: translate3d(-300px, 0, -90px) rotateY(15deg);
-   z-index: 3;
+	transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+	z-index: 3;
 }
 
 #t-3:checked ~ .testimonials label[for="t-1"],
@@ -232,8 +231,8 @@
 #t-5:checked ~ .testimonials label[for="t-3"],
 #t-2:checked ~ .testimonials label[for="t-5"],
 #t-1:checked ~ .testimonials label[for="t-4"]{
-   transform: translate3d(-600px, 0, -180px) rotateY(25deg);
-   
+	transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+	
 }
 
 #t-1:checked ~ .testimonials label[for="t-1"],
@@ -242,8 +241,8 @@
 #t-4:checked ~ .testimonials label[for="t-4"],
 #t-5:checked ~ .testimonials label[for="t-4"],
 #t-5:checked ~ .testimonials label[for="t-5"]{
-   
-   z-index: 4;
+	
+	z-index: 4;
 }
 
 /* 검은색 버튼 */
@@ -366,8 +365,6 @@
     justify-content: center;
   }
 
-<<<<<<< HEAD
-=======
   .tac {
     text-align: center;
   }
@@ -376,4 +373,9 @@
     justify-content: center;
     margin-top: -10%;
   }
->>>>>>> branch 'master' of https://github.com/minsuzzang/final-project.git
+   .dfjc5 {
+    display: flex;
+    justify-content: center;
+    margin-top: -5%;
+  }
+

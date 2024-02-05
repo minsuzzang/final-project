@@ -3,6 +3,7 @@ package kr.co.green.card.model.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,6 +12,8 @@ import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
+
+import kr.co.green.card.model.dto.CardDTO;
 
 @Repository
 public class CardDAOMyBatis implements CardDAO {
@@ -49,6 +52,16 @@ public class CardDAOMyBatis implements CardDAO {
 	    } catch (SQLException e) {
 	        throw new DataAccessResourceFailureException("서버 오류 또는 입력값이 잘못되었습니다.", e);
 	    }		
-		
+	}
+
+	@Override
+	//회원의 카드 갯수 조회
+	public int getMemberCardNum(int m_idx) {
+		return sqlSession.selectOne("cardMapper.getMemberCardNum", m_idx);
+	}
+
+	@Override
+	public List<CardDTO> cardInfo(int m_idx) {
+		return sqlSession.selectList("cardMapper.getMemberApplyCard", m_idx);
 	}
 }

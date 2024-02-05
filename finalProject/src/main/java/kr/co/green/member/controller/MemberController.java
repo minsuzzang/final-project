@@ -39,7 +39,6 @@ public class MemberController {
 			session.setAttribute("m_idx", loginUser.getM_idx());
 			session.setAttribute("m_name", loginUser.getM_name());
 			session.setAttribute("m_type", loginUser.getM_type());
-			System.out.println("sex");
 
 			return "common/index";
 		} else {
