@@ -9,22 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css&font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/media_query.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/media_query.css">
+    <link rel="stylesheet" href="/resources/css/login.css">
     <!-- js -->
-    <script src="/lib/jquery-1.11.1.min.js"></script>
-    <script src="/lib/jquery.easing.1.3.min.js"></script>
-    <script src="/js/visual_slide.js"></script>
-    <script src="/js/menuEffect.js"></script>
-    <script src="/js/mousecursor.js"></script>
-    <script src="/js/login.js"></script>
+    <script src="/resources/lib/jquery-1.11.1.min.js"></script>
+    <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
+    <script src="/resources/js/visual_slide.js"></script>
+    <script src="/resources/js/menuEffect.js"></script>
+    <script src="/resources/js/mousecursor.js"></script>
+    <script src="/resources/js/login.js"></script>
 </head>
 
 <body class="ofh">
     <video muted autoplay loop preload>
-        <source src="/videos/login.mp4" type="video/mp4">
+        <source src="/resources/videos/login.mp4" type="video/mp4">
     </video>
 
     <header>
@@ -35,7 +35,7 @@
     <div class="page">
         <div class="container2">
             <div class="left2">
-                <div class="login"><img src="/images/logo.png" alt=""></div>
+                <div class="login"><img src="/resources/images/logo.png" alt=""></div>
                 <div class="eula"><b>Update<br><b style="font-size: 48px;">Password</b></b></div>
             </div>
             <div class="right6">
@@ -58,7 +58,7 @@
                 <form action="">
                     <div class="form">
                         <label for="password">New Password</label>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" name="pwd" required>
                         <label for="PasswordCheck">Password Check</label>
                         <input type="password" id="PasswordCheck" required>
                         <input type="submit" id="submit" value="Update">
@@ -72,14 +72,9 @@
             </div>
         </div>
     </div>
-
     <!-- /main -->
-
     <!--푸터 영역-->
     <footer>
-
     </footer>
-
 </body>
-
 </html>

@@ -50,4 +50,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.findMemberPwd(sqlSession, member);
 	}
 
+	@Override
+	public Object updateMemberPassword(MemberDTO member) {
+		return memberDao.updateMemberPassword(sqlSession, member);
+	}
+
 }

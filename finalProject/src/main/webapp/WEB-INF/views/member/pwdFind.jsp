@@ -14,17 +14,17 @@
     <link rel="stylesheet" href="/resources//css/media_query.css">
     <link rel="stylesheet" href="/resources//css/login.css">
     <!-- js -->
-    <script src="/resources//lib/jquery-1.11.1.min.js"></script>
-    <script src="/resources//lib/jquery.easing.1.3.min.js"></script>
-    <script src="/resources//js/visual_slide.js"></script>
-    <script src="/resources//js/menuEffect.js"></script>
-    <script src="/resources//js/mousecursor.js"></script>
-    <script src="/resources//js/login.js"></script>
+    <script src="/resources/lib/jquery-1.11.1.min.js"></script>
+    <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
+    <script src="/resources/js/visual_slide.js"></script>
+    <script src="/resources/js/menuEffect.js"></script>
+    <script src="/resources/js/mousecursor.js"></script>
+    <script src="/resources/js/login.js"></script>
 </head>
 
 <body class="ofh">
     <video muted autoplay loop preload>
-        <source src="/resources//videos/login.mp4" type="video/mp4">
+        <source src="/resources/videos/login.mp4" type="video/mp4">
     </video>
 
     <header>
@@ -35,7 +35,7 @@
     <div class="page">
         <div class="container2">
             <div class="left2">
-                <div class="login"><img src="/images/logo.png" alt=""></div>
+                <div class="login"><img src="/resources/videos/images/logo.png" alt=""></div>
                 <div class="eula"><b>Find <br><b style="font-size: 48px;">Password</b></b></div>
             </div>
             <div class="right4">
@@ -72,7 +72,7 @@
                         <input type="button" id="submit" value="Code 전송" onclick="findPwd()">
                         <label for="code">code</label>
                         <input type="text" id="code" name="m_code">
-                        <input type="submit" id="submit" value="Update PWD" style="font-size: 15px;">
+                        <input type="button" id="submit" value="Update PWD" onclick="" style="font-size: 15px;">
                         <a class="aaa" href="/member/loginForm.do">Login</a>
                         <div><br><br>
                             <a class="aaaa" href="/member/findIdForm.do">아이디찾기</a>

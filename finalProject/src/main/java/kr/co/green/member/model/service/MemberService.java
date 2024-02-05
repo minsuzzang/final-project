@@ -22,4 +22,6 @@ public interface MemberService {
 	// 멤버정보가져오기
 	public MemberDTO memberDetail(int m_idx);
 
+	public Object updateMemberPassword(MemberDTO member);
+
 }

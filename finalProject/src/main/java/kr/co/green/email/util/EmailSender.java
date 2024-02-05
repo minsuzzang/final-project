@@ -12,40 +12,66 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-	public static void sendNewPassword(String toEmail, String newPassword) throws MessagingException {
-		// 이메일 송신 계정 정보
-		String fromEmail = "a01027735977@gmail.com"; // 발신자 이메일 주소
-		String password = "xoyb vkcg fsbh gbav"; // 발신자 이메일 비밀번호
+	private static final String EMAIL_USERNAME = "a01027735977@gmail.com";
+	private static final String EMAIL_PASSWORD = "ttel yrhp askh mvmp";
 
-		// SMTP 서버 설정 (Gmail 예시)
+	public static void sendEmail(String toEmail, String subject, String content) throws MessagingException {
+		// SMTP server settings (Gmail example)
 		String host = "smtp.gmail.com";
-		int port = 465;
+		int port = 587; // Gmail SMTP port
 
-		// 메일 송신을 위한 속성 설정
+		// Email sending properties
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smtp.starttls.enable", "true"); // STARTTLS
 		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.port", port);
-		properties.put("mail.smtp.ssl.protocols", "TLSv1.3");
-		properties.put("mail.smtp.ssl.enable", "true");
-		properties.put("mail.smtp.ssl.trust", host);
+		properties.put("mail.smtp.ssl.protocols", "TLSv1.2"); // TLS v1.2
 
+		// Set up the authenticator
 		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(fromEmail, password);
+				return new PasswordAuthentication(EMAIL_USERNAME, EMAIL_PASSWORD);
 			}
 		};
-		Session session = Session.getInstance(properties, auth);
-		System.out.println(toEmail);
-		// 메시지 생성
-		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(fromEmail));
-		message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-		message.setSubject("임시 비밀번호 안내");
-		message.setText("안녕하세요,\n\n새로운 임시 비밀번호는 " + newPassword + "입니다.");
 
-		// 메시지 전송
+		// Create the mail session
+		Session session = Session.getInstance(properties, auth);
+
+		// Create the message and set the necessary details
+		Message message = new MimeMessage(session);
+		message.setFrom(new InternetAddress(EMAIL_USERNAME));
+		message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+		message.setSubject(subject);
+		message.setText(content);
+
+		// Send the message
 		Transport.send(message);
+	}
+
+	public static void sendNewPassword(String toEmail, String newPassword) {
+		try {
+			String subject = "새로운 비밀번호 안내";
+			String content = "안녕하세요, 현대카드입니다.\n\n회원님의 새로운 비밀번호를 안내해드립니다: " + newPassword + " 입니다.";
+
+			// Send the email for password reset
+			sendEmail(toEmail, subject, content);
+
+			System.out.println("새로운 비밀번호가 성공적으로 전송되었습니다.");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			System.err.println("새로운 비밀번호 이메일 전송에 실패했습니다.");
+		}
+	}
+
+	public static void main(String[] args) {
+		try {
+			// Example: sending a test email
+			sendEmail("recipient@example.com", "테스트 이메일", "안녕하세요,\n\n이메일 테스트입니다.");
+			System.out.println("이메일이 성공적으로 전송되었습니다.");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			System.err.println("이메일 전송에 실패했습니다.");
+		}
 	}
 }

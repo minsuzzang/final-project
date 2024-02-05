@@ -32,6 +32,7 @@ public class MemberDAO {
 	}
 
 	public Object updateMemberPassword(SqlSessionTemplate sqlSession, MemberDTO member) {
-		return sqlSession.selectOne("memberMapper.updateMemberPassword", member);
+		return sqlSession.update("memberMapper.updateMemberPassword", member);
 	}
+
 }

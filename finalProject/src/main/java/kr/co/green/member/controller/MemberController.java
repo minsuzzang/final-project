@@ -3,7 +3,6 @@ package kr.co.green.member.controller;
 import java.security.SecureRandom;
 import java.util.Objects;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,28 +37,24 @@ public class MemberController {
 	@PostMapping("/findPwd.do")
 	@ResponseBody
 	public String findPwd(MemberDTO member, Model model) {
-		MemberDTO foundMember = memberService.findMemberPwd(member);
-		if (foundMember != null) {
-			// Generate a new password
-			String newPassword = generateRandomPassword();
+		try {
+			MemberDTO foundMember = memberService.findMemberPwd(member);
+			if (foundMember != null) {
+				System.out.println(foundMember);
+				String newPassword = generateRandomPassword();
 
-			// Update member's password in the database
-			String hashedPassword = bcryptPasswordEncoder.encode(newPassword);
-			foundMember.setM_pwd(hashedPassword);
-			memberService.updateMemberPassword(foundMember);
+				String hashedPassword = bcryptPasswordEncoder.encode(newPassword);
+				foundMember.setM_pwd(hashedPassword);
+				memberService.updateMemberPassword(foundMember);
 
-			// Optionally, send the new password to the member's email address
-			try {
 				EmailSender.sendNewPassword(foundMember.getM_email(), newPassword);
-			} catch (MessagingException e) {
-				// Handle email sending exception
-				e.printStackTrace();
-				// You may want to inform the user that the new password could not be sent
+				return foundMember.getM_email(); // Success
+			} else {
+				return ""; // Member not found
 			}
-
-			return "member/pwdFind";
-		} else {
-			return ""; // Handle the case where member details are not found
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error"; // General error
 		}
 	}
 
@@ -72,7 +67,6 @@ public class MemberController {
 			int randomIndex = secureRandom.nextInt(combinedChars.length());
 			password.append(combinedChars.charAt(randomIndex));
 		}
-
 		return password.toString();
 	}
 
@@ -111,7 +105,6 @@ public class MemberController {
 			System.out.println(loginUser.getM_idx());
 			session.setAttribute("m_name", loginUser.getM_name());
 			session.setAttribute("m_type", loginUser.getM_type());
-			System.out.println("sex");
 
 			return "common/index";
 		} else {
