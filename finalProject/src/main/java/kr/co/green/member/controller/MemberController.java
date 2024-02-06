@@ -86,6 +86,7 @@ public class MemberController {
 		return null;
 	}
 
+	// 인증코드
 	@PostMapping("/code.do")
 	public String Newpwd(MemberDTO member, Model model, HttpSession session) {
 
@@ -107,6 +108,7 @@ public class MemberController {
 		}
 	}
 
+	// 인증코드 체크
 	@PostMapping("/codeChk.do")
 	public String codeChk(HttpServletResponse response, MemberDTO member, Model model) {
 
@@ -153,6 +155,7 @@ public class MemberController {
 		}
 	}
 
+	// 인증코드 랜덤함수
 	private String generateRandomPassword() {
 		String combinedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		SecureRandom secureRandom = new SecureRandom();
