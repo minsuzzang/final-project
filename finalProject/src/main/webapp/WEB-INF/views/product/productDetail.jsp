@@ -133,7 +133,7 @@
                 	url:"/product/result.do"
                 })
             } else {
-                console.log(rsp);
+                console.log(jyp);
                 window.location='http://localhost/product/result.do?idx=${product.p_idx}'
             }
         });

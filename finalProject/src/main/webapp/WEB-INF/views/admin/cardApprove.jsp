@@ -24,6 +24,7 @@
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
     <script src="/resources/js/visual_slide.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <!-- <script src="http://s1.daumcdn.net/svc/original/U03/cssjs/jquery/jquery-1.8.3.min.js"></script> -->
 </head>
@@ -58,51 +59,99 @@
                     </tr>
                 </thead>
                 <tbody class="ttbb">
-                    <tr>
-                        <td style="padding: 10px 0;">1</td>
-                        <td>손민수</td>
-                        <td>sexyson@naver.com</td>
-                        <td>액션가면카드</td>
-                        <td>승인완료</td>
-                        <td>
-                            <a href="#popupA" class="custom-btn-b btn-9-b jbjbj"
-                                style="text-decoration-line: none;">정보보기</a>
-                        </td>
-                    </tr>
+                	<c:choose>
+                		<c:when test="${empty list}">
+                			<td colspan="6">
+								<h3 class="text-center">등록된 글이 없습니다.</h3>
+							</td>
+                		</c:when>
+	                	<c:otherwise>
+	                		<c:forEach var="item" items="${list}">
+	                		<input type="hidden" name="index" value="${item.cd_idx}">
+			                    <tr>
+			                        <td style="padding: 10px 0;">${row}</td>
+			                        <td>${item.m_name}</td>
+			                        <td>${item.m_email}</td>
+			                        <td>${item.cd_color}</td>
+			                        <td>${item.cd_approve}</td>
+			                        <td>
+			                        <a href="#popupA" onclick="getModalList(${item.cd_idx})"  class="custom-btn-b btn-9-b jbjbj"
+			                         style="text-decoration-line: none;">정보보기</a>
+			                        <a href="#popupA" onclick="getModalList2(${item.cd_idx})"  class="custom-btn-b btn-9-b jbjbj"
+			                         style="text-decoration-line: none;">원본</a> 
+			                        </td>
+			                    </tr>
+			                    <c:set var="row" value="${row-1}"/>
+	                		</c:forEach>
+	                	</c:otherwise>
+                	</c:choose>
+                	
                     <!-- Modal -->
 
                     <div id="popupA" class="layer">
                         <div class="box">
                             <a href="#" class="close" style="font-size: 30px;">x</a>
                             <div class="left10 yhbb">
-                                <img class="imgg12" src="/resources/images/theBlack/theBlack1.png" alt="">
+                                <img id="img" class="imgg12" src="/resources/images/theBlack/theBlack1.png" alt="">
                             </div>
                             <div class="right10 yhbb">
                                 <img src="/resources/images/logo2.png" alt="" style="width: 30%;"><br><br><br>
                                 <p class="fff3"><b>카드정보</b></p><br>
-                                <pre class="fff1">        카 드 : <b>the Black</b></pre>
-                                <pre class="fff1">    디 자 인 : <b>디자인 1</b></pre><br><br>
+                                <pre class="fff1">        카 드 : <b id="color"></b></pre>
+                                <pre class="fff1">    디 자 인 : <b id="design"></b></pre><br><br>
                                 <p class="fff3"><b>회원정보</b></p><br>
-                                <pre class="fff1">        성 함 : <b>손민수</b></pre>
-                                <pre class="fff1">        주 소 : <b>안양역 1번출구 58번째 계단</b></pre>
-                                <pre class="fff1">    이 메 일 : <b>sexyson@naver.com</b></pre>
-                                <pre class="fff1">영 문 이 름 : <b>Sexy Son</b></pre>
-                                <pre class="fff1">전 화 번 호 : <b>010-6969-7474</b></pre>
+                                <pre class="fff1">        성 함 : <b id="name"></b></pre>
+                                <pre class="fff1">        주 소 : <b id="address"></b></pre>
+                                <pre class="fff1">    이 메 일 : <b id="email"></b></pre>
+                                <pre class="fff1">전 화 번 호 : <b id="phone"></b></pre>
                             </div>
                             <div>
-                                <a href="#" class="custom-btn-r btn-9-b jbjb fr"
-                                    style="text-decoration-line: none;">거절</a>
-                                <a href="#" class="custom-btn-b btn-9-b jbjb fr"
-                                    style="text-decoration-line: none;">승인</a>
+                                <a href="" class="custom-btn-r btn-9-b jbjb fr"
+                                    id="no" style="text-decoration-line: none;">거절</a>
+                                <a href="" class="custom-btn-b btn-9-b jbjb fr"
+                                    id="yes" style="text-decoration-line: none;">승인</a>
                             </div>
                         </div>
                     </div>
+                    
 
                     <!-- Modal -->
                 </tbody>
             </table>
         </div>
+        
     </section>
+                <div class="pagination dfjc">
+						<c:choose>
+							<c:when test="${pi.cpage eq 1}">
+								<a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/admin/approveList.do?cpage=${pi.cpage-1}" aria-label="Previous"> 
+								<span aria-hidden="true">&laquo;</span>
+								</a>
+							</c:otherwise>
+						</c:choose>
+
+						<c:forEach var="page" begin="${pi.startPage}" end="${pi.endPage}">
+							<a class="page-link" href="/admin/approveList.do?cpage=${page}">${page}</a>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pi.cpage eq pi.maxPage}">
+								<a class="page-link" href="#" aria-label="Next"> 
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a class="page-link" href="/admin/approveList.do?cpage=${pi.cpage+1}" aria-label="Next"> 
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</c:otherwise>
+						</c:choose>
+           		 </div>
 
     <!-- /main -->
 
@@ -111,7 +160,7 @@
 
     </footer>
 
-
+    <script src="/resources/js/admin/modal.js"></script>
 </body>
 
 </html>
