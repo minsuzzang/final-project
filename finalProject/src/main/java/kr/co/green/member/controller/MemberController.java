@@ -53,12 +53,10 @@ public class MemberController {
 
 	@GetMapping("/findPwdForm.do")
 	public String findPwdForm(HttpSession session, Model model) {
-		// 사용자가 입력한 임시코드가 일치하는지
-		// 일치할 때 사용자 idx model로 전달
-
 		return "member/pwdFind";
 	}
 
+	// 새 비밀번호 변경
 	@PostMapping("/updatePwd.do")
 	@ResponseBody
 	public String updatePwd(HttpServletResponse response, MemberDTO member, Model model) {
@@ -72,14 +70,12 @@ public class MemberController {
 			try {
 				ScriptUtil.alertAndMovePage(response, "변경되었습니다.", "/member/loginForm.do");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
 			try {
 				ScriptUtil.alert(response, "실패되었습니다.");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -103,7 +99,6 @@ public class MemberController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			// 에러가 발생한 경우 에러 페이지로 이동
 			return "common/error";
 		}
 	}
@@ -246,6 +241,7 @@ public class MemberController {
 
 	}
 
+	// 로그아웃
 	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
