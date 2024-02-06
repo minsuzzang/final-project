@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.green.card.model.dto.CardDTO;
@@ -80,27 +81,23 @@ public class CardController {
 		return "card/result/cardApplyResult";
 	}
 	
-	@GetMapping("/setCardInfo")
-	public String setCardInfo(HttpSession session) {
+	@GetMapping("/cardInfo")
+	public ModelAndView setCardInfo(HttpSession session) {
 		// CardDTO 담은 리스트로 반환한다.( 최대 3개 까지 신청할 수 있기 때문 )
-		// view단에서 [신청한카드] 누를 때마다 신청 정보 바뀌게
+		// view단에서 [신청한카드] 누를 때마다 카드 정보 바뀌게
 		
 		// 카드인덱스, 신청 날짜, 승인 여부 조회
-		List<CardDTO> cardList = cardService.cardInfo((int)session.getAttribute("m_idx"));
-		
-		for(CardDTO card : cardList) {
-			System.out.println("cd_idx:" + card.getCd_idx());
-			System.out.println("cd_apply_date: " + card.getCd_apply_date());
-			System.out.println("cd_approve: " + card.getCd_approve());
-		}
-		
-		
+		List<CardDTO> cards = cardService.cardInfo((int)session.getAttribute("m_idx"));
 		
 		// 서비스단에서 카드 번호, cvc, 유효기간(신청 날짜 + 5년) 생성 
+		cardService.generateCardDetail(cards);
 		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(cards);
+		mav.setViewName("card/result/setCardInfo");
 		
+		return mav;
 		
-		return "card/result/setCardInfo";
 	}
 
 	
@@ -113,7 +110,6 @@ public class CardController {
 	
 	
 }
-
 
 
 
