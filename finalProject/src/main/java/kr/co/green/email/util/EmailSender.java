@@ -49,10 +49,11 @@ public class EmailSender {
 		Transport.send(message);
 	}
 
-	public static void sendNewPassword(String toEmail, String newPassword) {
+	public static void sendNewPassword(String toEmail, String newPassword, int idx) {
 		try {
 			String subject = "새로운 비밀번호 안내";
-			String content = "안녕하세요, 현대카드입니다.\n\n회원님의 새로운 비밀번호를 안내해드립니다: " + newPassword + " 입니다.";
+			String content = "안녕하세요, 현대카드입니다.\n\n회원님의 새로운 비밀번호를 안내해드립니다: " + newPassword + " 입니다.\n\n";
+			content += "http://localhost/member/emailForm.do?idx=" + idx;
 
 			// Send the email for password reset
 			sendEmail(toEmail, subject, content);

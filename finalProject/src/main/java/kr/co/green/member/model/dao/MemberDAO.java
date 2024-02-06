@@ -27,12 +27,20 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.findMemberPwd", member);
 	}
 
+	public MemberDTO chkMembertmpPwd(SqlSessionTemplate sqlSession, MemberDTO member) {
+		return sqlSession.selectOne("memberMapper.chkMembertmpPwd", member);
+	}
+
 	public MemberDTO memberDetail(SqlSessionTemplate sqlSession, int m_idx) {
 		return sqlSession.selectOne("memberMapper.memberDetail", m_idx);
 	}
 
-	public Object updateMemberPassword(SqlSessionTemplate sqlSession, MemberDTO member) {
+	public int updateMemberPassword(SqlSessionTemplate sqlSession, MemberDTO member) {
 		return sqlSession.update("memberMapper.updateMemberPassword", member);
+	}
+
+	public int updateMembertmpPassword(SqlSessionTemplate sqlSession, MemberDTO member) {
+		return sqlSession.update("memberMapper.updateMembertmpPassword", member);
 	}
 
 }

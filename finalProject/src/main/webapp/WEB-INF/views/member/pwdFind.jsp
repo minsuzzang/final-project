@@ -63,16 +63,20 @@
                         d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
                 </svg>
                     <div class="form">
-                        <label for="Email">Email</label>
-                        <input type="email" id="email" name="m_email" required>
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="m_name" required>
-                        <label for="phone">Phone</label>
-                        <input type="text" id="phone" name="m_phone" required>
-                        <input type="button" id="submit" value="Code 전송" onclick="findPwd()">
-                        <label for="code">code</label>
-                        <input type="text" id="code" name="m_code">
-                        <input type="button" id="submit" value="Update PWD" onclick="" style="font-size: 15px;">
+                <form action="/member/code.do" method="post">
+                    <label for="Email">Email</label>
+                    <input type="email" id="email" name="m_email" required>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="m_name" required>
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="m_phone" required>
+                    <input type="button" id="submit" value="Code 전송" onclick="findPwd()">
+                    
+                    <!-- Code 입력과 Submit 버튼을 동일한 form에 위치시킴 
+                    <label for="code">code</label>
+                    <input type="text" id="code" name="m_code">
+                    <input type="submit" id="submit" value="Update PWD" style="font-size: 15px;">-->
+                </form>
                         <a class="aaa" href="/member/loginForm.do">Login</a>
                         <div><br><br>
                             <a class="aaaa" href="/member/findIdForm.do">아이디찾기</a>
@@ -100,12 +104,10 @@ function findPwd(){
         data: { m_name: name, m_phone: phone, m_email: email },
         success: function(response) {
         	console.log(response);
-            if (response == '') {
-                $('#email').val(''); 
-                $('#emailError').text('');
-            } else {
-                $('#email').val(response);
-                $('#emailError').text('');
+            if(response != ""){
+            	alert("인증코드가 이메일로 발송되었습니다.\n이메일을 확인하세요.");
+            	location.href = "/";
+            	return false;
             }
         },
         error: function() {

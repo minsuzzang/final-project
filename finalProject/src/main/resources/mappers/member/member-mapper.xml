@@ -12,19 +12,33 @@
 		<result column="M_TYPE" property="m_type"></result>
 		<result column="M_ADDRESS" property="m_address"></result>
 		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
+		<result column="M_TEMPORARY" property="m_temporary" />
 	</resultMap>
+	
+	
+	<!--검증코드 업데이트 -->
+	<update id="updateMembertmpPassword" parameterType="member">
+		UPDATE member
+        SET m_temporary = #{m_temporary}
+        WHERE m_email = #{m_email}
+	</update>
 	
 	<!--비밀번호 업데이트-->
 	<update id="updateMemberPassword" parameterType="member">
 		UPDATE member
-        SET m_pwd = #{m_pwd}
-        WHERE m_email = #{m_email}
+        SET m_pwd = #{m_pwd}, m_temporary = ''
+        WHERE m_idx = #{m_idx} 
 	</update>
 	
 	<!--비밀번호 찾기-->
 	<select id="findMemberPwd" resultMap="memberResultSet">
-		SELECT m_email FROM member
+		SELECT m_idx,m_email FROM member
         WHERE m_email = #{m_email} AND m_name = #{m_name} AND m_phone = #{m_phone}
+	</select>
+	
+	<select id="chkMembertmpPwd" resultMap="memberResultSet">
+		SELECT m_temporary FROM member
+        WHERE m_idx = #{m_idx}
 	</select>
 	
 	<!--아이디 찾기-->
@@ -57,7 +71,8 @@
         SYSDATE,
         'BASIC',
         #{m_address},
-        #{m_english_name}
+        #{m_english_name},
+        #{m_temporary}
     	)
 	</insert>
 	

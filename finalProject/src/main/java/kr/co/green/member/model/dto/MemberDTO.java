@@ -17,6 +17,9 @@ public class MemberDTO {
 	private String m_type;
 	private String m_address;
 	private String m_english_name;
+	private String m_temporary;
+	private String newPassword;
+	private String m_code_chk;
 
 	public MemberDTO() {
 		super();

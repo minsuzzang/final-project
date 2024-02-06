@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css&font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/css/reset.css">
-    <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/media_query.css">
-    <link rel="stylesheet" href="/resources/css/login.css">
+    <link rel="stylesheet" href="/resources//css/reset.css">
+    <link rel="stylesheet" href="/resources//css/style.css">
+    <link rel="stylesheet" href="/resources//css/media_query.css">
+    <link rel="stylesheet" href="/resources//css/login.css">
     <!-- js -->
     <script src="/resources/lib/jquery-1.11.1.min.js"></script>
     <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
@@ -28,17 +28,17 @@
     </video>
 
     <header>
-        <%@ include file="/WEB-INF/views/common/header.jsp"%>    
+       <%@ include file="/WEB-INF/views/common/header.jsp"%>
     </header>
 
     <!-- main -->
     <div class="page">
         <div class="container2">
             <div class="left2">
-                <div class="login"><img src="/resources/images/logo.png" alt=""></div>
-                <div class="eula"><b>Update<br><b style="font-size: 48px;">Password</b></b></div>
+                <div class="login"><img src="/resources/videos/images/logo.png" alt=""></div>
+                <div class="eula"><b>Password<br><b style="font-size: 48px;">Code Check</b></b></div>
             </div>
-            <div class="right6">
+            <div class="right4">
                 <svg viewBox="0 8 320 300">
                     <defs>
                         <linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307"
@@ -50,26 +50,15 @@
                     <path
                         d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
                 </svg>
-                <svg viewBox="0 -65 320 300">
-                    <path
-                        d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
-                </svg>
                 
-                <form name="frm" action="/member/updatePwd.do" method="post">
-                        <input type="hidden" name="m_idx" value="${m_idx}" />
                     <div class="form">
-                        <label for="password">New Password</label>
-                        <input type="password" id="password" name="m_pwd" required>
-                        <label for="PasswordCheck">Password Check</label>
-                        <input type="password" id="PasswordCheck" required>
-                        <input type="submit" id="submit" value="Update">
-                        <a class="aaa" href="/member/loginForm.do">Login</a>
-                        <div><br><br>
-                            <a class="aaaa" href="/member/emailFindForm.do">아이디찾기</a>
-                            <a class="aaaa" href="/member/pwdFindForm.do">비밀번호찾기</a>
-                        </div>
+		                <form name="frm" action="/member/codeChk.do" method="post" >
+		                	<input type="hidden"  name="m_idx" value="${m_idx}" />
+		                    <label for="code">code</label>
+		                    <input type="text" id="m_code_chk" name="m_code_chk" required>
+		                    <input type="submit" id="submit" value="Code Check" style="font-size: 15px;" >
+		                </form>
                     </div>
-                </form>
             </div>
         </div>
     </div>
