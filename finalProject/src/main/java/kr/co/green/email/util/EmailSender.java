@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
 	private static final String EMAIL_USERNAME = "a01027735977@gmail.com";
-	private static final String EMAIL_PASSWORD = "ttel yrhp askh mvmp";
+	private static final String EMAIL_PASSWORD = "";
 
 	public static void sendEmail(String toEmail, String subject, String content) throws MessagingException {
 		// SMTP server settings (Gmail example)
