@@ -164,7 +164,6 @@ function validateName() {
    }
 }
 
-
 //전화번호 유효성 검사     
 function validatePhone() {
  const phoneRegex = /^\d{3}\d{4}\d{4}$/;
@@ -174,7 +173,6 @@ function validatePhone() {
  // 전화번호 유효성 검사 로직을 여기에 작성
  // 간단한 형식을 가정 (예: 1234567890)
  
-
  if(Phone == "") {
       msg.innerHTML = "전화번호를 입력하세요.";
       msg.style.color = "red";
@@ -219,5 +217,4 @@ function checkEmail() {
    
    flagCheck();
 }
-
 </script>
