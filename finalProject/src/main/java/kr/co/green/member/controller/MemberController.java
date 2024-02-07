@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.green.ScriptUtil.ScriptUtil;
 import kr.co.green.email.util.EmailSender;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
+import kr.co.green.scriptUtil.scriptUtil;
 
 @Controller
 @RequestMapping("/member")
@@ -36,11 +36,11 @@ public class MemberController {
 	public String emailForm(HttpServletResponse response, MemberDTO member, Model model, @RequestParam("idx") int idx) {
 
 		member.setM_idx(idx);
-		MemberDTO flag = memberService.chkMembertpmPwd(member);
+		MemberDTO chkFlag = memberService.chkMembertpmPwd(member);
 
-		if (flag == null) {
+		if (chkFlag == null) {
 			try {
-				ScriptUtil.alertAndMovePage(response, "잘못된 경로 입니다.", "/");
+				scriptUtil.alertAndMovePage(response, "잘못된 경로 입니다.", "/");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -58,23 +58,20 @@ public class MemberController {
 
 	// 새 비밀번호 변경
 	@PostMapping("/updatePwd.do")
-	@ResponseBody
 	public String updatePwd(HttpServletResponse response, MemberDTO member, Model model) {
-		System.out.println(member.getM_idx());
-		System.out.println(member.getM_pwd());
 
 		String hashedPassword = bcryptPasswordEncoder.encode(member.getM_pwd());
 		member.setM_pwd(hashedPassword);
 		int chkFl = memberService.updateMemberPassword(member);
 		if (chkFl > 0) {
 			try {
-				ScriptUtil.alertAndMovePage(response, "변경되었습니다.", "/member/loginForm.do");
+				scriptUtil.alertAndMovePage(response, "변경되었습니다.", "/member/loginForm.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
-				ScriptUtil.alert(response, "실패되었습니다.");
+				scriptUtil.alert(response, "실패되었습니다.");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -91,10 +88,10 @@ public class MemberController {
 		try {
 			MemberDTO foundMember = memberService.findMemberPwd(member);
 			if (foundMember != null) {
-				// 비밀번호가 일치하는 경우 새 비밀번호 페이지로 이동
+				// 인증코드가 일치하는 경우 새 비밀번호 페이지로 이동
 				return "member/newpwd";
 			} else {
-				// 비밀번호가 일치하지 않거나 회원을 찾지 못한 경우 pwdFind 페이지로 이동
+				// 인증코드가 일치하지 않거나 회원을 찾지 못한 경우 pwdFind 페이지로 이동
 				return "member/pwdFind";
 			}
 		} catch (Exception e) {
@@ -109,12 +106,12 @@ public class MemberController {
 
 		try {
 
-			MemberDTO mem = memberService.memberDetail(member.getM_idx());
+			MemberDTO memberDetail = memberService.memberDetail(member.getM_idx());
 
-			if (mem.getM_temporary().equals(member.getM_code_chk())) {
-				ScriptUtil.alert(response, "인증되었습니다.");
+			if (memberDetail.getM_temporary().equals(member.getM_code_chk())) {
+				scriptUtil.alert(response, "인증되었습니다.");
 			} else {
-				ScriptUtil.alertAndMovePage(response, "인증이 실패되었습니다.\\n정확한 코드를 입력하세요.",
+				scriptUtil.alertAndMovePage(response, "인증이 실패되었습니다.\\n정확한 코드를 입력하세요.",
 						"/member/emailForm.do?idx=" + member.getM_idx());
 			}
 			model.addAttribute("m_idx", member.getM_idx());
@@ -132,8 +129,7 @@ public class MemberController {
 	public String findPwd(MemberDTO member, Model model) {
 		try {
 			MemberDTO foundMember = memberService.findMemberPwd(member);
-			if (foundMember != null) {
-				System.out.println(foundMember);
+			if (foundMember.getM_idx() != 0) {
 				String newPassword = generateRandomPassword();
 
 				foundMember.setM_temporary(newPassword);
@@ -172,9 +168,10 @@ public class MemberController {
 	@PostMapping("/findId.do")
 	@ResponseBody
 	public String findId(MemberDTO member, Model model) {
-
 		MemberDTO foundMember = memberService.findMemberId(member);
-		if (foundMember != null) {
+
+		if (foundMember.getM_email() != null) {
+
 			return foundMember.getM_email();
 		} else {
 			return "";
@@ -195,7 +192,6 @@ public class MemberController {
 			session.setAttribute("m_idx", loginUser.getM_idx());
 			session.setAttribute("m_name", loginUser.getM_name());
 
-			System.out.println(loginUser.getM_idx());
 			session.setAttribute("m_name", loginUser.getM_name());
 			session.setAttribute("m_type", loginUser.getM_type());
 

@@ -43,7 +43,7 @@
 	
 	<!--아이디 찾기-->
 	<select id="findMemberId" resultMap="memberResultSet">
-		SELECT m_email FROM member
+		SELECT m_email FROM member 
         WHERE m_name = #{m_name} AND m_phone = #{m_phone}
 	</select>
 	
