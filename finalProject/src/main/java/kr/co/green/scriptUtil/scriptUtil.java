@@ -1,12 +1,11 @@
-package kr.co.green.ScriptUtil;
+package kr.co.green.scriptUtil;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
-public class ScriptUtil {
-
+public class scriptUtil {
 	public static void init(HttpServletResponse response) {
 		response.setContentType("text/html; charset=utf-8");
 		response.setCharacterEncoding("euc-kr");
@@ -27,5 +26,4 @@ public class ScriptUtil {
 		out.flush();
 
 	}
-
 }
