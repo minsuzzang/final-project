@@ -13,4 +13,6 @@ public interface CardDAO {
 
 	List<CardDTO> cardInfo(int m_idx);
 
+	int cardFinalApply(CardDTO cardDTO);
+
 }

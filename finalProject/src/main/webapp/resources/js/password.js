@@ -13,7 +13,7 @@ $(document).ready(function () {
       event.preventDefault();
       if (inner_input.val().length <= 4) {
         outer_input.val(inner_input.val());
-        $("#popupA").dialog("close");  // 추가된 코드
+        $("#popupA").dialog("close");  
       } else {
         alert("Password should be maximum 4 characters");
       }

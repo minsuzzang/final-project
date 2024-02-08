@@ -64,4 +64,10 @@ public class CardDAOMyBatis implements CardDAO {
 	public List<CardDTO> cardInfo(int m_idx) {
 		return sqlSession.selectList("cardMapper.getMemberApplyCard", m_idx);
 	}
+
+	@Override
+	public int cardFinalApply(CardDTO cardDTO) {
+		return sqlSession.insert("cardMapper.cardFinalApply", cardDTO);
+		
+	}
 }

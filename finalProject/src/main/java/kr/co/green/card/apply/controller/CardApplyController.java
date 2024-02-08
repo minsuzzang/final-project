@@ -7,10 +7,13 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.green.card.model.dto.CardDTO;
 import kr.co.green.card.model.service.CardService;
 
 @RestController
@@ -52,6 +55,22 @@ public class CardApplyController {
 		});
 
 		return resultMap;
+	}
+
+	@PostMapping("/card/cardInfo/submit")
+	public ResponseEntity<String> insertCardInfo(@RequestBody CardDTO cardDTO) {
+		// "저장" 버튼 누르면 db에 insert 하는 메소드
+		
+		System.out.println(cardDTO.getCd_apply_date());
+		System.out.println(cardDTO.getCd_approve());
+		System.out.println(cardDTO.getCd_cvc());
+		System.out.println(cardDTO.getCd_expired_date());
+		System.out.println(cardDTO.getCd_number());
+		
+		// 서비스단으로 카드 객체 넘김
+		cardService.cardApply(cardDTO);
+		
+		return new ResponseEntity<>("Card information submitted", HttpStatus.OK);
 	}
 
 }

@@ -41,4 +41,13 @@
 		WHERE m_idx = #{m_idx}
 	</select>
 
+	<update id="cardFinalApply" parameterType="map">
+		UPDATE card SET
+		cd_number = #{cd_number},
+		cd_cvc = #{cd_number},
+		cd_pwd = #{cd_number},
+		cd_expired_date = #{cd_number}
+		WHERE cd_idx = #{cd_idx}
+	</update>
+
 </mapper>
