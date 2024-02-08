@@ -77,8 +77,6 @@
 			                        <td>
 			                        <a href="#popupA" onclick="getModalList(${item.cd_idx})"  class="custom-btn-b btn-9-b jbjbj"
 			                         style="text-decoration-line: none;">정보보기</a>
-			                        <a href="#popupA" onclick="getModalList2(${item.cd_idx})"  class="custom-btn-b btn-9-b jbjbj"
-			                         style="text-decoration-line: none;">원본</a> 
 			                        </td>
 			                    </tr>
 			                    <c:set var="row" value="${row-1}"/>
@@ -110,6 +108,10 @@
                                     id="no" style="text-decoration-line: none;">거절</a>
                                 <a href="" class="custom-btn-b btn-9-b jbjb fr"
                                     id="yes" style="text-decoration-line: none;">승인</a>
+								<a class="custom-btn-b btn-9-b jbjb fr"
+								id="detail" onclick="getModalList2();" 
+								style="text-decoration-line: none;">자세히보기</a>
+								<span class="jbjb fr" id="timer"></span>
                             </div>
                         </div>
                     </div>

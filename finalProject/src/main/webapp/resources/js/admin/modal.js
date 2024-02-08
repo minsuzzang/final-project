@@ -1,7 +1,10 @@
+let cd_idx = 0;
+
 function getModalList(idx) {
 	const img = document.getElementById("img");
 	const no = document.getElementById("no");
 	const yes = document.getElementById("yes");
+	cd_idx = idx;
 	
 	console.log(idx);
 	$.ajax({
@@ -14,6 +17,8 @@ function getModalList(idx) {
 			img.src = "/resources/images/" + res.cd_color + "/" + res.cd_color + res.cd_design + ".png" ;
 			no.href = "/admin/rejectCardApply.do?cd_idx=" + idx ;
 			yes.href = "/admin/approveCardApply.do?cd_idx=" + idx ;
+			
+			
 			
 			//카드정보
 			document.getElementById("color").innerHTML =res.cd_color;
@@ -30,22 +35,21 @@ function getModalList(idx) {
 	});
 }
 
-function getModalList2(idx) {
+function getModalList2() {
 	const img = document.getElementById("img");
 	const no = document.getElementById("no");
 	const yes = document.getElementById("yes");
-	
-	console.log(idx);
+
 	$.ajax({
 		url: '/admin/getModalList.do',
 		type: 'post',
 		data: {
-			cd_idx: idx
+			cd_idx: cd_idx
 		},
 		success: function(res) {
 			img.src = "/resources/images/" + res.cd_color + "/" + res.cd_color + res.cd_design + ".png" ;
-			no.href = "/admin/rejectCardApply.do?cd_idx=" + idx ;
-			yes.href = "/admin/approveCardApply.do?cd_idx=" + idx ;
+			no.href = "/admin/rejectCardApply.do?cd_idx=" + cd_idx ;
+			yes.href = "/admin/approveCardApply.do?cd_idx=" + cd_idx ;
 			
 			//카드정보
 			document.getElementById("color").innerHTML =res.cd_color;
@@ -56,12 +60,41 @@ function getModalList2(idx) {
 			document.getElementById("email").innerHTML =res.m_email;
 			document.getElementById("phone").innerHTML =res.m_phone;
 			
-			alert("********************<경고>*********************\n마스킹처리 되지않은 원본이 유출되면\n개인정보보호법에 따라 처벌받을 수 있습니다.");
+			startTimer();
+			alert("********************<경고>*********************\n마스킹처리 되지않은 원본이 유출되면\n개인정보보호법에 따라 처벌받을 수 있습니다.\n*************************************************");
+			
+			// 10초 후에 마스킹 처리
+			setTimeout(function() {
+				document.getElementById("name").innerHTML =maskingFunc.name(res.m_name);
+				document.getElementById("address").innerHTML =maskingFunc.address(res.m_address);
+				document.getElementById("email").innerHTML =maskingFunc.email(res.m_email);
+				document.getElementById("phone").innerHTML =maskingFunc.phone(res.m_phone);
+			}, 10000);
+			
+
+			
+		document.getElementById("detail").onclick = null;
 		},
 		error: function(err) {
 			console.log('Ajax 요청 실패 : ', err);
 		}
 	});
+}
+
+function startTimer() {
+    let timeLeft = 10; // 3분 = 180초
+    const timerElement = document.getElementById("timer");
+
+    timer = setInterval(function() {
+        if(timeLeft <= 0) {
+            clearInterval(timer);
+            timerElement.innerHTML = "";
+			document.getElementById("detail").onclick = getModalList2;
+        } else {
+            timerElement.innerHTML = "남은 시간: " + timeLeft + "초";
+        }
+        timeLeft -= 1;
+    }, 1000);
 }
 
 let maskingFunc = {

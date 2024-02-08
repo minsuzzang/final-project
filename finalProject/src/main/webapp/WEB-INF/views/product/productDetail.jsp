@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/resources/css/media_query.css">
     <link rel="stylesheet" href="/resources/css/shop.css">
     <link rel="stylesheet" href="/resources/css/card.css">
+    <link rel="stylesheet" href="/resources/css/popup.css">
     <!-- js -->
     <script src="/resources/lib/jquery-1.11.1.min.js"></script>
     <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
@@ -87,8 +88,118 @@
 
                     </div>
                     <div class="jjpp">※ 교환 및 환불이 불가능합니다.</div><br><br><br>
-                    <button class="custom-btn-b btn-9-b" onclick="requestPay()">구매</button>
+                    <a href="#popupA" class="custom-btn-b btn-9-b jbjbjb" style="text-decoration-line: none;">할인구매</a>
+                    <button onclick="requestPay()" class="custom-btn-b btn-9-b jbjbjb" style="text-decoration-line: none;">일반구매</button>
+
+                    
     </section>
+    <!-- Modal -->
+
+    <div id="popupA" class="layer">
+        <div class="box2">
+            <a href="#" class="close fr" style="font-size: 30px;">x</a><br><br>
+            <p class="tddd">결제방법을 선택해주세요</p>
+            <div id="board-list">
+                <table class="board-table">
+                    <tr>
+                        <th scope="col" class="th-num">결제수단</th>
+                        <td class="tdd2">
+                            <select name="" id="" required>
+                                <option value="" selected disabled hidden>결제수단을 선택해주세요.</option>
+                                <option value="">카드1</option>
+                                <option value="">카드2</option>
+                                <option value="">카드3</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p class="tddd">카드정보를 입력해주세요</p>
+            <div id="board-list">
+                <table class="board-table">
+                    <tr>
+                        <th scope="col" class="th-num">카드번호</th>
+                        <td>
+                            <input type="text" placeholder="****-****-****-****" maxlength="19" style="width: 45%;"
+                                id="cardNumber" onkeyup="formatCardNumber(this)" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">유효기간</th>
+                        <td>
+                            <input type="text" placeholder="00/00" maxlength="5" style="width: 12%;" id="expiryDate"
+                                onkeyup="formatExpiryDate(this)" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">CVC</th>
+                        <td>
+                            <input type="text" placeholder="000" maxlength="3" style="width: 8%;" required>
+                            ※ 카드 뒷면의 숫자 중 마지막 3자리
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">카드 비밀번호</th>
+                        <td>
+                            <input type="password" placeholder="****" maxlength="4" style="width: 9%;" required>
+                            ※ 네자리 숫자
+                        </td>
+                    </tr>
+                </table>
+            </div><br>
+            <div class="dfjc">
+                <a href="#popupB" class="custom-btn-b btn-9-b jbjb" style="text-decoration-line: none;">다음</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupB" class="layer">
+        <div class="box2">
+            <a href="#" class="close fr" style="font-size: 30px;">x</a><br><br>
+            <p class="tddd">제품정보</p>
+            <div id="board-list">
+                <table class="board-table">
+                    <tr>
+                        <th scope="col" class="th-num">제품</th>
+                        <td class="tdd2">#</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">가격</th>
+                        <td class="tdd2">#</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">적립율</th>
+                        <td class="tdd2"><b>#</b> %</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">마일리지</th>
+                        <td class="tdd2">
+                            <input type="text" disabled style="border: none; background: none;"
+                            value="#">
+                            <button class="custom-btn-b btn-9-b jbjb tdd3">모두사용</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p class="tddd">최종가격</p>
+            <div id="board-list">
+                <table class="board-table">
+                    <tr>
+                        <th scope="col" class="th-num">최종가격</th>
+                        <td class="tdd2">#</td>
+                    </tr>
+
+                </table>
+            </div>
+            <input type="checkbox" required> 결제동의<br>
+            <div class="dfjc">
+                <a type="submit" href="product.html" class="custom-btn-b btn-9-b jbjb"
+                    style="text-decoration-line: none;">결제</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
 
 
     <!-- /main -->
@@ -115,22 +226,28 @@
     
     function requestPay() {
         IMP.request_pay({
-            pg : 'html5_inicis.INIBillTst',
-            pay_method : 'card',
+            pg : 'kakaopay.TC0ONETIME',
+            pay_method : 'kakaopay',
             merchant_uid: "IMP"+makeMerchantUid, 
             name : "${product.p_name}",
-            amount : "${product.p_price2}",
+            amount : "${product.p_price1}",
             buyer_email : "${member.m_email}",
             buyer_name : "${member.m_name}",
             buyer_tel : "${member.m_phone}",
-            buyer_addr : '서울특별시 강남구 삼성동',
+            buyer_addr : '안양시 만안구',
             buyer_postcode : '123-456'
         }, function (rsp) { // callback
             if (rsp.success) {
                 console.log(rsp);
+                window.location='http://localhost/product/result.do?idx=${product.p_idx}'
                 $.ajax({
                 	type:"POST",
-                	url:"/product/result.do"
+                	url:"/purchase/history.do",
+                	data: {
+                		p_idx: ${product.p_idx},
+                		m_idx: ${member.m_idx},
+                		ph_total_price: ${product.p_price1}
+                	}
                 })
             } else {
                 console.log(jyp);

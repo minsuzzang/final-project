@@ -54,29 +54,26 @@ public class AdminController {
 	
 	@PostMapping("/admin/getModalList.do")
 	@ResponseBody
-	public AdminDTO getModalList(AdminDTO board){
-		System.out.println(board.getCd_idx());
-		
+	public AdminDTO getModalList(AdminDTO board){	
 		AdminDTO result = adminService.getModalList(board);
+		//색깔 첫글자 대문자로 + 디자인 마지막숫자만 나오도록
 		String color = "the" + String.valueOf(result.getCd_color().charAt(0)).toUpperCase() + result.getCd_color().substring(1, result.getCd_color().length());
 		String design = String.valueOf(result.getCd_design().charAt(result.getCd_design().length() - 1));
-		result.setCd_color(color);			//Red
-		result.setCd_design(design);		//1
+		result.setCd_color(color);
+		result.setCd_design(design);
 		
 		return result;
 	}
 	
 	@GetMapping("/admin/approveCardApply.do")
 	public String approveCardApply(@RequestParam(value="cd_idx") int cd_idx) {
-		int result = 0;
-		result = adminService.approveCardApply(cd_idx);
+		int result = adminService.approveCardApply(cd_idx);
 		return "redirect:/admin/approveList.do";
 	}
 	
 	@GetMapping("/admin/rejectCardApply.do")
 	public String rejectCardApply(@RequestParam(value="cd_idx") int cd_idx) {
-		int result = 0;
-		result = adminService.rejectCardApply(cd_idx);
+		int result = adminService.rejectCardApply(cd_idx);
 		return "redirect:/admin/approveList.do";
 		
 	}
