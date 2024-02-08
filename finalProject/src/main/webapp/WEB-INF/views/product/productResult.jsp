@@ -43,7 +43,7 @@
                 <img src="/resources/images/delivery.png" alt="">
             </div>
             <div class="dfjc2">
-                <button class="custom-btn-b btn-9-b">돌아가기</button>
+                <button class="custom-btn-b btn-9-b" onclick="location.href='/product/list.do'">돌아가기</button>
             </div>
         </div>
     </div>

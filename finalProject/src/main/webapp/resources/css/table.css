@@ -94,6 +94,9 @@ section.notice {
 .board-table tbody tr:hover {
   background-color: #ececec;
 }
+.board-table .ttbb td:hover {
+  background-color: #ececec;
+}
 
 .board-table tbody td {
   border-top: 1px solid #e7e7e7;
@@ -322,4 +325,8 @@ section.notice {
 
 .save-button:hover {
   background-color: #0056b3;
+}
+.tdtd {
+  font-size: 20px; 
+  font-weight: bold; 
 }

@@ -1,0 +1,31 @@
+package kr.co.green.purchase.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.co.green.member.model.service.MemberServiceImpl;
+import kr.co.green.product.model.service.ProductServiceImpl;
+import kr.co.green.purchase.model.dto.PurchaseDTO;
+import kr.co.green.purchase.model.service.PurchaseServiceImpl;
+
+@Controller
+@RequestMapping("/purchase")
+public class PurchaseController {
+	@Autowired
+	private PurchaseServiceImpl purchaseService;
+	@Autowired
+	private ProductServiceImpl productService;
+	@Autowired
+	private MemberServiceImpl memberService;
+	
+	
+	@PostMapping("history.do")
+	public String purchaseHistory(PurchaseDTO purchase, HttpSession session) {
+		int result = purchaseService.purchaseHistory(purchase);
+		return "redirect:/product/list.do";
+	}
+}
