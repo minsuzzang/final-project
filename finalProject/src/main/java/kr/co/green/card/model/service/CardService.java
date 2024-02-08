@@ -26,6 +26,6 @@ public interface CardService {
 	void generateExpiredDate(List<CardDTO> cards);
 
 	// 카드 신청을 위한 모든 신청정보 저장 메소드
-	void cardApply(CardDTO cardDTO);
+	int cardApply(CardDTO cardDTO);
 
 }

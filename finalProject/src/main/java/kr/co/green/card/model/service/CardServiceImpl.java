@@ -3,7 +3,6 @@ package kr.co.green.card.model.service;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 import java.util.stream.IntStream;
 
@@ -87,25 +86,23 @@ public class CardServiceImpl implements CardService {
 	}
 
 	@Override
-	public void cardApply(CardDTO cardDTO)  {
+	public int cardApply(CardDTO cardDTO)  {
 		Objects.requireNonNull(cardDTO.getCd_idx(), "카드 정보를 찾을 수 없습니다. 다시 시도해 주세요.");	// 필드값이 null 이라면 NullPointerException 던짐
 	    Objects.requireNonNull(cardDTO.getCd_number(), "카드번호가 입력되어야 합니다. 다시 시도해 주세요.");
 	    Objects.requireNonNull(cardDTO.getCd_cvc(), "CVC가 입력되어야 합니다. 다시 시도해 주세요.");
 	    Objects.requireNonNull(cardDTO.getCd_pwd(), "비밀번호가 입력되어야 합니다. 다시 시도해 주세요.");
 	    
-	    if(cardDTO.getCd_approve().equals("심사중")) {
-	    	System.out.println("심사중");
-	    	throw new NullPointerException("아직 심사중입니다.");
+	    if(cardDTO.getCd_approve().equals("심사중") || cardDTO.getCd_pwd().length()<4) {
+	    	throw new NullPointerException();
 	    }
 	    
 	    int result = cardDAO.cardFinalApply(cardDTO);
-		if(result == 0) {
+		if(result < 1) {
 			throw new NullPointerException("DB 삽입 실패");	// 추후 수정 -> db insert 익셉션
 		}
+		return result;
 			
 	}
-	
-	
 	
 	
 

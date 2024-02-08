@@ -1,5 +1,7 @@
 package kr.co.green.card.apply.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -61,16 +63,16 @@ public class CardApplyController {
 	public ResponseEntity<String> insertCardInfo(@RequestBody CardDTO cardDTO) {
 		// "저장" 버튼 누르면 db에 insert 하는 메소드
 		
-		System.out.println(cardDTO.getCd_apply_date());
-		System.out.println(cardDTO.getCd_approve());
-		System.out.println(cardDTO.getCd_cvc());
-		System.out.println(cardDTO.getCd_expired_date());
-		System.out.println(cardDTO.getCd_number());
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		cardDTO.setCd_apply_date(LocalDate.parse(cardDTO.getStr_cd_apply_date(), formatter));
 		
 		// 서비스단으로 카드 객체 넘김
-		cardService.cardApply(cardDTO);
+		int result = cardService.cardApply(cardDTO);
 		
-		return new ResponseEntity<>("Card information submitted", HttpStatus.OK);
+		if(result == 1)
+			return new ResponseEntity<>("Card information submitted", HttpStatus.OK);
+		else
+			return new ResponseEntity<>("카드정보 제출 실패", HttpStatus.BAD_REQUEST);
 	}
 
 }

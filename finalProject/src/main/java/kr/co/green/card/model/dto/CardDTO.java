@@ -18,6 +18,7 @@ public class CardDTO {
 	private String cd_approve;
 	private String cd_design;
 	private LocalDate cd_apply_date;
+	private String str_cd_apply_date;
 	private String cd_expired_date;
 	
 }

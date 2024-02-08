@@ -156,6 +156,7 @@
 	<div class="right11">
 		<div class="yhb3">
 			<div id="board-list">
+				<input type="hidden" id="idx">
 				<table class="board-table">
 					<tr>
 						<th scope="col" class="th-num">신청날짜</th>
@@ -279,48 +280,50 @@
 	    		            document.getElementById('number').innerText = card.cd_number;
 	    		            document.getElementById('cvc').innerText = card.cd_cvc;
 	    		            document.getElementById('expired_date').innerText = card.cd_expired_date;
+	    		            document.getElementById('idx').value = cardIdx;
 	    		        }
 		    		 }
 	    		    
 	    		    function submitCardInfo(){
 	    		    	var apply_date = document.getElementById('apply_date').innerText;
-	    		    	var date = new Date(Date.parse(apply_date.replace(/-/g, " ")))
-	    		    	var formatted_date = date.toISOString().split('T')[0];
-	    		    	
+	    		    	var idx =  document.getElementById('idx').value;
 	    		    	var approval_status = document.getElementById('approval_status').innerText;
 	    		    	var number = document.getElementById('number').innerText;
 	    		    	var cvc = document.getElementById('cvc').innerText;
 	    		    	var expired_date = document.getElementById('expired_date').innerText;
 	    		    	var password = document.getElementById('outer-input').value;
 	    		    	
-	    		    	console.log(typeof apply_date);
-	    		    	console.log(typeof date);
-	    		    	console.log(typeof formatted_date);
-	    		    	
-	    		    	console.log(apply_date);
-	    		    	console.log(date);
-	    		    	console.log(formatted_date);
-	    		    	
-	    		    	$.ajax({
-	    		    		url: '/card/cardInfo/submit',
-	    		    		type: 'POST',
-	    		    		contentType: "application/json",
-	    		    		data: JSON.stringify({
-		    		            'apply_date': formatted_date,
-		    		            'cd_approve': approval_status,
-		    		            'cd_number': number,
-		    		            'cd_cvc': cvc,
-		    		            'cd_expired_date': expired_date,
-		    		            'cd_pwd': password
-	    		       	 	}),
-		    		    	success: function(response){
-								alert("카드가 등록되었습니다.");		    		    		
-		    		    	},
-		    		    	error: function(xhr, status, error) {
-		    		            // 요청이 실패하면 에러 메시지를 alert 창으로 띄웁니다.
-		    		            alert("Error: " + error);
-		    		        }
-	    		    	});
+	    		        if (apply_date == "이미지를 클릭해주세요." || approval_status == "심사중" || number == "이미지를 클릭해주세요." || 
+	    		    		   cvc == "이미지를 클릭해주세요." || expired_date == "이미지를 클릭해주세요." || password.length < 4) {
+	    		               alert("카드 등록에 실패했습니다.");
+	    		   	    }
+	    		        else{
+		    		    	var date = new Date(Date.parse(apply_date.replace(/-/g, " ")))
+		    		    	var formatted_date = date.toISOString().split('T')[0];
+	    		        
+		    		    	$.ajax({
+		    		    		url: '/card/cardInfo/submit',
+		    		    		type: 'POST',
+		    		    		contentType: "application/json",
+		    		    		data: JSON.stringify({
+		    		    			'cd_idx' : idx,
+			    		            'str_cd_apply_date': formatted_date,
+			    		            'cd_approve': approval_status,
+			    		            'cd_number': number,
+			    		            'cd_cvc': cvc,
+			    		            'cd_expired_date': expired_date,
+			    		            'cd_pwd': password
+		    		       	 	}),
+			    		    	success: function(response){
+									alert("카드가 등록되었습니다.");    		  
+									window.location.href = '/card/cardInfo';
+			    		    	},
+			    		    	error: function(xhr, status, error) {
+			    		            // 서버에서 실패 상태 코드를 받았을 때의 처리
+			    		            alert("카드 등록에 실패했습니다."); // "카드정보 제출 실패"
+			    		        }
+		    		    	});
+	    		        }
 	    		    }
             </script>
 

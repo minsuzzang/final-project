@@ -39,14 +39,16 @@
 	<select id="getMemberApplyCard" resultMap="cardResultSet">
 		SELECT * FROM card
 		WHERE m_idx = #{m_idx}
+		AND cd_apply_status IS NULL
 	</select>
 
-	<update id="cardFinalApply" parameterType="map">
+	<update id="cardFinalApply" parameterType="card">
 		UPDATE card SET
 		cd_number = #{cd_number},
-		cd_cvc = #{cd_number},
-		cd_pwd = #{cd_number},
-		cd_expired_date = #{cd_number}
+		cd_cvc = #{cd_cvc},
+		cd_pwd = #{cd_pwd},
+		cd_expired_date = #{cd_expired_date},
+		cd_apply_status = '신청완료'
 		WHERE cd_idx = #{cd_idx}
 	</update>
 

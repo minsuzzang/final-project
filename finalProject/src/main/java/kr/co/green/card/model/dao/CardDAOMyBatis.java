@@ -67,7 +67,7 @@ public class CardDAOMyBatis implements CardDAO {
 
 	@Override
 	public int cardFinalApply(CardDTO cardDTO) {
-		return sqlSession.insert("cardMapper.cardFinalApply", cardDTO);
+		return sqlSession.update("cardMapper.cardFinalApply", cardDTO);
 		
 	}
 }
