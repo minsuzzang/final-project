@@ -157,4 +157,19 @@ function slideShow(slideClassName) {
     x[indices[slideClassName]-1].style.display = "block";
     setTimeout(function() { slideShow(slideClassName); }, 4000);
 }
+// 카드번호 js
+// 16자리 카드번호
+function formatCardNumber(input) {
+    var cardNumber = input.value.replace(/\D/g, "").replace(/(\d{4})/g, '$1-');
+    cardNumber = cardNumber.replace(/-$/, '');
+    input.value = cardNumber;
+}
+// 4자리 유효기간
+function formatExpiryDate(input) {
+    var expiryDate = input.value.replace(/\D/g, "").replace(/(\d{2})/, '$1/');
+    expiryDate = expiryDate.replace(/\/$/, '');
+    input.value = expiryDate;
+}
+
+
 
