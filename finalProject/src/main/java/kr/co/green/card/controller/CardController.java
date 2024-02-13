@@ -39,8 +39,7 @@ public class CardController {
 	@GetMapping("/cardApplyForm.do")
 	public String cardApplyForm(HttpSession session, RedirectAttributes redirectAttributes) {
 		int memberIdx = (Integer) session.getAttribute("m_idx");
-		int memberCardNum = cardService.getMemberCardNum(memberIdx); // 로그인 인터셉터에서 세션유무를 체크하고 있고, 정수타입이기 때문에 null이 들어올 수
-																		// 없다.
+		int memberCardNum = cardService.getMemberCardNum(memberIdx);
 
 		if (memberCardNum > 3) {
 			redirectAttributes.addFlashAttribute("alertMsg", "신청할 수 있는 카드는 최대 3개입니다.");
