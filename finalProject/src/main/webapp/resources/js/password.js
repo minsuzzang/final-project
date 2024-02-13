@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const inner_input = $("#password");
+    const inner_input = $("#password-input");
     const outer_input = $("#outer-input");
   
     // disable input from typing

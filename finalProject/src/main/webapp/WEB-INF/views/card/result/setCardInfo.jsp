@@ -26,7 +26,7 @@
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
 	rel="stylesheet">
 <!-- js -->
-<script src="/resources/lib/jquery-1.11.1.min.js"></script>
+<script src="/resources/lib/jquery-1.11.1.min.js"></script>	
 <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
 <script src="/resources/js/menuEffect.js"></script>
 <script src="/resources/js/mousecursor.js"></script>
@@ -188,7 +188,7 @@
 				</table>
 			</div>
 		</div>
-		<br>
+		<br><br>
 		<div class="dfjc5">
 			<a href="#">
 				<button class="custom-btn-b btn-9-b ttt" onclick="submitCardInfo()">저장</button>
@@ -220,7 +220,7 @@
 			<a href="#" class="close" style="font-size: 30px;">x</a>
 			<div id="pinpad">
 				<form class="ff11">
-					<input type="password" id="password" maxlength="4" /></br> <input
+					<input type="password" id="password-input" maxlength="4" /></br> <input
 						type="button" value="1" id="1" class="pinButton calc" /> <input
 						type="button" value="2" id="2" class="pinButton calc" /> <input
 						type="button" value="3" id="3" class="pinButton calc" /><br>
