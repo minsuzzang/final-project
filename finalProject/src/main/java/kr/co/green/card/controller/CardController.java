@@ -24,6 +24,11 @@ import kr.co.green.card.model.service.CardService;
 @RequestMapping("/card")
 public class CardController {
 
+	@GetMapping("/cardGuide.do")
+	public String cardGuidePage(){
+		return "card/guide/cardGuide";
+	}
+
 	private final CardService cardService;
 
 	@Autowired
