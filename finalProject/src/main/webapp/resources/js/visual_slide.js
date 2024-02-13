@@ -24,7 +24,7 @@ $(window).load(function () {
     function init() { //초기 함수 설정
         $visualList = $("#visual_list");
         $visualLi = $visualList.children();
-        imgNum = $visualLi.size();
+        imgNum = $visualLi.length;
         textList = $("#text_list");
         textLi = textList.children('li');
         textLiA =textLi.find('a');
