@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/card")
 public class CardController {
-
+	
+	@GetMapping("/cardGuide.do")
+	public String cardGuidePage(){
+		return "card/guide/cardGuide";
+	}
+	
 	@GetMapping("/cardApplyForm.do")
 	public String cardApplyForm() {
 		

@@ -30,7 +30,11 @@ public class CustomerBoardController {
 	@Autowired
 	private SessionMessage sessionMessage;
 	
-	// localhost/customerboard/list.do
+	@GetMapping("/FAQ.do")
+	public String discount(){
+		return "userService/FAQ";
+	}
+	
 	@GetMapping("/list.do")
 	public String customerboardList (CustomerBoardDTO board, @RequestParam(value="cpage", defaultValue="1") int cpage, Model model, HttpSession session) {
 

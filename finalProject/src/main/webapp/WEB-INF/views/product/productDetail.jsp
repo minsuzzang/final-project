@@ -106,9 +106,7 @@
                         <td class="tdd2">
                             <select name="" id="" required>
                                 <option value="" selected disabled hidden>결제수단을 선택해주세요.</option>
-                                <option value="">카드1</option>
-                                <option value="">카드2</option>
-                                <option value="">카드3</option>
+                                <option value="">{card.cd_color}/{card.cd_design}</option>
                             </select>
                         </td>
                     </tr>
@@ -161,11 +159,11 @@
                 <table class="board-table">
                     <tr>
                         <th scope="col" class="th-num">제품</th>
-                        <td class="tdd2">#</td>
+                        <td class="tdd2">${product.p_name}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">가격</th>
-                        <td class="tdd2">#</td>
+                        <td class="tdd2">${product.p_price2}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">적립율</th>
