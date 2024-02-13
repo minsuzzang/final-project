@@ -81,6 +81,12 @@
 		FROM member
 		WHERE m_idx = #{m_idx}
 	</select>
+	
+	<select id="memberinfo" resultMap="memberResultSet">
+		SELECT *
+		FROM member
+		WHERE m_email = #{m_email} and m_pwd = #{m_pwd}   
+	</select>
 </mapper>
 
 

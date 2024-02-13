@@ -65,4 +65,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.updateMembertmpPassword(sqlSession, member);
 	}
 
+	@Override
+	public MemberDTO getMemberInfo(MemberDTO member) {
+		return memberDao.getMemberInfo(sqlSession, member);
+	}
+
 }

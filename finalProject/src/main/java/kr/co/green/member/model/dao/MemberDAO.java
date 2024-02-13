@@ -43,4 +43,12 @@ public class MemberDAO {
 		return sqlSession.update("memberMapper.updateMembertmpPassword", member);
 	}
 
+	public MemberDTO memberinfo(SqlSessionTemplate sqlSession, MemberDTO member) {
+		return sqlSession.selectOne("memberMapper.memberinfo", member);
+	}
+
+	public MemberDTO getMemberInfo(SqlSessionTemplate sqlSession, MemberDTO member) {
+		return sqlSession.selectOne("memberMapper.memberDetail", member);
+	}
+
 }

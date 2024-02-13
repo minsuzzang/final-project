@@ -32,6 +32,16 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
+	@GetMapping("/myinfoForm.do")
+	public String myinfoForm(MemberDTO member, Model model) {
+
+		MemberDTO memberInfo = memberService.getMemberInfo(member); // 회원 정보 조회 서비스 메서드 호출
+
+		model.addAttribute("memberInfo", memberInfo); // 조회된 회원 정보를 모델에 추가
+
+		return "member/myinfo";
+	}
+
 	@GetMapping("/emailForm.do")
 	public String emailForm(HttpServletResponse response, MemberDTO member, Model model, @RequestParam("idx") int idx) {
 
@@ -190,8 +200,6 @@ public class MemberController {
 		// loginUser 객체가 비어있지 않을 때 (로그인 성공)
 		if (!Objects.isNull(loginUser) && bcryptPasswordEncoder.matches(loginmember.getM_pwd(), loginUser.getM_pwd())) {
 			session.setAttribute("m_idx", loginUser.getM_idx());
-			session.setAttribute("m_name", loginUser.getM_name());
-
 			session.setAttribute("m_name", loginUser.getM_name());
 			session.setAttribute("m_type", loginUser.getM_type());
 

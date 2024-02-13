@@ -28,4 +28,6 @@ public interface MemberService {
 
 	public MemberDTO chkMembertpmPwd(MemberDTO member);
 
+	public MemberDTO getMemberInfo(MemberDTO member);
+
 }
