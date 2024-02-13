@@ -14,8 +14,25 @@
 		<typeAlias type="kr.co.green.product.model.dto.ProductDTO" alias="product" />
 		<typeAlias type="kr.co.green.admin.model.dto.AdminDTO" alias="admin" />
 		<typeAlias type="kr.co.green.purchase.model.dto.PurchaseDTO" alias="purchase" />
-
 	</typeAliases>
+	
+	<typeHandlers>
+		<typeHandler
+			handler="org.apache.ibatis.type.InstantTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.LocalDateTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.LocalTimeTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.OffsetDateTimeTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.OffsetTimeTypeHandler" />
+		<typeHandler
+			handler="org.apache.ibatis.type.ZonedDateTimeTypeHandler" />
+	</typeHandlers>
+
 	<mappers>
 		<mapper resource="/mappers/member/member-mapper.xml"/>
 		<mapper resource="/mappers/userService/customerboard-mapper.xml"/>

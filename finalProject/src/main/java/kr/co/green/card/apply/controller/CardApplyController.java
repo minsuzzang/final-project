@@ -1,5 +1,7 @@
 package kr.co.green.card.apply.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -7,10 +9,13 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.green.card.model.dto.CardDTO;
 import kr.co.green.card.model.service.CardService;
 
 @RestController
@@ -52,6 +57,22 @@ public class CardApplyController {
 		});
 
 		return resultMap;
+	}
+
+	@PostMapping("/card/cardInfo/submit")
+	public ResponseEntity<String> insertCardInfo(@RequestBody CardDTO cardDTO) {
+		// "저장" 버튼 누르면 db에 insert 하는 메소드
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		cardDTO.setCd_apply_date(LocalDate.parse(cardDTO.getStr_cd_apply_date(), formatter));
+		
+		// 서비스단으로 카드 객체 넘김
+		int result = cardService.cardApply(cardDTO);
+		
+		if(result == 1)
+			return new ResponseEntity<>("Card information submitted", HttpStatus.OK);
+		else
+			return new ResponseEntity<>("카드정보 제출 실패", HttpStatus.BAD_REQUEST);
 	}
 
 }

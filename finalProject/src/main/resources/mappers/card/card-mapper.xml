@@ -3,15 +3,53 @@
 
 <mapper namespace="cardMapper">
 
-   <insert id="cardApplyCardInfo" parameterType="map">
-      INSERT INTO card (cd_idx, cd_color, cd_design, cd_approve, m_idx, cd_apply_date)
-      VALUES (card_seq.nextval, #{cd_color}, #{cd_design}, DEFAULT, #{m_idx}, DEFAULT)
-   </insert>
-   
-   <update id="cardApplyMemberInfo" parameterType="map">
-      UPDATE member SET m_english_name = #{m_english_name},
-                    m_address = #{m_address}
-               WHERE m_idx = #{m_idx}
-   </update>
+	<resultMap type="card" id="cardResultSet">
+		<result column="CD_IDX" property="cd_idx"></result>
+		<result column="CD_NUMBER" property="cd_number"></result>
+		<result column="CD_CVC" property="cd_cvc"></result>
+		<result column="CD_PWD" property="cd_pwd"></result>
+		<result column="CD_COLOR" property="cd_color"></result>
+		<result column="CD_DESIGN" property="cd_design"></result>
+		<result column="CD_APPROVE" property="cd_approve"></result>
+		<result column="CD_APPLY_DATE" property="cd_apply_date"></result>
+		<result column="CD_EXPIRED_DATE" property="cd_expired_date"></result>
+	</resultMap>
+
+	<insert id="cardApplyCardInfo" parameterType="map">
+		INSERT INTO card
+		(cd_idx, cd_color, cd_design, cd_approve, m_idx, cd_apply_date)
+		VALUES
+		(card_seq.nextval, #{cd_color}, #{cd_design}, DEFAULT, #{m_idx},
+		DEFAULT)
+	</insert>
+
+	<update id="cardApplyMemberInfo" parameterType="map">
+		UPDATE member SET
+		m_english_name = #{m_english_name},
+		m_address = #{m_address}
+		WHERE m_idx = #{m_idx}
+	</update>
+
+	<select id="getMemberCardNum" resultType="_int">
+		SELECT COUNT(*) FROM
+		card
+		WHERE m_idx = #{m_idx}
+	</select>
+	
+	<select id="getMemberApplyCard" resultMap="cardResultSet">
+		SELECT * FROM card
+		WHERE m_idx = #{m_idx}
+		AND cd_apply_status IS NULL
+	</select>
+
+	<update id="cardFinalApply" parameterType="card">
+		UPDATE card SET
+		cd_number = #{cd_number},
+		cd_cvc = #{cd_cvc},
+		cd_pwd = #{cd_pwd},
+		cd_expired_date = #{cd_expired_date},
+		cd_apply_status = '신청완료'
+		WHERE cd_idx = #{cd_idx}
+	</update>
 
 </mapper>
