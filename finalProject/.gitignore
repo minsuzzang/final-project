@@ -15,6 +15,7 @@ local.properties
 .recommenders
 target/
 src/main/webapp/WEB-INF/spring/root-context.xml
+src/main/java/kr/co/green/API/EmailAPI.java
 
 # External tool builders
 .externalToolBuilders/

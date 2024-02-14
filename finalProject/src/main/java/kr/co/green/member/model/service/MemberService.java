@@ -30,4 +30,6 @@ public interface MemberService {
 
 	public MemberDTO getMemberInfo(MemberDTO member);
 
+	public MemberDTO membercard(MemberDTO member);
+
 }

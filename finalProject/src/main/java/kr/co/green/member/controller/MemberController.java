@@ -33,11 +33,11 @@ public class MemberController {
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
 	@GetMapping("/myinfoForm.do")
-	public String myinfoForm(MemberDTO member, Model model) {
+	public String myinfoForm(HttpSession session, MemberDTO member, Model model) {
+		member.setM_idx((int) session.getAttribute("m_idx"));
+		MemberDTO memberinfo = memberService.getMemberInfo(member);
 
-		MemberDTO memberInfo = memberService.getMemberInfo(member); // 회원 정보 조회 서비스 메서드 호출
-
-		model.addAttribute("memberInfo", memberInfo); // 조회된 회원 정보를 모델에 추가
+		model.addAttribute("memberinfo", memberinfo);
 
 		return "member/myinfo";
 	}
