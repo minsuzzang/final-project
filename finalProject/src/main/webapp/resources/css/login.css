@@ -1,0 +1,247 @@
+video {
+  height: 100vh;
+  width: 100%;
+  object-fit: fill;
+  position: absolute;
+  }
+  
+  ::selection {
+    background: #2D2F36;
+  }
+  ::-webkit-selection {
+    background: #2D2F36;
+  }
+  ::-moz-selection {
+    background: #2D2F36;
+  }
+  body {
+    background: rgb(0, 0, 0);
+    margin: 0;
+  }
+  .page {
+    
+    display: flex;
+    height: 100%;
+    position: absolute;
+    place-content: center;
+    width: 100%;
+  }
+  @media (max-width: 767px) {
+    .page {
+      height: auto;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+  }
+  .container {
+    display: flex;
+    height: 48%;
+    margin: 0 auto;
+    width: 640px;
+    position: absolute;
+    top: 5%;
+  }
+  .container2 {
+    display: flex;
+    height: 75%;
+    margin: 0 auto;
+    width: 640px;
+    position: absolute;
+    top: 5%;
+  }
+  
+  @media (max-width: 767px) {
+    .container {
+      flex-direction: column;
+      height: 630px;
+      width: 320px;
+    }
+  }
+  .left {
+    background: none;
+    height: 81%;
+    top: 30%;
+    position: relative;
+    width: 50%;
+    rotate: -25deg;
+    transition: 1s;
+  }
+  .left:hover {
+    rotate: -385deg;
+  }
+  .left2 {
+    background: none;
+    height: 52%;
+    top: 19%;
+    position: relative;
+    width: 50%;
+    rotate: -25deg;
+    transition: 1s;
+  }
+  .left2:hover {
+    rotate: -385deg;
+  }
+  @media (max-width: 767px) {
+    .left {
+      height: 100%;
+      left: 20px;
+      width: calc(100% - 40px);
+      max-height: 270px;
+    }
+  }
+  .login {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10%;
+  }
+  .login > img {
+    width: 50%;
+  }
+  .eula {
+    color: #c8c8c8;
+    font-family: 'YouandiModernTR', sans-serif;
+    font-size: 60px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight:bold;
+  }
+  .right {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: 10%;
+    height: 400px;
+  }
+  .right2 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: -5%;
+    height: 580px;
+  }
+  .right3 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: 1%;
+    height: 470px;
+  }
+  .right4 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: -18%;
+    height: 650px;
+  }
+  .right5 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: -18%;
+    height: 650px;
+  }
+  .right6 {
+    background: #3b233bc0;
+    box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+    color: #F1F1F2;
+    position: relative;
+    width: 50%;
+    top: 3%;
+    height: 430px;
+  }
+  @media (max-width: 767px) {
+    .right {
+      flex-shrink: 0;
+      height: 100%;
+      width: 100%;
+      max-height: 350px;
+    }
+  }
+  svg {
+    position: absolute;
+    width: 320px;
+  }
+  path {
+    fill: none;
+    stroke: url(#linearGradient);;
+    stroke-width: 4;
+    stroke-dasharray: 240 1386;
+  }
+  .form {
+    margin: 40px;
+    position: absolute;
+  }
+ 
+  label {
+    color:  #c2c2c5;
+    display: block;
+    font-size: 14px;
+    height: 16px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-family: 'YouandiModernTR', sans-serif;
+  }
+  input {
+    background: transparent;
+    border: 0;
+    color: #f2f2f2;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    outline: none !important;
+    width: 100%;
+    font-family: 'YouandiModernTR', sans-serif;
+  }
+  .aaa {
+    color:  #c2c2c5;
+    display: block;
+    font-size: 14px;
+    height: 16px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    font-family: 'YouandiModernTR', sans-serif;
+    text-align: center;
+  }
+  .aaa:hover {
+    color: gray;
+  }
+  .aaaa {
+    color:  #c2c2c5;
+    padding: 24px;
+    font-size: 14px;
+    height: 16px;
+    margin-bottom: 5px;
+    font-family: 'YouandiModernTR', sans-serif;
+    text-align: center;
+  }
+  .aaaa:hover {
+    color: gray;
+  }
+  input::-moz-focus-inner { 
+    border: 0; 
+  }
+  #submit {
+    width: 130px;
+    height: 50px;
+    color: #f3f3f3;
+    margin-top: 40px;
+    transition: border 300ms;
+    border: #c86ad485 inset 24px;
+    border-radius: 25%;
+    background-color: #7c567951;
+    margin-left: 22%;
+  }
+  #submit:hover {
+    border: #cb75d785 inset 4px;
+  }

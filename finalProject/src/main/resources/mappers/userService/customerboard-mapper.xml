@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="customerboardMapper">
+	
+	<resultMap id= "customerboardResultSet" type="customerboard">
+		<result column="CB_IDX" property="cb_idx"></result>
+		<result column="CB_TITLE" property="cb_title"></result>
+		<result column="CB_CONTENT" property="cb_content"></result>
+		<result column="CB_VIEWS" property="cb_views"></result>
+		<result column="CB_IN_DATE" property="cb_in_date"></result>
+		<result column="CB_UPDATE_DATE" property="cb_update_date"></result>
+		<result column="CB_DELETE_DATE" property="cb_delete_date"></result>
+		
+		<result column="CB_REPLY" property="cb_reply"></result>
+		<result column="CB_REPLY_CHECK" property="cb_reply_check"></result>
+		<result column="M_IDX" property="m_idx"></result>
+		<result column="M_NAME" property="m_name"></result>
+		<result column="M_TYPE" property="m_type"></result>
+	</resultMap>
+	
+	<select id = "selectListCount" parameterType="customerboard" resultType="_int">
+		SELECT COUNT(*) 
+		FROM CUSTOMERBOARD
+		WHERE cb_title LIKE '%' || #{searchText} || '%'
+	</select>
+	
+	<select id = "selectListAll" parameterType="customerboard" resultMap="customerboardResultSet">
+		SELECT * 
+		FROM CUSTOMERBOARD cb
+		JOIN MEMBER m
+		ON cb.m_idx=m.m_idx
+		WHERE cb_title LIKE '%' || #{searchText} || '%'
+		ORDER BY CB_IDX DESC
+	</select>
+	
+	<insert id = "enrollBoard" parameterType="customerboard">
+		INSERT INTO CUSTOMERBOARD VALUES(customerboard_seq.NextVAL,
+								#{cb_title},
+								#{cb_content},
+								#{cb_views},
+								SYSDATE,
+								null,
+								null,
+								null,
+								'N',
+								#{m_idx}
+								)
+	</insert>
+	
+	<select id = "detailBoard" resultMap="customerboardResultSet">
+		SELECT * 
+		FROM CUSTOMERBOARD cb
+		JOIN MEMBER m
+		ON cb.m_idx=m.m_idx
+		WHERE CB_idx = #{cb_idx}
+	</select>
+	
+	<update id = "views" parameterType="customerboard">
+		UPDATE CUSTOMERBOARD 
+		SET CB_views = #{cb_views}
+		WHERE CB_idx = #{cb_idx}
+	</update>
+	
+	<update id = "editBoard" parameterType="customerboard">
+		Update CUSTOMERBOARD
+		<choose>
+			<when test="m_type.equals('BASIC')">
+				SET CB_title = #{cb_title}, 
+					CB_content = #{cb_content}
+			</when> 
+			<when test="m_type.equals('ADMIN')">
+				SET CB_title = #{cb_title}, 
+					CB_content = #{cb_content},
+					CB_reply = #{cb_reply},
+					CB_reply_check = 'Y'
+			</when> 
+		</choose>
+		WHERE CB_idx = #{cb_idx}
+	</update>
+	
+	<delete id = "deleteBoard" parameterType="customerboard">
+		DELETE FROM CUSTOMERBOARD
+		WHERE CB_idx = #{cb_idx}
+	</delete>
+	
+	<select id = "selectWriter" resultType="string">
+		SELECT m.m_name 
+		FROM member m
+		JOIN customerboard cb
+		ON m.m_idx = cb.m_idx
+		WHERE cb_idx = #{cb_idx}
+	</select>
+</mapper>
