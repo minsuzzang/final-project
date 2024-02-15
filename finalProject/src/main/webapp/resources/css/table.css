@@ -54,6 +54,7 @@ section.notice {
   border-top: groove;
   border-bottom: groove;
   margin-bottom: 10px;
+  font-family: 'YouandiModernTR', sans-serif;
 }
 
 .board-table a {
@@ -77,6 +78,13 @@ section.notice {
 .board-table .th-num {
   width: 100px;
   text-align: center;
+}
+.board-table .th-nnum {
+  width: 10%;
+  text-align: center;
+}
+.board-table .th-ttitle {
+  width: 30%;
 }
 
 .board-table .th-date {
@@ -329,4 +337,9 @@ section.notice {
 .tdtd {
   font-size: 20px; 
   font-weight: bold; 
+}
+
+.dvdvdv {
+  margin-left: 5%;
+  margin-right: 5%;
 }
