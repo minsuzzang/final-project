@@ -118,13 +118,12 @@
                 <figure>
                     <img src="/resources/images/myinfo.png">
                 </figure>
-                <a href="myinfoEditForm.do">
-                    <button class="custom-btn-b3 btn-9-b" >수정하기</button>
+                <a href="/myInfo.html">
+                    <button class="custom-btn-b3 btn-9-b" formaction="/myInfoDetail.html">수정완료</button>
                 </a>
-                <a href="/">
-                    <button class="custom-btn-b3 btn-9-b" formaction="/">홈으로</button>
+                <a href="myinfoForm.do">
+                    <button class="custom-btn-b3 btn-9-b" >돌아가기</button>
                 </a>
-               
             </div>
         </div>
     </div><br><br><br>
@@ -134,23 +133,26 @@
                 <table class="board-table">
                     <tr>
                         <th scope="col" class="th-num">이름</th>
-                        <td>${memberinfo.m_name}</td>
+                        <td><input type="text" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_name}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">영문이름</th>
-                        <td><b>first </b> <b> last</b></td>
+                        <td>
+                            <input type="text" style="width: 30%; background-color: rgb(239, 239, 239);" value="first">
+                            <input type="text" style="width: 30%; background-color: rgb(239, 239, 239);" value="last">
+                        </td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">이메일</th>
-                        <td>${memberinfo.m_email}</td>
+                        <td><input type="text" style="width: 50%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_email}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">비밀번호</th>
-                        <td><input class="ininp" type="password" disabled value="${memberinfo.m_pwd}"></td>
+                        <td><input type="password" style="width: 50%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_pwd}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">주소</th>
-                        <td>${memberinfo.m_address}</td>
+                        <td><input type="text" style="width: 70%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_address}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">마일리지</th>
@@ -160,14 +162,14 @@
             </div>
         </div>
     </div>
-    
+
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <!-- /main -->
 
     <br><br><br><br><br><br>
- 
+
     <!-- 푸터 -->
     <footer class="footer">
         <!-- top버튼 -->

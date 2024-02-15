@@ -129,7 +129,7 @@
                 <table class="board-table">
                     <tr>
                         <th scope="col" class="th-num">영문이름</th>
-                        <td>#</td>
+                        <td>${membercard.m_english_name}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">카드번호</th>

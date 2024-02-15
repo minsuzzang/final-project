@@ -32,6 +32,16 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
+	@GetMapping("/myinfoEditForm.do")
+	public String myinfoEditForm(HttpSession session, MemberDTO member, Model model) {
+		member.setM_idx((int) session.getAttribute("m_idx"));
+		MemberDTO memberinfo = memberService.getMemberInfo(member);
+
+		model.addAttribute("memberinfo", memberinfo);
+
+		return "member/myinfoEdit";
+	}
+
 	@GetMapping("/myinfoForm.do")
 	public String myinfoForm(HttpSession session, MemberDTO member, Model model) {
 		member.setM_idx((int) session.getAttribute("m_idx"));

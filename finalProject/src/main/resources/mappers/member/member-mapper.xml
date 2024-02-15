@@ -11,7 +11,8 @@
 		<result column="M_IN_DATE" property="m_in_date"></result>
 		<result column="M_TYPE" property="m_type"></result>
 		<result column="M_ADDRESS" property="m_address"></result>
-		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
+		<result column="M_ENGLISH_NAME_FIRST" property="m_english_name_first"></result>
+		<result column="M_ENGLISH_NAME_LAST" property="m_english_name_last"></result>
 		<result column="M_TEMPORARY" property="m_temporary" />
 		<result column="M_MILEAGE" property="m_mileage" />
 	</resultMap>
@@ -72,7 +73,8 @@
             SYSDATE,
             'BASIC',
             #{m_address},
-            #{m_english_name},
+            #{m_english_name_first},
+            #{m_english_name_last},
             #{m_temporary},
             #{m_mileage}
     	)
@@ -90,11 +92,7 @@
         WHERE m_idx = #{m_idx}           
     </select>
     
-     <select id="membercard" resultMap="memberResultSet">
-        SELECT *
-        FROM CARD
-        WHERE m_idx = #{m_idx}           
-    </select>
+     
 </mapper>
 
 
