@@ -195,6 +195,19 @@
   rotate: -5deg;
 }
 
+.imgg14 {
+  width: 15%;
+  border-radius: 10px;
+  box-shadow: 15px 15px 15px gray;
+  transition: .5s;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.imgg14:hover {
+  rotate: -5deg;
+}
+
 .wttt {
   width: 45%;
 }
@@ -493,4 +506,13 @@ input[type="checkbox"] {
 .l1l1 {
   width: 65%;
   float: left;
+}
+.r1r11 {
+  width: 45%;
+  float: right;
+}
+.l1l11 {
+  width: 45%;
+  float: left;
+  margin-left: 10%;
 }

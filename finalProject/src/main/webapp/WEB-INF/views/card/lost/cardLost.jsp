@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/resources/css/detail.css">
 <link rel="stylesheet" href="/resources/css/card.css">
 <link rel="stylesheet" href="/resources/css/popup.css">
+<link rel="stylesheet" href="/resources/css/password.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
 	rel="stylesheet">
@@ -28,54 +29,46 @@
 <script src="/resources/js/menuEffect.js"></script>
 <script src="/resources/js/mousecursor.js"></script>
 <script src="/resources/js/visual_slide.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+<script src="/resources/js/password.js"></script>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 </head>
 
 <body>
-
-	<header>
-		<!-- 헤더 비디오 -->
-		<video class="vd" src="/resources/videos/header.mp4" muted autoplay
-			loop preload width="100%"></video>
-		<%@ include file="/WEB-INF/views/common/header.jsp"%>
-	</header>
+<%@include file ="../../common/header.jsp" %>
 
 	<!-- main -->
 	<br>
 	<br>
 	<br>
 	<div class="tac">
-		<p class="fff4">카드 발급신청 완료</p>
-		<br>
-		<p class="fff5">승인을 기다려주세요.</p>
-		<br>
-		<br>
-		<br>
-		<p class="fff5">
-			[ <b>the ${cd_color_upper}</b> ]
-		</p>
-		<br>
-		<br>
-		<button type="button" class="custom-btn-b btn-9-b"
-			onclick="location.href='/'">홈으로</button>
+		<p class="fff4">카드 도난 • 분실신고</p>
+		<p class="fff5">Report Theft • Loss Of Card</p>
 	</div>
-	<div class="dfjc3">
-		<img class="imgggg"
-			src="/resources/images/the${cd_color_upper}/the${cd_color_upper}${cd_design_num}.png"
-			alt=""> <img class="imgggg"
-			src="/resources/images/the${cd_color_upper}/${cd_color_lower}b.png"
-			alt="" style="margin-left: 50px;">
+
+	<div class="dvdv">
+		<p class="fff5">신고하실 카드를 선택해주세요.</p>
+		<br>
+		<div class="dfjc4">
+
+			<c:forEach var="card" items="${cards}">
+				<img class="imgg14" src="/resources/images/the${card.cd_color}/the${card.cd_color}${card.cd_design}.png"
+					alt="" >
+				<a href="/card/lost/${card.cd_idx}">
+					<button class="custom-btn-r btn-9-r" formaction="/userService.html">신고</button>
+				</a>
+			</c:forEach>
+
+		</div>
 	</div>
-	<br>
 	<br>
 	<br>
 	<br>
 
-	<div class="dfjc">
-		<button class="custom-btn-b btn-9-b" formaction="/greenSelect.html">홈으로</button>
-	</div>
+
 	<!-- /main -->
 
 	<footer> </footer>
