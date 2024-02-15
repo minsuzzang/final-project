@@ -11,9 +11,16 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Value;
+
+import kr.co.green.API.EmailAPI;
+
 public class EmailSender {
+
+	@Value("${password}")
+	private static String password;
+
 	private static final String EMAIL_USERNAME = "a01027735977@gmail.com";
-	private static final String EMAIL_PASSWORD = "";
 
 	public static void sendEmail(String toEmail, String subject, String content) throws MessagingException {
 		// SMTP server settings (Gmail example)
@@ -31,7 +38,8 @@ public class EmailSender {
 		// Set up the authenticator
 		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(EMAIL_USERNAME, EMAIL_PASSWORD);
+
+				return new PasswordAuthentication(EMAIL_USERNAME, EmailAPI.getEmailPassword());
 			}
 		};
 

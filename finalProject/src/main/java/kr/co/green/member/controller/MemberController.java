@@ -32,6 +32,16 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 
+	@GetMapping("/myinfoForm.do")
+	public String myinfoForm(HttpSession session, MemberDTO member, Model model) {
+		member.setM_idx((int) session.getAttribute("m_idx"));
+		MemberDTO memberinfo = memberService.getMemberInfo(member);
+
+		model.addAttribute("memberinfo", memberinfo);
+
+		return "member/myinfo";
+	}
+
 	@GetMapping("/emailForm.do")
 	public String emailForm(HttpServletResponse response, MemberDTO member, Model model, @RequestParam("idx") int idx) {
 
@@ -52,17 +62,17 @@ public class MemberController {
 	}
 
 	@GetMapping("/findPwdForm.do")
-	public String findPwdForm(HttpSession session, Model model) {
+	public String findPwdForm() {
 		return "member/pwdFind";
 	}
 
 	// 새 비밀번호 변경
 	@PostMapping("/updatePwd.do")
-	public String updatePwd(HttpServletResponse response, MemberDTO member, Model model) {
+	public String updatePwd(HttpServletResponse response, MemberDTO updatePwdmember, Model model) {
 
-		String hashedPassword = bcryptPasswordEncoder.encode(member.getM_pwd());
-		member.setM_pwd(hashedPassword);
-		int chkFl = memberService.updateMemberPassword(member);
+		String hashedPassword = bcryptPasswordEncoder.encode(updatePwdmember.getM_pwd());
+		updatePwdmember.setM_pwd(hashedPassword);
+		int chkFl = memberService.updateMemberPassword(updatePwdmember);
 		if (chkFl > 0) {
 			try {
 				scriptUtil.alertAndMovePage(response, "변경되었습니다.", "/member/loginForm.do");
@@ -81,12 +91,12 @@ public class MemberController {
 
 	// 인증코드
 	@PostMapping("/code.do")
-	public String Newpwd(MemberDTO member, Model model, HttpSession session) {
+	public String Newpwd(MemberDTO codemember, Model model, HttpSession session) {
 
-		session.setAttribute("email", member.getM_email());
+		session.setAttribute("email", codemember.getM_email());
 
 		try {
-			MemberDTO foundMember = memberService.findMemberPwd(member);
+			MemberDTO foundMember = memberService.findMemberPwd(codemember);
 			if (foundMember != null) {
 				// 인증코드가 일치하는 경우 새 비밀번호 페이지로 이동
 				return "member/newpwd";
@@ -102,19 +112,19 @@ public class MemberController {
 
 	// 인증코드 체크
 	@PostMapping("/codeChk.do")
-	public String codeChk(HttpServletResponse response, MemberDTO member, Model model) {
+	public String codeChk(HttpServletResponse response, MemberDTO codeChkmember, Model model) {
 
 		try {
 
-			MemberDTO memberDetail = memberService.memberDetail(member.getM_idx());
+			MemberDTO memberDetail = memberService.memberDetail(codeChkmember.getM_idx());
 
-			if (memberDetail.getM_temporary().equals(member.getM_code_chk())) {
+			if (memberDetail.getM_temporary().equals(codeChkmember.getM_code_chk())) {
 				scriptUtil.alert(response, "인증되었습니다.");
 			} else {
 				scriptUtil.alertAndMovePage(response, "인증이 실패되었습니다.\\n정확한 코드를 입력하세요.",
-						"/member/emailForm.do?idx=" + member.getM_idx());
+						"/member/emailForm.do?idx=" + codeChkmember.getM_idx());
 			}
-			model.addAttribute("m_idx", member.getM_idx());
+			model.addAttribute("m_idx", codeChkmember.getM_idx());
 			return "member/newpwd";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,9 +136,9 @@ public class MemberController {
 	// 비밀번호 찾기
 	@PostMapping("/findPwd.do")
 	@ResponseBody
-	public String findPwd(MemberDTO member, Model model) {
+	public String findPwd(MemberDTO findPwdmember, Model model) {
 		try {
-			MemberDTO foundMember = memberService.findMemberPwd(member);
+			MemberDTO foundMember = memberService.findMemberPwd(findPwdmember);
 			if (foundMember.getM_idx() != 0) {
 				String newPassword = generateRandomPassword();
 
@@ -167,8 +177,8 @@ public class MemberController {
 	// 아이디 찾기
 	@PostMapping("/findId.do")
 	@ResponseBody
-	public String findId(MemberDTO member, Model model) {
-		MemberDTO foundMember = memberService.findMemberId(member);
+	public String findId(MemberDTO findIdmember, Model model) {
+		MemberDTO foundMember = memberService.findMemberId(findIdmember);
 
 		if (foundMember.getM_email() != null) {
 
@@ -185,13 +195,11 @@ public class MemberController {
 
 	// 로그인
 	@PostMapping("/login.do")
-	public String loginIndex(MemberDTO member, HttpSession session, Model model) {
-		MemberDTO loginUser = memberService.loginMember(member);
+	public String loginIndex(MemberDTO loginmember, HttpSession session, Model model) {
+		MemberDTO loginUser = memberService.loginMember(loginmember);
 		// loginUser 객체가 비어있지 않을 때 (로그인 성공)
-		if (!Objects.isNull(loginUser) && bcryptPasswordEncoder.matches(member.getM_pwd(), loginUser.getM_pwd())) {
+		if (!Objects.isNull(loginUser) && bcryptPasswordEncoder.matches(loginmember.getM_pwd(), loginUser.getM_pwd())) {
 			session.setAttribute("m_idx", loginUser.getM_idx());
-			session.setAttribute("m_name", loginUser.getM_name());
-
 			session.setAttribute("m_name", loginUser.getM_name());
 			session.setAttribute("m_type", loginUser.getM_type());
 

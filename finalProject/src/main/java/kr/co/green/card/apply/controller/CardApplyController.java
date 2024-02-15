@@ -52,6 +52,7 @@ public class CardApplyController {
 		String m_address = (String) applyMap.get("m_address");
 		String m_detailed_address = (String) applyMap.get("m_detailed_address");
 		
+		
 		Optional<Integer> memberidx = Optional.ofNullable((Integer)session.getAttribute("m_idx"));
 
 		memberidx.ifPresentOrElse(idx -> {
