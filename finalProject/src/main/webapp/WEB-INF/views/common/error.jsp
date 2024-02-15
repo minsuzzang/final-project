@@ -29,7 +29,7 @@
    <div id="notfound">
       <div class="notfound">
          <div class="notfound-404">
-                <img src="/images/logo2.png" alt="">
+                <img src="/resources/images/logo2.png" alt="">
             <h3>Oops!</h3>
             <h1><span>E</span><span>r</span><span>r</span><span>o</span><span>r</span></h1>
          </div>

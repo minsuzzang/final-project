@@ -17,15 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.green.card.model.dto.CardDTO;
 import kr.co.green.card.model.service.CardService;
+import kr.co.green.common.session.SessionHandler;
 
 @RestController
 public class CardApplyController {
 
 	private final CardService cardService;
+	private final SessionHandler sessionHandler;
 
 	@Autowired
-	public CardApplyController(CardService cardService) {
+	public CardApplyController(CardService cardService, SessionHandler sessionHandler) {
 		this.cardService = cardService;
+		this.sessionHandler = sessionHandler;
 	}
 
 	@PostMapping("/card/apply")
@@ -39,19 +42,25 @@ public class CardApplyController {
 			}
 		}
 
+		//세션 값들을 전부 맵<String, String>에 넣어서, 서비스계층(cardService.cardApply()) 에도 map으로 파라미터 넘김. -> 서비스에서 맵 깜
+		
 		String cd_color = (String) session.getAttribute("cd_color");
+		
 		String cd_design = (String) applyMap.get("cd_design");
-		String m_english_name = (String) applyMap.get("m_english_name");
+		String m_english_first_name = (String) applyMap.get("m_english_first_name");
+		String m_english_last_name = (String) applyMap.get("m_english_last_name");
 		String m_address = (String) applyMap.get("m_address");
-
-		Optional<Integer> memberidx = Optional.ofNullable((Integer) session.getAttribute("m_idx"));
+		String m_detailed_address = (String) applyMap.get("m_detailed_address");
+		
+		
+		Optional<Integer> memberidx = Optional.ofNullable((Integer)session.getAttribute("m_idx"));
 
 		memberidx.ifPresentOrElse(idx -> {
-			cardService.cardApply(idx, cd_color, cd_design, m_english_name, m_address);
+			cardService.cardApply(idx, cd_color, cd_design, m_english_first_name, m_english_last_name, m_address, m_detailed_address);
 			session.setAttribute("cd_design", cd_design);
 			resultMap.put("success", true);
 			resultMap.put("redirectUrl", "/card/result.do");
-		}, () -> {
+		}, ()->{
 			resultMap.put("success", false);
 			resultMap.put("redirectUrl", "/exception/dataAccessResourceFailureException.do");
 		});

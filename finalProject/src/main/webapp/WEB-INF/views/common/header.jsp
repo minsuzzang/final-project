@@ -45,8 +45,8 @@
 
                     <li><a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
                         <ul id="sub_menu">
-                            <li><a href="#">내 정보</a></li>
-                            <li><a href="#">내 카드</a></li>
+                            <li><a href="/member/myinfoForm.do">내 정보</a></li>
+                            <li><a href="/member/mycardForm.do">내 카드</a></li>
                             <li><a href="#">내 등급</a></li>
                             <li><a href="#">이용내역</a></li>
                             <li><a href="#">마일리지</a></li>
@@ -75,7 +75,7 @@
                             <li><a href="/notice/list.do">공지사항</a></li>
                             <li><a href="/customerboard/list.do">고객 문의</a></li>
                             <li><a href="/customerboard/FAQ.do" style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
-                            <li><a href="#">카드 도난 • 분실신고</a></li>
+                            <li><a href="/card/lost">카드 도난 • 분실신고</a></li>
                         </ul>
                     </li>
 

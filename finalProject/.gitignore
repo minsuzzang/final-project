@@ -16,6 +16,8 @@ local.properties
 target/
 src/main/webapp/WEB-INF/spring/root-context.xml
 
+src/main/java/kr/co/green/API
+
 # External tool builders
 .externalToolBuilders/
 
