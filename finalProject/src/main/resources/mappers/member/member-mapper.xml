@@ -13,6 +13,7 @@
 		<result column="M_ADDRESS" property="m_address"></result>
 		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
 		<result column="M_TEMPORARY" property="m_temporary" />
+		<result column="M_MILEAGE" property="m_mileage" />
 	</resultMap>
 	
 	
@@ -64,15 +65,16 @@
 	<insert id="registerMember">
     INSERT INTO member VALUES (
         member_seq.NEXTVAL,
-        #{m_email},
-        #{m_pwd},
-        #{m_name},
-        #{m_phone},
-        SYSDATE,
-        'BASIC',
-        #{m_address},
-        #{m_english_name},
-        #{m_temporary}
+            #{m_email},
+            #{m_pwd},
+            #{m_name},
+            #{m_phone},
+            SYSDATE,
+            'BASIC',
+            #{m_address},
+            #{m_english_name},
+            #{m_temporary},
+            #{m_mileage}
     	)
 	</insert>
 	
@@ -81,6 +83,18 @@
 		FROM member
 		WHERE m_idx = #{m_idx}
 	</select>
+	
+	 <select id="getMemberInfo" resultMap="memberResultSet">
+        SELECT *
+        FROM member
+        WHERE m_idx = #{m_idx}           
+    </select>
+    
+     <select id="membercard" resultMap="memberResultSet">
+        SELECT *
+        FROM CARD
+        WHERE m_idx = #{m_idx}           
+    </select>
 </mapper>
 
 

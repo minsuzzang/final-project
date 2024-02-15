@@ -21,7 +21,6 @@
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
 	</repositories>
-
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
