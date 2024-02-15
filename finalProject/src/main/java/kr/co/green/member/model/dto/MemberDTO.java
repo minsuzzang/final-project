@@ -22,7 +22,8 @@ public class MemberDTO {
 	private String m_temporary;
 	private String newPassword;
 	private String m_code_chk;
-	private String m_mileage;
+	private int m_mileage;
+
 
 	public MemberDTO() {
 		super();

@@ -5,8 +5,7 @@ function getModalList(idx) {
 	const no = document.getElementById("no");
 	const yes = document.getElementById("yes");
 	cd_idx = idx;
-	
-	console.log(idx);
+
 	$.ajax({
 		url: '/admin/getModalList.do',
 		type: 'post',
