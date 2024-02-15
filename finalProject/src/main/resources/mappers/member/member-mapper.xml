@@ -11,7 +11,8 @@
 		<result column="M_IN_DATE" property="m_in_date"></result>
 		<result column="M_TYPE" property="m_type"></result>
 		<result column="M_ADDRESS" property="m_address"></result>
-		<result column="M_ENGLISH_NAME" property="m_english_name"></result>
+		<result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
+		<result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
 		<result column="M_TEMPORARY" property="m_temporary" />
 		<result column="M_MILEAGE" property="m_mileage" />
 	</resultMap>
@@ -65,16 +66,17 @@
 	<insert id="registerMember">
     INSERT INTO member VALUES (
         member_seq.NEXTVAL,
-            #{m_email},
-            #{m_pwd},
-            #{m_name},
-            #{m_phone},
-            SYSDATE,
-            'BASIC',
-            #{m_address},
-            #{m_english_name},
-            #{m_temporary},
-            #{m_mileage}
+        #{m_email},
+        #{m_pwd},
+        #{m_name},
+        #{m_phone},
+        SYSDATE,
+        'BASIC',
+        #{m_address},
+        #{m_english_first_name},
+        #{m_english_last_name},
+        #{m_temporary},
+        #{m_mileage}
     	)
 	</insert>
 	

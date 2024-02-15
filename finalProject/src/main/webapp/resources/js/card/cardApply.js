@@ -10,10 +10,12 @@ function submitCardInfo(){
 	var checkedRadio = document.querySelector('input[name="testimonial"]:checked');
     var designValue = checkedRadio ? checkedRadio.value : '';
 	
-    var englishName = document.querySelector('input[name="englishName"]').value;
+    var englishFirstName = document.querySelector('input[name="englishFirstName"]').value;
+    var englishLastName = document.querySelector('input[name="englishLastName"]').value;
     var address = document.querySelector('input[name="address"]').value;
+    var detailedAddress = document.querySelector('input[name="address_detail"]').value;
     
-    if (!englishName || !address) {
+    if (!englishFirstName || !englishLastName || !address || !detailedAddress) {
         alert("모든 항목을 입력해주세요.");
         return;
     }
@@ -22,8 +24,10 @@ function submitCardInfo(){
 	
     var data = JSON.stringify({
         'cd_design' : designValue,
-        'm_english_name' : englishName,
-        'm_address' : address
+        'm_english_first_name' : englishFirstName,
+        'm_english_last_name' : englishLastName,
+        'm_address' : address,
+        'm_detailed_address' : detailedAddress
     })
 	
     var xhr = new XMLHttpRequest();
@@ -36,8 +40,10 @@ function submitCardInfo(){
             var responseJson = xhr.responseText;
             let response = JSON.parse(responseJson);
             if (response.success) {
+            	alert('최종 신청이 완료되었습니다. 배송현황은 마이페이지에서 확인하세요.')
                 window.location.href = response.redirectUrl;
             } else {
+            	alert('최종 신청에 실패하였습니다.')
                 window.location.href = response.redirectUrl;
             }
         }

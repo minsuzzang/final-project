@@ -8,6 +8,7 @@
     max-height: 0px;
     overflow: hidden;
     transition: 0.25s ease-in-out;
+    font-family: 'YouandiModernTR', sans-serif;
 }
 
 .faq-drawer__title {
