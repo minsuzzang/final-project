@@ -74,12 +74,9 @@
         SYSDATE,
         'BASIC',
         #{m_address},
-        #{m_english_name},
-        #{m_temporary},
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},
-        #{m_mileage},
         0
     	)
 	</insert>
