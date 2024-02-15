@@ -74,16 +74,13 @@
         SYSDATE,
         'BASIC',
         #{m_address},
-<<<<<<< HEAD
         #{m_english_name},
         #{m_temporary},
-        0
-=======
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},
-        #{m_mileage}
->>>>>>> branch 'master' of https://github.com/minsuzzang/final-project.git
+        #{m_mileage},
+        0
     	)
 	</insert>
 	
