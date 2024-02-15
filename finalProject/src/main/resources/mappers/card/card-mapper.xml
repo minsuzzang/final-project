@@ -14,6 +14,21 @@
 		<result column="CD_APPLY_DATE" property="cd_apply_date"></result>
 		<result column="CD_EXPIRED_DATE" property="cd_expired_date"></result>
 	</resultMap>
+	
+	<resultMap type="member" id="memberResultSet">
+		<result column="M_IDX" property="m_idx"></result>
+		<result column="M_EMAIL" property="m_email"></result>
+		<result column="M_PWD" property="m_pwd"></result>
+		<result column="M_NAME" property="m_name"></result>
+		<result column="M_PHONE" property="m_phone"></result>
+		<result column="M_IN_DATE" property="m_in_date"></result>
+		<result column="M_TYPE" property="m_type"></result>
+		<result column="M_ADDRESS" property="m_address"></result>
+		<result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
+		<result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
+		<result column="M_TEMPORARY" property="m_temporary" />
+	</resultMap>
+	
 
 	<insert id="cardApplyCardInfo" parameterType="map">
 		INSERT INTO card
@@ -25,8 +40,10 @@
 
 	<update id="cardApplyMemberInfo" parameterType="map">
 		UPDATE member SET
-		m_english_name = #{m_english_name},
-		m_address = #{m_address}
+		m_english_first_name = #{m_english_first_name},
+		m_english_last_name = #{m_english_last_name},
+		m_address = #{m_address},
+		m_detailed_address = #{m_detailed_address}
 		WHERE m_idx = #{m_idx}
 	</update>
 
@@ -40,6 +57,29 @@
 		SELECT * FROM card
 		WHERE m_idx = #{m_idx}
 		AND cd_apply_status IS NULL
+	</select>
+	
+	<select id="getMemberOwnCard" resultMap="cardResultSet">
+		SELECT cd_idx, cd_design, cd_color FROM card
+		WHERE m_idx = #{m_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	
+	<select id="getMemberLostCard" resultMap="cardResultSet">
+		SELECT cd_number, cd_idx, cd_expired_date, cd_cvc, cd_color, cd_design FROM card
+		WHERE cd_idx = #{cd_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	
+	<select id="getMemberIdx" resultType="_int">
+		SELECT m_idx FROM card
+		WHERE cd_idx = #{cd_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	
+	<select id="getMemberEnglishName" resultMap="memberResultSet">
+		SELECT m_idx, m_english_first_name, m_english_last_name FROM member
+		WHERE m_idx = #{m_idx}
 	</select>
 
 	<update id="cardFinalApply" parameterType="card">

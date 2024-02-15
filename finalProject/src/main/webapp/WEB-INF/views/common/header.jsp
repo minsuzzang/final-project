@@ -75,7 +75,7 @@
                             <li><a href="/notice/list.do">공지사항</a></li>
                             <li><a href="/customerboard/list.do">고객 문의</a></li>
                             <li><a href="/customerboard/FAQ.do" style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
-                            <li><a href="#">카드 도난 • 분실신고</a></li>
+                            <li><a href="/card/lost">카드 도난 • 분실신고</a></li>
                         </ul>
                     </li>
 

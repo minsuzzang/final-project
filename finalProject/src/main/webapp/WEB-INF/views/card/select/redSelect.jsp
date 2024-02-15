@@ -29,6 +29,8 @@
 <script src="/resources/js/mousecursor.js"></script>
 <script src="/resources/js/visual_slide.js"></script>
 <script src="/resources/js/card/cardApply.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/resources/js/card/mapAPI.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
@@ -90,16 +92,31 @@
 		<p class="egft1">카드 신청</p>
 		<br> <br> <br>
 		<div class="yhb2">
-			<div class="dv">
-				<input class="ipp" type="text" name="englishName" required>
-				<label class="lb">English Name</label> <span class="sp"></span>
-			</div>
-			<div class="dv">
-				<input class="ipp" type="text" name="address" required> <label
-					class="lb">Address</label> <span class="sp"></span>
-			</div>
-			<br> <br> <br>
-			<button class="custom-btn-b btn-9-b" id="custom-btn-b">신청</button>
+			 <div class="dv">
+                <input class="ipp" type="text" name="englishFirstName" required>
+                <label class="lb">English First Name</label>
+                <span class="sp"></span>
+            </div>
+            <div class="dv">
+                <input class="ipp" type="text" name="englishLastName" required>
+                <label class="lb">English Last Name</label>
+                <span class="sp"></span>
+            </div>
+            <div class="dv">
+                <input class="ipp" type="text" id="address_kakao" name="address" readonly placeholder="Address" required>
+                <span class="sp"></span>
+            </div>
+            
+            <!-- 상세주소 입력칸 -->
+            <div class="dv">
+                <input class="ipp" type="text" name="address_detail" required>
+                <label class="lb">Detailed Address</label>
+                <span class="sp"></span>
+            </div>
+            
+            
+            <br><br><br>
+            <button class="custom-btn-b btn-9-b" id="custom-btn-b">신청</button>
 		</div>
 	</div>
 

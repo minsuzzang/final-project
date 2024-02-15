@@ -133,7 +133,7 @@
             </div>
         </div>
         <div class="r1r1">
-            <img src="/resources/images/hdch6.png" alt="" style="width: 80%;">
+            <img src="/resources/images/hdch6.png" alt="" style="width: 70%;">
         </div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -143,19 +143,19 @@
             <div class="dvdv">
                 <ol class="ool">
                     <span class="sspan">the <b>Black</b></span><br><br><br><br>
-                    <li class="lli"><span class="sssspan">영문이름 : <b>#</b></span><br>
+                    <li class="lli"><span class="sssspan">영문이름 : <b>${memberDTO.m_english_name}</b></span><br>
                     </li>
-                    <li class="lli"><span class="sssspan">카드번호 : <b>#</b></span><br>
+                    <li class="lli"><span class="sssspan">카드번호 : <b>${cardDTO.cd_number}</b></span><br>
                     </li>
-                    <li class="lli"><span class="sssspan">유효기간 : <b>#</b></span><br>
+                    <li class="lli"><span class="sssspan">유효기간 : <b>${cardDTO.cd_expired_date}</b></span><br>
                     </li>
-                    <li class="lli"><span class="sssspan">CVC : <b>#</b></span><br>
+                    <li class="lli"><span class="sssspan">CVC : <b>${cardDTO.cd_cvc}</b></span><br>
                     </li>
                 </ol>
             </div>
         </div>
         <div class="r1r11">
-            <img class="imgg999" src="/resources/images/theBlack/theBlack1.png" alt="" style="width: 50%;">
+            <img class="imgg999" src="/resources/images/the${cardDTO.cd_color}/the${cardDTO.cd_color}${cardDTO.cd_design}.png" alt="">
             <button class="custom-btn-r btn-9-r" formaction="/userService.html">도난 및 분실신고</button>
         </div>
     </div>
