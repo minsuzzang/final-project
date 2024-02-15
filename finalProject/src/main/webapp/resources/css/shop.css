@@ -309,3 +309,31 @@ span .wwww {
   display: flex;
   justify-content: center;
 }
+
+input#chk_top{
+  display:none;
+  }
+/*input 바로 다음의 label*/
+input#chk_top + label{
+  cursor:pointer;
+ }
+
+/*input 바로 다음의 label:before 에 체크하기 전 CSS 설정*/
+input#chk_top + label:before{
+  content:"";
+  display:inline-block;
+  width:15px;
+  height:15px;
+  line-height:15px;
+  margin-top: -4px;
+  border:1px solid #cbcbcb;
+  vertical-align:middle;/*체크 전과 체크 후 높이 차이 때문에 설정*/
+  }
+  
+/*checked된 input 바로 다음의 label:before 에 체크 후 CSS 설정*/  
+input#chk_top:checked + label:before{
+  font-family: 'YouandiModernTR', sans-serif;
+  font-size:13px;
+  text-align:center;
+  content:"V";
+  }
