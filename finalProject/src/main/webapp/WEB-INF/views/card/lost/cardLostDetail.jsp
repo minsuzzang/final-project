@@ -143,7 +143,7 @@
             <div class="dvdv">
                 <ol class="ool">
                     <span class="sspan">the <b>Black</b></span><br><br><br><br>
-                    <li class="lli"><span class="sssspan">영문이름 : <b>${memberDTO.m_english_name}</b></span><br>
+                    <li class="lli"><span class="sssspan">영문이름 : <b>${memberDTO.m_english_first_name} ${memberDTO.m_english_last_name}</b></span><br>
                     </li>
                     <li class="lli"><span class="sssspan">카드번호 : <b>${cardDTO.cd_number}</b></span><br>
                     </li>
@@ -166,9 +166,7 @@
 
     <footer>
 
-
     </footer>
-
 
 </body>
 

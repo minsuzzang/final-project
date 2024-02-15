@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(value = DataAccessResourceFailureException .class)
+	@ExceptionHandler(value = DataAccessResourceFailureException.class)
 	@ResponseBody
 	public Map<String, Object> handleDataAccessResourceFailureException (DataAccessResourceFailureException  e) {
 		Map<String, Object> resultMap = new HashMap<>();
@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
 		}
 		return resultMap;
 	}
-	@ExceptionHandler(value = NullPointerException .class)
+	@ExceptionHandler(value = NullPointerException.class)
 	public Object handleNullPointerException (NullPointerException e, HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();

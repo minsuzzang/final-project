@@ -30,26 +30,16 @@ public class CardDAOMyBatis implements CardDAO {
 	@Transactional
 	@Override
 	// 카드 신청을 위한 신청정보 저장 메소드
-	public void insertCardApplyInfo(int m_idx, String cd_color, String cd_design, String m_english_first_name, String m_english_last_name,
-			String m_address, String m_detailed_address) {
-
-		Map<String, Object> params = new HashMap<>();
-		params.put("m_idx", m_idx);
-		params.put("cd_color", cd_color);
-		params.put("cd_design", cd_design);
-		params.put("m_english_last_name", m_english_last_name);
-		params.put("m_english_first_name", m_english_first_name);
-		params.put("m_address", m_address);
-		params.put("m_detailed_address", m_detailed_address);
+	public void insertCardApplyInfo(Map<String, Object> applyMap) {
 
 		try {
-	        int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", params);
+	        int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", applyMap);
 	        if (memberResult <= 0) {
 	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다."
 	            );
 	        }
 
-	        int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", params);
+	        int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", applyMap);
 	        if (cardResult != 1) {
 	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
 	        }	

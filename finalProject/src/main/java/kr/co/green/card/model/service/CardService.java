@@ -9,7 +9,7 @@ import kr.co.green.card.model.dto.CardDTO;
 public interface CardService {
 	
 	// 카드 신청을 위한 기본 신청정보 저장 메소드
-	void cardApply(int m_idx, String cd_color, String cd_design, String m_english_first_name, String m_english_last_name, String m_address, String m_detailed_address);
+	void cardApply(Map<String, Object> applyMap);
 
 	// 카드 신청을 위한 모든 신청정보 저장 메소드
 	int cardApply(CardDTO cardDTO);
