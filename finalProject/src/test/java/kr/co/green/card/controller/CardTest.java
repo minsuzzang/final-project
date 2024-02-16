@@ -48,7 +48,7 @@ public class CardTest {
 	@Test
 	public void testCardApplyForm() throws Exception {
 		session.setAttribute("m_idx", 1);
-		String viewName = cardController.cardApplyForm(session, redirectAttributes);
+		String viewName = cardController.cardApplyForm(1, redirectAttributes);
 		assertEquals("card/apply/cardApply", viewName);
 	}
 
@@ -60,7 +60,7 @@ public class CardTest {
 
 	@Test
 	public void testDesign() throws Exception {
-		String viewName = cardController.design(Optional.of("red"), session);
+		String viewName = cardController.design(Optional.of("red"));
 		assertEquals("card/select/redSelect", viewName);
 	}
 
@@ -68,7 +68,7 @@ public class CardTest {
 	public void testCardApplyResult() throws Exception {
 		session.setAttribute("cd_color", "red");
 		session.setAttribute("cd_design", "1");
-		String viewName = cardController.cardApplyResult(session, model);
+		String viewName = cardController.cardApplyResult(model);
 		assertEquals("card/result/cardApplyResult", viewName);
 		session.removeAttribute("cd_color");
 		session.removeAttribute("cd_design");
@@ -81,7 +81,7 @@ public class CardTest {
 	    session.setAttribute("m_idx", 1);  // 테스트할 인덱스 값 설정
 
 	    // 메소드 호출
-	    String viewName = cardController.setCardInfo(session, model);
+	    String viewName = cardController.setCardInfo(1, model);
 
 	    // 결과 검증
 	    assertEquals("card/result/setCardInfo", viewName);

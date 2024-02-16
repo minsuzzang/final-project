@@ -140,7 +140,14 @@ public class CardController {
 		mav.setViewName("/card/lost/cardLostDetail");
 		return mav;
 	}
-
+	
+	@GetMapping("/report/{idx}")
+	public String cardReport(@PathVariable("idx") int cardIdx, RedirectAttributes redirectAttributes) {
+		cardService.cardReport(cardIdx);
+		
+		redirectAttributes.addFlashAttribute("alertMsg", "신고되었습니다.");
+		return "redirect:/";
+	}
 }
 
 

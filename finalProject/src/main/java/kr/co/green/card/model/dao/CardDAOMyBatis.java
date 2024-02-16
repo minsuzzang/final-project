@@ -83,4 +83,9 @@ public class CardDAOMyBatis implements CardDAO {
 		return lostCardMap;
 		
 		}
+
+	@Override
+	public int cardReport(int cd_idx) {
+		return sqlSession.delete("cardMapper.deleteMemberLostCard", cd_idx);
+	}
 }

@@ -17,4 +17,6 @@ public interface CardDAO {
 	List<CardDTO> cardInfo(int m_idx, String status);
 
 	Map<String, Object> cardInfo(int cd_idx);
+
+	int cardReport(int cd_idx);
 }

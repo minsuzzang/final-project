@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(value = DataAccessResourceFailureException.class)
-	@ResponseBody
 	public Map<String, Object> handleDataAccessResourceFailureException (DataAccessResourceFailureException  e) {
 		Map<String, Object> resultMap = new HashMap<>();
 		if (e.getMessage().equals("서버 오류 또는 입력값이 잘못되었습니다.")) {

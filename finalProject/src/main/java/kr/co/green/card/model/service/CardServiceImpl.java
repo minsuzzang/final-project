@@ -141,4 +141,9 @@ public class CardServiceImpl implements CardService {
 		return lostCardMap;
 
 	}
+
+	@Override
+	public void cardReport(int cd_idx) {
+		int result = cardDAO.cardReport(cd_idx);
+	}
 }

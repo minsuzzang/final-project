@@ -91,5 +91,10 @@
 		cd_apply_status = '신청완료'
 		WHERE cd_idx = #{cd_idx}
 	</update>
+	
+	<delete id="deleteMemberLostCard" parameterType="card">
+		DELETE FROM card 
+		WHERE cd_idx = #{cd_idx}
+	</delete>
 
 </mapper>

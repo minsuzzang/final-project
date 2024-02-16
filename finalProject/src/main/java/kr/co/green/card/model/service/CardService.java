@@ -32,4 +32,7 @@ public interface CardService {
 	//분실신고 선택된 카드 정보 조회
 	Map<String, Object> cardInfo(int cd_idx);
 
+	//분실신고
+	void cardReport(int cd_idx);
+
 }

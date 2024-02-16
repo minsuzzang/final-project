@@ -142,7 +142,7 @@
         <div class="l1l11">
             <div class="dvdv">
                 <ol class="ool">
-                    <span class="sspan">the <b>Black</b></span><br><br><br><br>
+                    <span class="sspan">the <b>${cardDTO.cd_color}</b></span><br><br><br><br>
                     <li class="lli"><span class="sssspan">영문이름 : <b>${memberDTO.m_english_first_name} ${memberDTO.m_english_last_name}</b></span><br>
                     </li>
                     <li class="lli"><span class="sssspan">카드번호 : <b>${cardDTO.cd_number}</b></span><br>
@@ -156,7 +156,9 @@
         </div>
         <div class="r1r11">
             <img class="imgg999" src="/resources/images/the${cardDTO.cd_color}/the${cardDTO.cd_color}${cardDTO.cd_design}.png" alt="">
-            <button class="custom-btn-r btn-9-r" formaction="/userService.html">도난 및 분실신고</button>
+            <form id="reportForm" action="/card/report/${cardDTO.cd_idx}" method="GET">
+            	<button class="custom-btn-r btn-9-r" onclick="submitForm()">도난 및 분실신고</button>
+            </form>
         </div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -169,5 +171,13 @@
     </footer>
 
 </body>
+
+<script>
+	function submitForm() {
+	    if(confirm('정말로 도난 및 분실신고를 하시겠습니까?')) {
+	        document.getElementById('reportForm').submit();
+	    }
+	}
+</script>
 
 </html>
