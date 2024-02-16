@@ -99,7 +99,7 @@ table {
   }
   
   .board-table .ttbb td:hover {
-    background-color: #aaf392;
+    background-color: #c3c3c3;
   }
   .board-table .ttbb td:hover img {
     -webkit-transform: scale(1.2);

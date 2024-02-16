@@ -14,7 +14,8 @@
 		<result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
 		<result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
 		<result column="M_TEMPORARY" property="m_temporary" />
-		<result column="M_MILEAGE" property="m_mileage" />
+		<result column="M_MILEAGE" property="m_mileage"></result>
+
 	</resultMap>
 	
 	
@@ -76,7 +77,7 @@
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},
-        #{m_mileage}
+        0
     	)
 	</insert>
 	

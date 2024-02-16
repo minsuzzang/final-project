@@ -22,6 +22,7 @@
     <script src="/resources/js/visual_slide.js"></script>
     <script src="/resources/js/menuEffect.js"></script>
     <script src="/resources/js/mousecursor.js"></script>
+    <script src="/resources/js/purchase/modal2.js"></script>
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
@@ -88,7 +89,7 @@
 
                     </div>
                     <div class="jjpp">※ 교환 및 환불이 불가능합니다.</div><br><br><br>
-                    <a href="#popupA" class="custom-btn-b btn-9-b jbjbjb" style="text-decoration-line: none;">할인구매</a>
+                    <a href="#popupA" onclick="purchase(${sessionScope.m_idx})" class="custom-btn-b btn-9-b jbjbjb" style="text-decoration-line: none;">할인구매</a>
                     <button onclick="requestPay()" class="custom-btn-b btn-9-b jbjbjb" style="text-decoration-line: none;">일반구매</button>
 
                     
@@ -104,9 +105,8 @@
                     <tr>
                         <th scope="col" class="th-num">결제수단</th>
                         <td class="tdd2">
-                            <select name="" id="" required>
+                            <select name="cardSelect" id="cardSelect" required>
                                 <option value="" selected disabled hidden>결제수단을 선택해주세요.</option>
-                                <option value="">{card.cd_color}/{card.cd_design}</option>
                             </select>
                         </td>
                     </tr>
@@ -125,28 +125,28 @@
                     <tr>
                         <th scope="col" class="th-num">유효기간</th>
                         <td>
-                            <input type="text" placeholder="00/00" maxlength="5" style="width: 12%;" id="expiryDate"
+                            <input type="text" placeholder="00/00" maxlength="5" style="width: 12%;" id="expiredDate"
                                 onkeyup="formatExpiryDate(this)" required>
                         </td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">CVC</th>
                         <td>
-                            <input type="text" placeholder="000" maxlength="3" style="width: 8%;" required>
+                            <input type="text" placeholder="000" maxlength="3" style="width: 8%;" id="cvc" required>
                             ※ 카드 뒷면의 숫자 중 마지막 3자리
                         </td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">카드 비밀번호</th>
                         <td>
-                            <input type="password" placeholder="****" maxlength="4" style="width: 9%;" required>
+                            <input type="password" placeholder="****" maxlength="4" style="width: 9%;" id="cardPwd" required>
                             ※ 네자리 숫자
                         </td>
                     </tr>
                 </table>
             </div><br>
             <div class="dfjc">
-                <a href="#popupB" class="custom-btn-b btn-9-b jbjb" style="text-decoration-line: none;">다음</a>
+                <a href="#popupB" onclick="nextBtn()" id="next" class="custom-btn-b btn-9-b jbjb" style="text-decoration-line: none;">다음</a>
             </div>
         </div>
     </div>
@@ -163,18 +163,17 @@
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">가격</th>
-                        <td class="tdd2">${product.p_price2}</td>
+                        <td class="tdd2" id="p_price2">${product.p_price2}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">적립율</th>
-                        <td class="tdd2"><b>#</b> %</td>
+                        <td class="tdd2"><b id="accumulation">#</b> %</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">마일리지</th>
                         <td class="tdd2">
-                            <input type="text" disabled style="border: none; background: none;"
-                            value="#">
-                            <button class="custom-btn-b btn-9-b jbjb tdd3">모두사용</button>
+							<b id="mileage">#</b>
+                            <button class="custom-btn-b btn-9-b jbjb tdd3" onclick="mileageUse()">모두사용</button>
                         </td>
                     </tr>
                 </table>
@@ -184,15 +183,18 @@
                 <table class="board-table">
                     <tr>
                         <th scope="col" class="th-num">최종가격</th>
-                        <td class="tdd2">#</td>
+                        <td class="tdd2" id="totalPrice">${product.p_price2}</td>
                     </tr>
 
                 </table>
-            </div>
-            <input type="checkbox" required> 결제동의<br>
+            </div><br>
+				<p class="chk_box">
+                <input type="checkbox" id="chk_top" />
+                <label for="chk_top"> 결제동의</label>
+            </p>
             <div class="dfjc">
-                <a type="submit" href="product.html" class="custom-btn-b btn-9-b jbjb"
-                    style="text-decoration-line: none;">결제</a>
+                <a type="submit" href="#" class="custom-btn-b btn-9-b jbjb"
+                    style="text-decoration-line: none;" onclick="payment(${product.p_idx})">결제</a>
             </div>
         </div>
     </div>
@@ -236,7 +238,6 @@
             buyer_postcode : '123-456'
         }, function (rsp) { // callback
             if (rsp.success) {
-                console.log(rsp);
                 window.location='http://localhost/product/result.do?idx=${product.p_idx}'
                 $.ajax({
                 	type:"POST",
