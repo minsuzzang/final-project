@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
 		}
 	}
 	
-	@ExceptionHandler(value = NullPointerException.class)
+	@ExceptionHandler(value = SQLException.class)
 	public Object handleSQLException (SQLException e, HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();
