@@ -60,7 +60,7 @@ public class CardController {
 		if (!color.isPresent()) {
 			return "common/error"; // color 값이 없는 경우의 처리
 		}
-		return "card/detail/" + color.get().toLowerCase() + "Detail"; // color을 변수로 받아서 각자 다른 detail페이지로 넘김
+		return "card/detail/" + color.get().toLowerCase() + "Detail"; 
 	}
 
 	@GetMapping("/design/{color}")

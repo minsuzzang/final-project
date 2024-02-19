@@ -35,8 +35,7 @@ public class CardDAOMyBatis implements CardDAO {
 		try {
 	        int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", applyMap);
 	        if (memberResult <= 0) {
-	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다."
-	            );
+	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
 	        }
 
 	        int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", applyMap);

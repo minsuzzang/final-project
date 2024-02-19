@@ -64,7 +64,7 @@ public class CardApplyController {
 		int result = cardService.cardApply(cardDTO);
 
 		if (result == 1)
-			return new ResponseEntity<>("Card information submitted", HttpStatus.OK);
+			return new ResponseEntity<>("카드정보 제출 완료", HttpStatus.OK);
 		else
 			return new ResponseEntity<>("카드정보 제출 실패", HttpStatus.BAD_REQUEST);
 	}

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DataBaseAccessResult {
-	// 한 번의 트랜잭션에 대한 결과값을 반환해주는 클래스.
+	// 한 번의 DB접근에 대한 결과값을 반환해주는 클래스.
 	
 	private Map<String, Object> createResultMap(boolean success, String redirectUrl) {
 		Map<String, Object> resultMap = new HashMap<>();

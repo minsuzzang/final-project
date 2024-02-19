@@ -1,5 +1,6 @@
 package kr.co.green.common.exception;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,14 +17,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(value = DataAccessResourceFailureException.class)
-	public Map<String, Object> handleDataAccessResourceFailureException (DataAccessResourceFailureException  e) {
+	public Object handleDataAccessResourceFailureException (DataAccessResourceFailureException e, HttpServletRequest request) {
+		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();
-		if (e.getMessage().equals("서버 오류 또는 입력값이 잘못되었습니다.")) {
+		
+		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 			resultMap.put("success", false);
-			resultMap.put("redirectUrl", "/common/error");
+			resultMap.put("message", e.getMessage());
+			resultMap.put("redirectUrl", "/exception/dataAccessResourceFailureException");
+			return resultMap;
 		}
-		return resultMap;
+		else {
+			return new ModelAndView("redirect:/exception/nullPointerException");
+		}
 	}
+	
 	@ExceptionHandler(value = NullPointerException.class)
 	public Object handleNullPointerException (NullPointerException e, HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
@@ -32,25 +39,30 @@ public class GlobalExceptionHandler {
 		
 		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 			resultMap.put("success", false);
-			resultMap.put("message", e.getMessage());	// 추후 비동기 요청이 왔을 때는 메시지로 띄우도록 수정 예정
-			resultMap.put("redirectUrl", "/exception/nullPointerException.do");
+			resultMap.put("message", e.getMessage());	
+			resultMap.put("redirectUrl", "/exception/nullPointerException");
 			return resultMap;
 		}
 		else {
-			return new ModelAndView("redirect:/exception/nullPointerException.do");
+			return new ModelAndView("redirect:/exception/nullPointerException");
 		}
 	}
 	
-//	@ExceptionHandler(value = NullPointerException .class)
-//	public Map<String, Object> handleNullPointerException (NullPointerException  e) {
-//		Map<String, Object> resultMap = new HashMap<>();
-//		if (e.getMessage().equals("예외 발생")) {
-//			resultMap.put("success", false);
-//			resultMap.put("redirectUrl", "/exception/nullPointerException.do");
-//			return resultMap;
-//		}
-//		return resultMap;
-//	}
+	@ExceptionHandler(value = NullPointerException.class)
+	public Object handleSQLException (SQLException e, HttpServletRequest request) {
+		String headerValue = request.getHeader("X-Requested-With");
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
+			resultMap.put("success", false);
+			resultMap.put("message", e.getMessage());	
+			resultMap.put("redirectUrl", "/exception/SQLException");
+			return resultMap;
+		}
+		else {
+			return new ModelAndView("redirect:/exception/SQLException");
+		}
+	}
 	
 }
 
