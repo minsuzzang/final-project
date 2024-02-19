@@ -64,6 +64,22 @@ public class GlobalExceptionHandler {
 		}
 	}
 	
+	@ExceptionHandler(value = IllegalArgumentException.class)
+	public Object handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {
+		String headerValue = request.getHeader("X-Requested-With");
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
+			resultMap.put("success", false);
+			resultMap.put("message", e.getMessage());	
+			resultMap.put("redirectUrl", "/exception/IllegalArgumentException");
+			return resultMap;
+		}
+		else {
+			return new ModelAndView("redirect:/exception/IllegalArgumentException");
+		}
+	}
+	
 }
 
 

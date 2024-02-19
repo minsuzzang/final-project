@@ -4,7 +4,6 @@ package kr.co.green.card.controller;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,6 +84,7 @@ public class CardController {
 		model.addAttribute("cd_color_lower", color);
 		model.addAttribute("cd_color_upper", cd_color_upper);
 		model.addAttribute("cd_design_num", design.charAt(design.length() - 1));
+		
 		sessionHandler.removeSessionAttribute("cd_color");
 		sessionHandler.removeSessionAttribute("cd_design");
 

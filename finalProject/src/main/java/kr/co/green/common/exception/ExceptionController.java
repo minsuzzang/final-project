@@ -30,4 +30,9 @@ public class ExceptionController {
 	public String handleSQLException(HttpServletRequest request, Model model) {
 		return redirectErrorPage(model, "처리 중 문제가 발생했습니다.");
 	}
+	
+	@GetMapping("IllegalArgumentException")
+	public String handleIllegalArgumentException(HttpServletRequest request, Model model) {
+		return redirectErrorPage(model, "잘못된 입력입니다.");
+	}
 }
