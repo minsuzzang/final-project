@@ -7,9 +7,9 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Service;
 
 import kr.co.green.card.model.dao.CardDAO;
@@ -24,6 +24,41 @@ public class CardServiceImpl implements CardService {
 	public CardServiceImpl(CardDAO cardDAO) {
 		super();
 		this.cardDAO = cardDAO;
+	}
+	
+	// 카드정보 최종 설정 전 승인여부와 비밀번호 길이 체크
+	private boolean validateCard(CardDTO cardDTO) {
+		if(cardDTO.getCd_approve().equals("심사중") || cardDTO.getCd_pwd().length()<4)
+			return false;
+		else
+			return true;
+	}
+	
+	//카드번호 생성
+	private void generateCardNumber(List<CardDTO> cards, Random random) {
+		IntStream.range(0, cards.size()).forEach(i -> {
+			StringBuilder cardNumber = new StringBuilder();
+			IntStream.range(0, 4).forEach(j -> {
+				int digits = random.nextInt(9999);
+				String stringDigits = String.format("%04d", digits);
+				cardNumber.append(stringDigits);
+				if (j < 3) {
+					cardNumber.append("-");
+				}
+			});
+			cards.get(i).setCd_number(cardNumber.toString());
+		});
+	}
+
+	//카드 색깔, 디자인 수정(view단에서 동적으로 가져오기 위함)
+	private void changeCardColorAndDesign(CardDTO card) {
+		String color = card.getCd_color();
+		color = color.substring(0, 1).toUpperCase() + color.substring(1);
+		card.setCd_color(color);
+
+		String design = card.getCd_design();
+		design = design.substring(design.length() - 1);
+		card.setCd_design(design);
 	}
 
 	@Override
@@ -41,25 +76,17 @@ public class CardServiceImpl implements CardService {
 
 	@Override
 	public void generateCardDetail(List<CardDTO> cards) {
-		// 카드번호 생성하고, cvc생성 메소드와 유효기간 생성 메소드 호출
+		// 카드번호 생성, cvc생성, 유효기간 생성 메소드 호출
 
 		final Random random = new Random();
-
-		IntStream.range(0, cards.size()).forEach(i -> {
-			StringBuilder cardNumber = new StringBuilder();
-			IntStream.range(0, 4).forEach(j -> {
-				int digits = random.nextInt(9999);
-				String stringDigits = String.format("%04d", digits);
-				cardNumber.append(stringDigits);
-				if (j < 3) {
-					cardNumber.append("-");
-				}
-			});
-			cards.get(i).setCd_number(cardNumber.toString());
-		});
-
+		
+		generateCardNumber(cards, random);
 		generateCvc(cards, random);
 		generateExpiredDate(cards);
+		
+		IntStream.range(0, cards.size()).forEach(i -> {
+			changeCardColorAndDesign(cards.get(i));
+		});
 	}
 
 	@Override
@@ -90,30 +117,22 @@ public class CardServiceImpl implements CardService {
 		Objects.requireNonNull(cardDTO.getCd_cvc(), "CVC가 입력되어야 합니다. 다시 시도해 주세요.");
 		Objects.requireNonNull(cardDTO.getCd_pwd(), "비밀번호가 입력되어야 합니다. 다시 시도해 주세요.");
 
-		if (cardDTO.getCd_approve().equals("심사중") || cardDTO.getCd_pwd().length() < 4) {
+		if (!validateCard(cardDTO)) {
 			throw new NullPointerException();
 		}
 
 		int result = cardDAO.insertCardApplyInfo(cardDTO);
 		if (result < 1) {
-			throw new NullPointerException("DB 삽입 실패"); // 추후 수정 -> db insert 익셉션
+			throw new NullPointerException("DB 삽입 실패"); 
 		}
 		return result;
-
 	}
-
+	
 	@Override
 	public List<CardDTO> cardInfo(int m_idx, String status) {
 
 		List<CardDTO> cards = cardDAO.cardInfo(m_idx, status).stream().map(card -> {
-			String color = card.getCd_color();
-			color = color.substring(0, 1).toUpperCase() + color.substring(1);
-			card.setCd_color(color);
-
-			String design = card.getCd_design();
-			design = design.substring(design.length() - 1);
-			card.setCd_design(design);
-
+			changeCardColorAndDesign(card);
 			return card;
 		}).collect(Collectors.toList());
 
@@ -145,5 +164,7 @@ public class CardServiceImpl implements CardService {
 	@Override
 	public void cardReport(int cd_idx) {
 		int result = cardDAO.cardReport(cd_idx);
+		if(result != 1)
+			throw new DataAccessResourceFailureException("분실카드 신고 실패");
 	}
 }

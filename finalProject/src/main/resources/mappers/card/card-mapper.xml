@@ -57,6 +57,7 @@
 		SELECT * FROM card
 		WHERE m_idx = #{m_idx}
 		AND cd_apply_status IS NULL
+		AND cd_approve = '승인'
 	</select>
 	
 	<select id="getMemberOwnCard" resultMap="cardResultSet">

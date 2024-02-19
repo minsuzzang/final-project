@@ -100,13 +100,6 @@ public class CardController {
 		// 카드 번호, cvc, 유효기간 생성 
 		cardService.generateCardDetail(cards);
 		
-		IntStream.range(0, cards.size()).forEach(i -> {
-			cards.get(i).setCd_color(String.valueOf(cards.get(i).getCd_color().charAt(0)).toUpperCase() 
-					+ cards.get(i).getCd_color().substring(1, cards.get(i).getCd_color().length()));
-			
-			cards.get(i).setCd_design(String.valueOf((cards.get(i).getCd_design().charAt(cards.get(i).getCd_design().length() - 1))));
-		});
-		
 		String jsonCards = jsonParser.toJson(cards);
 	    model.addAttribute("cards", cards);
 	    model.addAttribute("jsonCards", jsonCards);

@@ -72,10 +72,6 @@
 	<br>
 	<br>
 	<br>
-
-	<div class="dfjc">
-		<button class="custom-btn-b btn-9-b" formaction="/greenSelect.html">홈으로</button>
-	</div>
 	<!-- /main -->
 
 	<footer> </footer>

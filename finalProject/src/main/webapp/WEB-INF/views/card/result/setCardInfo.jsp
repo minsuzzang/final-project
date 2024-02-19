@@ -32,6 +32,7 @@
 <script src="/resources/js/mousecursor.js"></script>
 <script src="/resources/js/visual_slide.js"></script>
 <script src="/resources/js/password.js"></script>
+
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -189,7 +190,7 @@
 			</div>
 		</div>
 		<br><br>
-		<div class="dfjc5">
+		<div class="dfjc55">
 			<a href="#">
 				<button class="custom-btn-b btn-9-b ttt" onclick="submitCardInfo()">저장</button>
 			</a>
@@ -237,7 +238,6 @@
 					</a>
 				</form>
 			</div>
-			<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script type="text/javascript">
 
                 var _gaq = _gaq || [];
@@ -315,7 +315,7 @@
 			    		            'cd_pwd': password
 		    		       	 	}),
 			    		    	success: function(response){
-									alert("카드가 등록되었습니다.");    		  
+									alert("최종신청이 완료되었습니다. 배송현황은 마이페이지에서 확인하실 수 있습니다.");    		  
 									window.location.href = '/card/cardInfo';
 			    		    	},
 			    		    	error: function(xhr, status, error) {
