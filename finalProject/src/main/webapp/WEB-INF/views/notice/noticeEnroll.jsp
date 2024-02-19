@@ -75,38 +75,46 @@
         <p class="egft4">Click Card</p>
         <div>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/theBlack1.png">
                 </a>
                 <p class="egft3" style="color: black;">The Black</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/thePurple1.png">
                 </a>
                 <p class="egft3" style="color: rgb(95, 0, 95);">The Purple</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/theRed1.png">
                 </a>
                 <p class="egft3" style="color: rgb(187, 0, 0);">The Red</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/theGreen1.png">
                 </a>
                 <p class="egft3" style="color: green;">The Green</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/thePink1.png">
                 </a>
                 <p class="egft3" style="color: rgb(252, 71, 102);">The Pink</p>
             </figure>
         </div>
     </div>
-
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
     <!-- /main -->
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>

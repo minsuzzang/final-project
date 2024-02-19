@@ -68,16 +68,16 @@
 			src="/resources/images/the${cd_color_upper}/${cd_color_lower}b.png"
 			alt="" style="margin-left: 50px;">
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<div class="dfjc">
 		<button class="custom-btn-b btn-9-b" formaction="/greenSelect.html">홈으로</button>
 	</div>
 	<!-- /main -->
-
+	
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 

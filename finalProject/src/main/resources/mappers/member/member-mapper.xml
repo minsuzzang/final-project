@@ -2,69 +2,70 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberMapper">
-	<resultMap type="member" id="memberResultSet">
-		<result column="M_IDX" property="m_idx"></result>
-		<result column="M_EMAIL" property="m_email"></result>
-		<result column="M_PWD" property="m_pwd"></result>
-		<result column="M_NAME" property="m_name"></result>
-		<result column="M_PHONE" property="m_phone"></result>
-		<result column="M_IN_DATE" property="m_in_date"></result>
-		<result column="M_TYPE" property="m_type"></result>
-		<result column="M_ADDRESS" property="m_address"></result>
-		<result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
-		<result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
-		<result column="M_TEMPORARY" property="m_temporary" />
-		<result column="M_MILEAGE" property="m_mileage"></result>
+   <resultMap type="member" id="memberResultSet">
+      <result column="M_IDX" property="m_idx"></result>
+      <result column="M_EMAIL" property="m_email"></result>
+      <result column="M_PWD" property="m_pwd"></result>
+      <result column="M_NAME" property="m_name"></result>
+      <result column="M_PHONE" property="m_phone"></result>
+      <result column="M_IN_DATE" property="m_in_date"></result>
+      <result column="M_TYPE" property="m_type"></result>
+      <result column="M_ADDRESS" property="m_address"></result>
+      <result column="M_DETAILED_ADDRESS" property="m_detailed_address"></result>
+      <result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
+      <result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
+      <result column="M_TEMPORARY" property="m_temporary" />
+      <result column="M_MILEAGE" property="m_mileage"></result>
 
-	</resultMap>
-	
-	
-	<!--검증코드 업데이트 -->
-	<update id="updateMembertmpPassword" parameterType="member">
-		UPDATE member
+   </resultMap>
+   
+   
+   <!--검증코드 업데이트 -->
+   <update id="updateMembertmpPassword" parameterType="member">
+      UPDATE member
         SET m_temporary = #{m_temporary}
         WHERE m_email = #{m_email}
-	</update>
-	
-	<!--비밀번호 업데이트-->
-	<update id="updateMemberPassword" parameterType="member">
-		UPDATE member
+   </update>
+   
+   <!--비밀번호 업데이트-->
+   <update id="updateMemberPassword" parameterType="member">
+      UPDATE member
         SET m_pwd = #{m_pwd}, m_temporary = ''
         WHERE m_idx = #{m_idx} 
-	</update>
-	
-	<!--비밀번호 찾기-->
-	<select id="findMemberPwd" resultMap="memberResultSet">
-		SELECT m_idx,m_email FROM member
+   </update>
+   
+   <!--비밀번호 찾기-->
+   <select id="findMemberPwd" resultMap="memberResultSet">
+      SELECT m_idx,m_email FROM member
         WHERE m_email = #{m_email} AND m_name = #{m_name} AND m_phone = #{m_phone}
-	</select>
-	
-	<select id="chkMembertmpPwd" resultMap="memberResultSet">
-		SELECT m_temporary FROM member
+   </select>
+   
+   <select id="chkMembertmpPwd" resultMap="memberResultSet">
+      SELECT m_temporary FROM member
         WHERE m_idx = #{m_idx}
-	</select>
-	
-	<!--아이디 찾기-->
-	<select id="findMemberId" resultMap="memberResultSet">
-		SELECT m_email FROM member 
+   </select>
+   
+   <!--아이디 찾기-->
+   <select id="findMemberId" resultMap="memberResultSet">
+      SELECT m_email FROM member 
         WHERE m_name = #{m_name} AND m_phone = #{m_phone}
-	</select>
-	
-	<!--이메일 중복 체크-->
-	 <select id="checkEmail" resultType="_int"> 
-		SELECT COUNT(*) FROM member
-		WHERE m_email = #{email}
-	</select>
-	
-	<!--로그인-->
-	<select id="loginMember" resultMap="memberResultSet">
-    	SELECT *
-    	FROM member
-    	WHERE m_email = #{m_email} 
-	</select>
-	
-	<!--회원가입-->
-	<insert id="registerMember">
+   </select>
+   
+   <!--이메일 중복 체크-->
+    <select id="checkEmail" resultType="_int"> 
+      SELECT COUNT(*) FROM member
+      WHERE m_email = #{email}
+   </select>
+   
+   <!--로그인-->
+   <select id="loginMember" resultMap="memberResultSet">
+       SELECT *
+       FROM member
+       WHERE m_email = #{m_email} 
+   </select>
+   
+   <!--회원가입-->
+   <insert id="registerMember">
     INSERT INTO member VALUES (
         member_seq.NEXTVAL,
         #{m_email},
@@ -74,20 +75,21 @@
         SYSDATE,
         'BASIC',
         #{m_address},
+        #{m_detailed_address},
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},
         0
-    	)
-	</insert>
-	
-	<select id="memberDetail" resultMap="memberResultSet">
-		SELECT *
-		FROM member
-		WHERE m_idx = #{m_idx}
-	</select>
-	
-	 <select id="getMemberInfo" resultMap="memberResultSet">
+       )
+   </insert>
+   
+   <select id="memberDetail" resultMap="memberResultSet">
+      SELECT *
+      FROM member
+      WHERE m_idx = #{m_idx}
+   </select>
+   
+    <select id="getMemberInfo" resultMap="memberResultSet">
         SELECT *
         FROM member
         WHERE m_idx = #{m_idx}           
@@ -99,6 +101,12 @@
         WHERE m_idx = #{m_idx}           
     </select>
 </mapper>
+
+
+
+
+
+
 
 
 

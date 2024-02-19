@@ -47,9 +47,7 @@
                         <ul id="sub_menu">
                             <li><a href="/member/myinfoForm.do">내 정보</a></li>
                             <li><a href="/member/mycardForm.do">내 카드</a></li>
-                            <li><a href="#">내 등급</a></li>
                             <li><a href="#">이용내역</a></li>
-                            <li><a href="#">마일리지</a></li>
                         </ul>
                     </li>
 

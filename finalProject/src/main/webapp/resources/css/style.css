@@ -1205,7 +1205,7 @@ hr {
     width: 100%;
     bottom: 0;
     height: 100px;
-    background: url("/images/wave.png");
+    background: url("/resources/images/wave.png");
     background-size: 1000px 100px;
 }
 
