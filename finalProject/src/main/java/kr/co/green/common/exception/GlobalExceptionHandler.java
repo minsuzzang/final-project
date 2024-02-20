@@ -17,70 +17,73 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(value = DataAccessResourceFailureException.class)
-	public Object handleDataAccessResourceFailureException (DataAccessResourceFailureException e, HttpServletRequest request) {
+	public Object handleDataAccessResourceFailureException(DataAccessResourceFailureException e,
+			HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();
-		
+
 		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 			resultMap.put("success", false);
 			resultMap.put("message", e.getMessage());
 			resultMap.put("redirectUrl", "/exception/dataAccessResourceFailureException");
 			return resultMap;
-		}
-		else {
+		} else {
 			return new ModelAndView("redirect:/exception/nullPointerException");
 		}
 	}
-	
+
 	@ExceptionHandler(value = NullPointerException.class)
-	public Object handleNullPointerException (NullPointerException e, HttpServletRequest request) {
+	public Object handleNullPointerException(NullPointerException e, HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();
-		
+
 		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 			resultMap.put("success", false);
-			resultMap.put("message", e.getMessage());	
+			resultMap.put("message", e.getMessage());
 			resultMap.put("redirectUrl", "/exception/nullPointerException");
 			return resultMap;
-		}
-		else {
-			return new ModelAndView("redirect:/exception/nullPointerException");
+		} else {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("statement", e.getMessage());
+			mav.setViewName("redirect:/exception/nullPointerException");
+			return mav;
 		}
 	}
-	
+
 	@ExceptionHandler(value = SQLException.class)
-	public Object handleSQLException (SQLException e, HttpServletRequest request) {
+	public Object handleSQLException(SQLException e, HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();
-		
+
 		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 			resultMap.put("success", false);
-			resultMap.put("message", e.getMessage());	
+			resultMap.put("message", e.getMessage());
 			resultMap.put("redirectUrl", "/exception/SQLException");
 			return resultMap;
-		}
-		else {
-			return new ModelAndView("redirect:/exception/SQLException");
+		} else {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("statement", e.getMessage());
+			mav.setViewName("redirect:/exception/nullPointerException");
+			return mav;
 		}
 	}
-	
+
 	@ExceptionHandler(value = IllegalArgumentException.class)
 	public Object handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {
 		String headerValue = request.getHeader("X-Requested-With");
 		Map<String, Object> resultMap = new HashMap<>();
-		
+
 		if (headerValue != null && headerValue.equals("XMLHttpRequest")) {
 			resultMap.put("success", false);
-			resultMap.put("message", e.getMessage());	
+			resultMap.put("message", e.getMessage());
 			resultMap.put("redirectUrl", "/exception/IllegalArgumentException");
 			return resultMap;
-		}
-		else {
-			return new ModelAndView("redirect:/exception/IllegalArgumentException");
+		} else {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("statement", e.getMessage());
+			mav.setViewName("redirect:/exception/nullPointerException");
+			return mav;
 		}
 	}
-	
+
 }
-
-
-
