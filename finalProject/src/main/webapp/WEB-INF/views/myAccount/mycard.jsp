@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,26 +128,28 @@
         <div class="yhb3">
             <div id="board-list">
                 <table class="board-table">
+                    <c:forEach var="row" items="${cards}" varStatus="status">
                     <tr>
                         <th scope="col" class="th-num">영문이름</th>
-                        <td>${membercard.m_english_name}</td>
+                        <td>${memberinfo.m_english_first_name}</td><td>${memberinfo.m_english_last_name}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">카드번호</th>
-                        <td>#</td>
+                        <td>${row.cd_number}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">유효기간</th>
-                        <td>#</td>
+                        <td>${row.cd_expired_date}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">CVC</th>
-                        <td>#</td>
+                        <td>${row.cd_cvc}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">비밀번호</th>
-                        <td>#</td>
+                        <td>${row.cd_pwd}</td>
                     </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>

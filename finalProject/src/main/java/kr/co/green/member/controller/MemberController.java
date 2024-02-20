@@ -2,6 +2,7 @@ package kr.co.green.member.controller;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.List;
 import java.util.Objects;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.green.card.model.dto.CardDTO;
+import kr.co.green.card.model.service.CardService;
 import kr.co.green.email.util.EmailSender;
 import kr.co.green.member.model.dto.MemberDTO;
 import kr.co.green.member.model.service.MemberServiceImpl;
+import kr.co.green.product.model.dto.ProductDTO;
+import kr.co.green.product.model.service.ProductService;
+import kr.co.green.purchase.model.dto.PurchaseDTO;
+import kr.co.green.purchase.model.service.PurchaseService;
 import kr.co.green.scriptUtil.scriptUtil;
 
 @Controller
@@ -30,7 +37,75 @@ public class MemberController {
 	private MemberServiceImpl memberService;
 
 	@Autowired
+	private CardService cardService;
+
+	@Autowired
+	private ProductService productService;
+
+	@Autowired
+	private PurchaseService purchaseService;
+
+	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
+
+	@GetMapping("/UsageHistoryForm.do")
+	public String UsageHistoryForm(PurchaseDTO purchase, MemberDTO member, HttpSession session, Model model) {
+		Integer m_idx = (Integer) session.getAttribute("m_idx");
+		member.setM_idx(m_idx);
+		purchase.setM_idx(m_idx);
+
+		List<PurchaseDTO> purchasesinfo = purchaseService.purchaseInfo(m_idx);
+		MemberDTO memberinfo = memberService.getMemberInfo(member);
+
+		// 각 구매에 해당하는 상품 정보를 조회
+		for (PurchaseDTO p : purchasesinfo) {
+			ProductDTO productinfo = productService.productDetail(p.getP_idx());
+			p.setProductinfo(productinfo); // 구매 정보에 상품 정보 설정
+
+			p.setPh_total_price(totalPrice);
+		}
+
+		model.addAttribute("purchasesinfo", purchasesinfo);
+		model.addAttribute("memberinfo", memberinfo);
+
+		return "myAccount/UsageHistory";
+	}
+
+	@GetMapping("/MyCardForm.do")
+	public String MyCardForm(CardDTO card, MemberDTO member, HttpSession session, Model model) {
+		Integer m_idx = (Integer) session.getAttribute("m_idx");
+		member.setM_idx(m_idx);
+		card.setCd_idx(m_idx);
+
+		List<CardDTO> cards = cardService.cardInfo(m_idx, "내카드 조회");
+		MemberDTO memberinfo = memberService.getMemberInfo(member);
+		model.addAttribute("memberinfo", memberinfo);
+		model.addAttribute("cards", cards);
+
+		return "myAccount/mycard";
+	}
+
+	@PostMapping("/myinfoEdit.do")
+	public String myinfoEdit(HttpServletResponse response, MemberDTO member, HttpSession session, Model model) {
+
+		// 세션에서 회원 ID 가져오기
+		Integer memberId = (Integer) session.getAttribute("m_idx");
+
+		// DTO에 회원 ID 설정
+		member.setM_idx(memberId);
+
+		int result = memberService.updateMemberInfo(member);
+		if (result > 0) {
+			// 업데이트 성공
+			MemberDTO updatedMember = memberService.getMemberInfo(member);
+			model.addAttribute("memberinfo", updatedMember);
+
+			return "myAccount/myinfo";
+		} else {
+			// 업데이트 실패
+			return "myAccount/myinfoEdit";
+		}
+	}
 
 	@GetMapping("/myinfoEditForm.do")
 	public String myinfoEditForm(HttpSession session, MemberDTO member, Model model) {
@@ -39,7 +114,7 @@ public class MemberController {
 
 		model.addAttribute("memberinfo", memberinfo);
 
-		return "member/myinfoEdit";
+		return "myAccount/myinfoEdit";
 	}
 
 	@GetMapping("/myinfoForm.do")
@@ -49,7 +124,7 @@ public class MemberController {
 
 		model.addAttribute("memberinfo", memberinfo);
 
-		return "member/myinfo";
+		return "myAccount/myinfo";
 	}
 
 	@GetMapping("/emailForm.do")

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,62 +113,51 @@
     <p class="egft1">My Info</p>
     <p class="egft2"></p>
 
-    <div class="left13">
-        <div class="dfjc6">
-            <div class="shop2">
-                <figure>
-                    <img src="/resources/images/myinfo.png">
-                </figure>
-                <a href="myinfoEditForm.do">
-                    <button class="custom-btn-b3 btn-9-b" >수정하기</button>
-                </a>
-                <a href="/">
-                    <button class="custom-btn-b3 btn-9-b" formaction="/">홈으로</button>
-                </a>
-               
-            </div>
-        </div>
-    </div><br><br><br>
+    <br><br><br>
+    <form action="myinfoEdit.do" method="post">
     <div class="right13">
         <div class="yhb3">
             <div id="board-list">
                 <table class="board-table">
                     <tr>
                         <th scope="col" class="th-num">이름</th>
-                        <td>${memberinfo.m_name}</td>
+                        <td><input type="text" name="m_name" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_name}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">영문이름</th>
-                        <td><b>first </b> <b> last</b></td>
+                        <td>
+                            <input type="text" name="m_english_first_name" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_english_first_name}">
+                            <input type="text" name="m_english_last_name" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_english_last_name}">
+                        </td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">이메일</th>
-                        <td>${memberinfo.m_email}</td>
+                        <td><input type="text" name="m_email" style="width: 50%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_email}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">비밀번호</th>
-                        <td><input class="ininp" type="password" disabled value="${memberinfo.m_pwd}"></td>
+                        <td><input type="password" name="m_pwd" style="width: 50%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_pwd}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">주소</th>
-                        <td>${memberinfo.m_address}</td>
-                    </tr>
-                    <tr>
-                        <th scope="col" class="th-num">마일리지</th>
-                        <td>${memberinfo.m_mileage}</td>
+                        <td><input type="text" name="m_address" style="width: 70%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_address}"></td>
                     </tr>
                 </table>
             </div>
         </div>
-    </div>
-    
+    </div>    
+        <button type="submit" class="custom-btn-b3 btn-9-b">수정완료</button>
+</form>
+<a href="myinfoForm.do">
+    <button class="custom-btn-b3 btn-9-b" >돌아가기</button>
+</a>
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <!-- /main -->
 
     <br><br><br><br><br><br>
- 
+
     <!-- 푸터 -->
     <footer class="footer">
         <!-- top버튼 -->

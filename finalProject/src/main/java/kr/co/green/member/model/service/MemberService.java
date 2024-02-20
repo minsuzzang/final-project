@@ -32,4 +32,6 @@ public interface MemberService {
 
 	public MemberDTO membercard(MemberDTO member);
 
+	public int updateMemberInfo(MemberDTO member);
+
 }

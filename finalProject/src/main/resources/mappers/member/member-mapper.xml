@@ -11,12 +11,12 @@
 		<result column="M_IN_DATE" property="m_in_date"></result>
 		<result column="M_TYPE" property="m_type"></result>
 		<result column="M_ADDRESS" property="m_address"></result>
+		<result column="M_DETILED_ADDRESS" property="m_detailed_address"></result>
 		<result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
 		<result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
 		<result column="M_TEMPORARY" property="m_temporary" />
-		<result column="M_MILEAGE" property="m_mileage" />
+		<result column="M_MILEAGE" property="m_mileage" />	
 	</resultMap>
-	
 	
 	<!--검증코드 업데이트 -->
 	<update id="updateMembertmpPassword" parameterType="member">
@@ -63,7 +63,8 @@
 	</select>
 	
 	<!--회원가입-->
-	<insert id="registerMember">
+	 <!--회원가입-->
+   <insert id="registerMember">
     INSERT INTO member VALUES (
         member_seq.NEXTVAL,
         #{m_email},
@@ -76,9 +77,11 @@
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},
-        #{m_mileage}
-    	)
-	</insert>
+        #{m_mileage},
+        0
+       )
+   </insert>
+	
 	
 	<select id="memberDetail" resultMap="memberResultSet">
 		SELECT *
@@ -92,7 +95,19 @@
         WHERE m_idx = #{m_idx}           
     </select>
     
-     
+     <update id="updateMemberInfo" parameterType="member">
+        UPDATE member
+        SET m_name = #{m_name},
+            m_english_first_name = #{m_english_first_name},
+            m_english_last_name = #{m_english_last_name},
+            m_email = #{m_email},
+            m_pwd = #{m_pwd},
+            m_address = #{m_address}
+        WHERE m_idx = #{m_idx}
+    </update>
+	
+	
+	 
 </mapper>
 
 

@@ -75,4 +75,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.membercard(sqlSession, member);
 	}
 
+	@Override
+	public int updateMemberInfo(MemberDTO member) {
+		return memberDao.updateMemberInfo(sqlSession, member);
+	}
+
 }

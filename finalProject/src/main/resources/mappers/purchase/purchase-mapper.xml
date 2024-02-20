@@ -30,5 +30,11 @@
 								#{m_idx}
 								)
 	</insert>
-
+	
+	 <select id="purchaseInfo" resultMap="purchaseResultSet">
+      SELECT *
+	  FROM PURCHASE_HISTORY  
+	  WHERE m_idx = #{m_idx}     
+    </select>
+	
 </mapper>

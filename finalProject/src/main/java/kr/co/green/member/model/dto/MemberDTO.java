@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MemberDTO {
-	private int m_idx;
+
+	private Integer m_idx;
 	private String m_name;
 	private String m_pwd;
 	private String m_email;

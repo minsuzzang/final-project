@@ -18,4 +18,5 @@ public class ProductDTO {
 	private int p_price1;
 	private int p_price2;
 	private String p_file_path;
+
 }
