@@ -16,15 +16,15 @@ public class PurchaseDAO {
 	public List<PurchaseDTO> purchaseInfo(SqlSessionTemplate sqlSession, int m_idx) {
 		return sqlSession.selectList("purchaseMapper.purchaseInfo", m_idx);
 	}
-
+	
 	public List<PurchaseDTO> cardDetail(SqlSessionTemplate sqlSession, PurchaseDTO purchase) {
 		return sqlSession.selectList("purchaseMapper.cardDetail", purchase);
 	}
-
+	
 	public PurchaseDTO cardSelect(SqlSessionTemplate sqlSession, PurchaseDTO purchase) {
 		return sqlSession.selectOne("purchaseMapper.cardSelect", purchase);
 	}
-
+	
 	public int mileagePlus(SqlSessionTemplate sqlSession, PurchaseDTO purchase) {
 		return sqlSession.update("purchaseMapper.mileagePlus", purchase);
 	}

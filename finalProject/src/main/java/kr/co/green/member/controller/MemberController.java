@@ -100,7 +100,7 @@ public class MemberController {
 			MemberDTO updatedMember = memberService.getMemberInfo(member);
 			model.addAttribute("memberinfo", updatedMember);
 
-			return "myAccount/myinfo";
+			return "myAccount/myInfo";
 		} else {
 			// 업데이트 실패
 			return "myAccount/myInfoEdit";
