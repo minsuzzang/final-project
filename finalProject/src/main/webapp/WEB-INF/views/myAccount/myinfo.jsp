@@ -121,8 +121,9 @@
                 <a href="myinfoEditForm.do">
                     <button class="custom-btn-b3 btn-9-b" >수정하기</button>
                 </a>
-                <a href="/">
-                    <button class="custom-btn-b3 btn-9-b" formaction="/">회원탈퇴</button>
+                <a href="memberdelete.do">
+                    <button class="custom-btn-b3 btn-9-b">회원탈퇴</button>
+
                 </a>
                
             </div>

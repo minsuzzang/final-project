@@ -7,7 +7,7 @@
 	<resultMap id= "purchaseResultSet" type="purchase">
 		<result column="PH_IDX" property="ph_idx"></result>
 		<result column="PH_IN_DATE" property="ph_in_date"></result>
-		<result column="PH_TOTALPRICE" property="ph_total_price"></result>
+		<result column="PH_TOTAL_PRICE" property="ph_total_price"></result>
 
 		<result column="P_IDX" property="p_idx"></result>
 		<result column="P_NAME" property="p_name"></result>

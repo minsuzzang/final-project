@@ -114,15 +114,6 @@
 
     <p class="egft1">My Card</p>
     <p class="egft2"></p>
-
-    <div class="left12">
-        <a href="userServiceEnroll.html">
-            <button class="custom-btn-b2 btn-9-b">정보수정</button>
-        </a><br>
-        <a href="userServiceEnroll.html">
-            <button class="custom-btn-r2 btn-9-r">회원탈퇴</button>
-        </a>
-
     </div><br><br><br>
     <div class="right12">
         <div class="yhb3">

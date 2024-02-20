@@ -106,6 +106,10 @@
         WHERE m_idx = #{m_idx}
     </update>
 	
+	<delete id="delete" parameterType="member">
+    	DELETE FROM member WHERE m_idx = #{m_idx}
+	</delete>
+	
 	
 	 
 </mapper>

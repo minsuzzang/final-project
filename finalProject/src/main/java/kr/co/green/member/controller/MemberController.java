@@ -60,9 +60,9 @@ public class MemberController {
 		// 각 구매에 해당하는 상품 정보를 조회
 		for (PurchaseDTO p : purchasesinfo) {
 			ProductDTO productinfo = productService.productDetail(p.getP_idx());
+
 			p.setProductinfo(productinfo); // 구매 정보에 상품 정보 설정
 
-			p.setPh_total_price(totalPrice);
 		}
 
 		model.addAttribute("purchasesinfo", purchasesinfo);
@@ -117,6 +117,18 @@ public class MemberController {
 		return "myAccount/myinfoEdit";
 	}
 
+	// 회원탈퇴
+	@GetMapping("/memberdelete.do")
+	public String deleteMember(HttpSession session) {
+		Integer m_idx = (Integer) session.getAttribute("m_idx");
+		if (m_idx != null) {
+			memberService.deleteMember(m_idx); // 회원 정보 삭제
+			session.invalidate(); // 세션 정보 초기화
+		}
+		return "common/index";
+	}
+
+	// 내정보
 	@GetMapping("/myinfoForm.do")
 	public String myinfoForm(HttpSession session, MemberDTO member, Model model) {
 		member.setM_idx((int) session.getAttribute("m_idx"));

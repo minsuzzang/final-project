@@ -34,4 +34,6 @@ public interface MemberService {
 
 	public int updateMemberInfo(MemberDTO member);
 
+	int deleteMember(int m_idx);
+
 }

@@ -137,14 +137,15 @@
 					<c:forEach var="purchase" items="${purchasesinfo}">
 						<tr>
 							<td>${purchase.ph_idx}</td>
-							<td>${purchase.productinfo.p_name}</td>
-							<!-- 각 구매에 해당하는 상품 이름 출력 -->
+							<td>${purchase.productinfo.p_name}</td> <!-- 각 구매에 해당하는 상품 이름 출력 -->
 							<td>${memberinfo.m_name}</td>
-							<td>${purchase.ph_total_price}</td>
+							<td>${purchase.ph_total_price}</td> <!-- 구매 가격 출력 -->
+
 							<td>${purchase.ph_in_date}</td>
 						</tr>
 					</c:forEach>
-					
+
+
 				</tbody>
 			</table>
 		</div>
