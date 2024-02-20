@@ -19,6 +19,16 @@
 		<result column="M_EMAIL" property="m_email"></result>
 		<result column="M_PHONE" property="m_phone"></result>
 		<result column="M_ADDRESS" property="m_address"></result>
+		<result column="M_MILEAGE" property="m_mileage"></result>
+		
+		
+		<result column="CD_IDX" property="cd_idx"></result>
+		<result column="CD_COLOR" property="cd_color"></result>
+		<result column="CD_DESIGN" property="cd_design"></result>
+		<result column="CD_NUMBER" property="cd_number"></result>
+		<result column="CD_EXPIRED_DATE" property="cd_expired_date"></result>
+		<result column="CD_CVC" property="cd_cvc"></result>
+		<result column="CD_PWD" property="cd_pwd"></result>
 
 	</resultMap>
 	
@@ -30,11 +40,36 @@
 								#{m_idx}
 								)
 	</insert>
+		
+
+	<select id = "cardDetail" resultMap="purchaseResultSet">
+		SELECT cd.cd_color, cd.cd_design , m.m_mileage
+		FROM CARD cd
+		JOIN MEMBER m
+		ON cd.m_idx = m.m_idx
+		WHERE m.m_idx = #{m_idx}
+	</select>
 	
+	<select id="cardSelect" resultMap="purchaseResultSet">
+    	SELECT *
+    	FROM CARD
+    	WHERE cd_number = #{cd_number}
+    	AND cd_expired_date = #{cd_expired_date} 
+    	AND cd_cvc = #{cd_cvc} 
+    	AND cd_pwd = #{cd_pwd}  
+	</select>
+	
+	<update id="mileagePlus" parameterType="purchase">
+		UPDATE MEMBER
+		SET m_mileage = #{m_mileage}
+		WHERE m_idx = #{m_idx}
+	</update>
+
 	 <select id="purchaseInfo" resultMap="purchaseResultSet">
       SELECT *
 	  FROM PURCHASE_HISTORY  
 	  WHERE m_idx = #{m_idx}     
     </select>
 	
+		
 </mapper>

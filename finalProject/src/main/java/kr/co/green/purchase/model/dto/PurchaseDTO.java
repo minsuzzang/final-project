@@ -29,6 +29,16 @@ public class PurchaseDTO {
 	private String m_name;
 	private String m_phone;
 	private String m_address;
+	private int m_mileage;
+
+	// card
+	private int cd_idx;
+	private String cd_color;
+	private String cd_design;
+	private String cd_number;
+	private String cd_expired_date;
+	private String cd_cvc;
+	private String cd_pwd;
 
 	public ProductDTO getProductinfo() { // getProductinfo 메서드 추가
 		return productinfo;

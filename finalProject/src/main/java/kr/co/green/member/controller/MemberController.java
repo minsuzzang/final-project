@@ -82,7 +82,7 @@ public class MemberController {
 		model.addAttribute("memberinfo", memberinfo);
 		model.addAttribute("cards", cards);
 
-		return "myAccount/mycard";
+		return "myAccount/myCard";
 	}
 
 	@PostMapping("/myinfoEdit.do")
@@ -103,7 +103,7 @@ public class MemberController {
 			return "myAccount/myinfo";
 		} else {
 			// 업데이트 실패
-			return "myAccount/myinfoEdit";
+			return "myAccount/myInfoEdit";
 		}
 	}
 
@@ -114,7 +114,7 @@ public class MemberController {
 
 		model.addAttribute("memberinfo", memberinfo);
 
-		return "myAccount/myinfoEdit";
+		return "myAccount/myInfoEdit";
 	}
 
 	// 회원탈퇴
@@ -136,7 +136,7 @@ public class MemberController {
 
 		model.addAttribute("memberinfo", memberinfo);
 
-		return "myAccount/myinfo";
+		return "myAccount/myInfo";
 	}
 
 	@GetMapping("/emailForm.do")

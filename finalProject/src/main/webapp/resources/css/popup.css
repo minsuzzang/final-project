@@ -163,6 +163,17 @@
   float: right;
   margin-top: -5%;
 }
+.left13 {
+  width: 40%;
+  float: left;
+}
+
+.right13 {
+  width: 50%;
+  float: right;
+  margin-top: -2%;
+  margin-right: 10%;
+}
 
 .yhbb {
   padding: 15px;
@@ -177,6 +188,7 @@
   border-radius: 10px;
   box-shadow: 15px 15px 15px gray;
   transition: .5s;
+  z-index: 1;
 }
 
 .imgg12:hover {
@@ -346,6 +358,8 @@ section.notice {
   height: 30px;
   text-align: center;
   border-radius: 5px;
+  border: none;
+  background: none;
 }
 
 .tddd {
@@ -424,7 +438,6 @@ section.notice {
   border-width: 1px 1px 0 0;
   content: " ";
   display: inline-block;
-  float: right;
   height: 10px;
   left: 2px;
   position: relative;
@@ -442,7 +455,7 @@ section.notice {
 }
 
 .faq-drawer__trigger:checked+.faq-drawer__title+.faq-drawer__content-wrapper {
-  max-height: 2200px;
+  max-height: 3500px;
 }
 
 .faq-drawer__trigger:checked+.faq-drawer__title::after {
@@ -470,7 +483,7 @@ input[type="checkbox"] {
   font-family: 'YouandiModernTR', sans-serif;
   position: relative;
   margin-bottom: 20px;
-  width: 1200px;
+  width: 1000px;
 }
 
 .lli .pp {
@@ -481,19 +494,19 @@ input[type="checkbox"] {
 }
 
 .sspan {
-  position: absolute;
+  
   font-family: 'YouandiModernTR', sans-serif;
   font-weight: bold;
   font-size: 40px;
 }
 .ssspan {
-  position: absolute;
+
   font-family: 'YouandiModernTR', sans-serif;
   font-weight: bold;
   font-size: 25px;
 }
 .sssspan {
-  position: absolute;
+
   font-family: 'YouandiModernTR', sans-serif;
   font-weight: bold;
   font-size: 18px;
