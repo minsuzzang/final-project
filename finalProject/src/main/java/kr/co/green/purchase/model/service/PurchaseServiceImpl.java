@@ -3,6 +3,8 @@ package kr.co.green.purchase.model.service;
 import java.util.List;
 import java.util.Objects;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import kr.co.green.purchase.model.dao.PurchaseDAO;
 import kr.co.green.purchase.model.dto.PurchaseDTO;
+import kr.co.green.scriptUtil.scriptUtil;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService{
@@ -41,7 +44,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 	}
 	
 	@Override
-	public PurchaseDTO payment(PurchaseDTO purchase) {
+	public String payment(PurchaseDTO purchase) {
 		DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
 		transactionDefinition.setIsolationLevel(TransactionDefinition.ISOLATION_DEFAULT);
 		transactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
@@ -64,13 +67,15 @@ public class PurchaseServiceImpl implements PurchaseService{
 				//마일리지적립, 결제 검증
 				if(result1==1 && result2==1) {
 					transactionManager.commit(status);
-					return purchase;
+					return "success";
 				}
+			} else {
+				return "alert";
 			}
 		}catch(Exception e) {
 			transactionManager.rollback(status);
 		}
-		return null;
+		return "failed";
 	}
 	
 	

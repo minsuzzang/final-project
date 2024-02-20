@@ -1,7 +1,6 @@
 package kr.co.green.purchase.controller;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.green.member.model.service.MemberServiceImpl;
@@ -46,11 +44,14 @@ public class PurchaseController {
 	@PostMapping("/payment.do")
 	@ResponseBody
 	public String payment(PurchaseDTO purchase, Model model) {
-		PurchaseDTO result = purchaseService.payment(purchase);
+		String result = purchaseService.payment(purchase);
 
-		if(!Objects.isNull(result)) {
+		if(result.equals("success")) {
 			return "success";
-		}else {
+		}else if(result.equals("alert")) {
+			return "cardDismatch";
+		}
+		else {
 			return "failed";			
 		}
 	}
