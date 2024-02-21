@@ -1,5 +1,10 @@
 package kr.co.green.common.validation;
 
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class DataValidation {
 	public static Boolean emptyCheck(String data) { 
 		if(data.isEmpty()) {
@@ -28,4 +33,14 @@ public class DataValidation {
 			return false;
 		}
 	}
+	
+	public void checkParameter(Map<?, ?> parameterMap) {
+		
+		for (Object value : parameterMap.values()) {
+			if (value.equals("")) {
+				throw new NullPointerException("예외 발생");
+			}
+		}
+	}
+	
 }

@@ -57,6 +57,7 @@
 		SELECT * FROM card
 		WHERE m_idx = #{m_idx}
 		AND cd_apply_status IS NULL
+		AND cd_approve = '승인'
 	</select>
 	
 	<select id="getMemberOwnCard" resultMap="cardResultSet">
@@ -91,5 +92,10 @@
 		cd_apply_status = '신청완료'
 		WHERE cd_idx = #{cd_idx}
 	</update>
+	
+	<delete id="deleteMemberLostCard" parameterType="card">
+		DELETE FROM card 
+		WHERE cd_idx = #{cd_idx}
+	</delete>
 
 </mapper>

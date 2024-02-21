@@ -19,13 +19,17 @@ public class SessionHandler {
 		this.session = session;
 	}
 
+	public void setSessionAttribute(String attributeName, String attributeValue) {
+		session.setAttribute(attributeName, attributeValue);
+	}
+	
 	//하나의 요소에 대한 세션 값 반환
 	public String getSessionAttribute(String attribute) {
 		return (String)session.getAttribute(attribute);
 	}
 	
 	//여러개의 요소에 대한 세션 값 반환 (매개변수 List)
-	public Map<String, String> getSessionAttribute(List<String> attributes) {
+	public Map<String, Object> getSessionAttribute(List<String> attributes) {
 		
 		return attributes.stream()
                 .collect(Collectors.toMap(
@@ -35,7 +39,7 @@ public class SessionHandler {
 	}
 	
 	//여러개의 요소에 대한 세션 값 반환 (매개변수 Map)
-	public Map<String, String> getSessionAttribute(Map<String, String> attributes) {
+	public Map<String, Object> getSessionAttribute(Map<String, String> attributes) {
 		
 		return attributes.keySet().stream()
 				.collect(Collectors.toMap(
@@ -43,4 +47,14 @@ public class SessionHandler {
 						key -> (String)session.getAttribute(key)
 				));
 	}
+	
+	//세션 요소 제거
+	public void removeSessionAttribute(String attribute) {
+		session.removeAttribute(attribute);
+	}
+	
 }
+
+
+
+
