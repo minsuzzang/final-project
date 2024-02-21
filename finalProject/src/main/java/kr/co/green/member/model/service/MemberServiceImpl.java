@@ -75,4 +75,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.membercard(sqlSession, member);
 	}
 
+	@Override
+	public int updateMemberInfo(MemberDTO member) {
+		return memberDao.updateMemberInfo(sqlSession, member);
+	}
+
+	@Override
+	public int deleteMember(int m_idx) {
+		return memberDao.deleteMember(sqlSession, m_idx);
+	}
+
 }

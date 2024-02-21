@@ -20,8 +20,6 @@ public class EmailSender {
 	@Value("${password}")
 	private static String password;
 
-	private static final String EMAIL_USERNAME = "a01027735977@gmail.com";
-
 	public static void sendEmail(String toEmail, String subject, String content) throws MessagingException {
 		// SMTP server settings (Gmail example)
 		String host = "smtp.gmail.com";
@@ -39,7 +37,7 @@ public class EmailSender {
 		Authenticator auth = new Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 
-				return new PasswordAuthentication(EMAIL_USERNAME, EmailAPI.getEmailPassword());
+				return new PasswordAuthentication(EmailAPI.getEmailUsername(), EmailAPI.getEmailPassword());
 			}
 		};
 
@@ -48,7 +46,7 @@ public class EmailSender {
 
 		// Create the message and set the necessary details
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(EMAIL_USERNAME));
+		message.setFrom(new InternetAddress(EmailAPI.getEmailUsername()));
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 		message.setSubject(subject);
 		message.setText(content);

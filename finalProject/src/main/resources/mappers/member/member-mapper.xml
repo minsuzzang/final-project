@@ -16,13 +16,11 @@
       <result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
       <result column="M_TEMPORARY" property="m_temporary" />
       <result column="M_MILEAGE" property="m_mileage"></result>
-
    </resultMap>
    
-   
-   <!--검증코드 업데이트 -->
-   <update id="updateMembertmpPassword" parameterType="member">
-      UPDATE member
+	<!--검증코드 업데이트 -->
+	<update id="updateMembertmpPassword" parameterType="member">
+		UPDATE member
         SET m_temporary = #{m_temporary}
         WHERE m_email = #{m_email}
    </update>
@@ -51,20 +49,20 @@
         WHERE m_name = #{m_name} AND m_phone = #{m_phone}
    </select>
    
-   <!--이메일 중복 체크-->
-    <select id="checkEmail" resultType="_int"> 
-      SELECT COUNT(*) FROM member
-      WHERE m_email = #{email}
-   </select>
-   
-   <!--로그인-->
-   <select id="loginMember" resultMap="memberResultSet">
-       SELECT *
-       FROM member
-       WHERE m_email = #{m_email} 
-   </select>
-   
-   <!--회원가입-->
+	<!--이메일 중복 체크-->
+	 <select id="checkEmail" resultType="_int"> 
+		SELECT COUNT(*) FROM member
+		WHERE m_email = #{email}
+	</select>
+	
+	<!--로그인-->
+	<select id="loginMember" resultMap="memberResultSet">
+    	SELECT *
+    	FROM member
+    	WHERE m_email = #{m_email} 
+	</select>
+	
+	<!--회원가입-->
    <insert id="registerMember">
     INSERT INTO member VALUES (
         member_seq.NEXTVAL,
@@ -82,24 +80,33 @@
         0
        )
    </insert>
-   
-   <select id="memberDetail" resultMap="memberResultSet">
-      SELECT *
-      FROM member
-      WHERE m_idx = #{m_idx}
-   </select>
-   
-    <select id="getMemberInfo" resultMap="memberResultSet">
+
+	<select id="memberDetail" resultMap="memberResultSet">
+		SELECT *
+		FROM member
+		WHERE m_idx = #{m_idx}
+	</select>
+	
+	 <select id="getMemberInfo" resultMap="memberResultSet">
         SELECT *
         FROM member
         WHERE m_idx = #{m_idx}           
     </select>
     
-     <select id="membercard" resultMap="memberResultSet">
-        SELECT *
-        FROM CARD
-        WHERE m_idx = #{m_idx}           
-    </select>
+     <update id="updateMemberInfo" parameterType="member">
+        UPDATE member
+        SET m_name = #{m_name},
+            m_english_first_name = #{m_english_first_name},
+            m_english_last_name = #{m_english_last_name},
+            m_email = #{m_email},
+            m_address = #{m_address}
+        WHERE m_idx = #{m_idx}
+    </update>
+	
+	<delete id="delete" parameterType="member">
+    	DELETE FROM member WHERE m_idx = #{m_idx}
+	</delete>
+	 
 </mapper>
 
 

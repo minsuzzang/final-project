@@ -71,7 +71,7 @@
 								<c:forEach var="item" items="${list}">
 									<tr onclick="location.href='/notice/detail.do?idx='+${item.n_idx}">
 										<td>${row}</td>
-										<th>${item.n_title}</th>
+										<th>[공지] ${item.n_title}</th>
 										<td>${item.m_name}</td>
 										<td>${item.n_views}</td>
 									</tr>

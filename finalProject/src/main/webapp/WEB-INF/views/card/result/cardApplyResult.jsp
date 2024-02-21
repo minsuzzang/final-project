@@ -68,10 +68,10 @@
 			src="/resources/images/the${cd_color_upper}/${cd_color_lower}b.png"
 			alt="" style="margin-left: 50px;">
 	</div>
-
-	<div class="dfjc">
-		<button class="custom-btn-b btn-9-b" formaction="/greenSelect.html">홈으로</button>
-	</div>
+	<br>
+	<br>
+	<br>
+	<br>
 	<!-- /main -->
 	
     <br><br><br><br><br><br>

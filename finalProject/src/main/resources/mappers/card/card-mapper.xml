@@ -47,54 +47,61 @@
       WHERE m_idx = #{m_idx}
    </update>
 
-   <select id="getMemberCardNum" resultType="_int">
-      SELECT COUNT(*) FROM
-      card
-      WHERE m_idx = #{m_idx}
-   </select>
-   
-   <select id="getMemberApplyCard" resultMap="cardResultSet">
-      SELECT * FROM card
-      WHERE m_idx = #{m_idx}
-      AND cd_apply_status IS NULL
-   </select>
-   
-   <select id="getMemberOwnCard" resultMap="cardResultSet">
-      SELECT cd_idx, cd_design, cd_color FROM card
-      WHERE m_idx = #{m_idx}
-      AND cd_apply_status = '신청완료'
-   </select>
-   
-   <select id="getMemberLostCard" resultMap="cardResultSet">
-      SELECT cd_number, cd_idx, cd_expired_date, cd_cvc, cd_color, cd_design FROM card
-      WHERE cd_idx = #{cd_idx}
-      AND cd_apply_status = '신청완료'
-   </select>
-   
-   <select id="getMemberIdx" resultType="_int">
-      SELECT m_idx FROM card
-      WHERE cd_idx = #{cd_idx}
-      AND cd_apply_status = '신청완료'
-   </select>
-   
-   <select id="getMemberEnglishName" resultMap="memberResultSet">
-      SELECT m_idx, m_english_first_name, m_english_last_name FROM member
-      WHERE m_idx = #{m_idx}
-   </select>
+	<select id="getMemberCardNum" resultType="_int">
+		SELECT COUNT(*) FROM
+		card
+		WHERE m_idx = #{m_idx}
+	</select>
+	
+	<select id="getMemberApplyCard" resultMap="cardResultSet">
+		SELECT * FROM card
+		WHERE m_idx = #{m_idx}
+		AND cd_apply_status IS NULL
+		AND cd_approve = '승인'
+	</select>
+	
+	<select id="getMemberOwnCard" resultMap="cardResultSet">
+		SELECT cd_idx, cd_design, cd_color FROM card  
+		WHERE m_idx = #{m_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	<select id="getMemberOwnCardAllInfo" resultMap="cardResultSet">
+		SELECT * FROM card  
+		WHERE m_idx = #{m_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	
+	<select id="getMemberLostCard" resultMap="cardResultSet">
+		SELECT cd_number, cd_idx, cd_expired_date, cd_cvc, cd_color, cd_design FROM card
+		WHERE cd_idx = #{cd_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	
+	<select id="getMemberIdx" resultType="_int">
+		SELECT m_idx FROM card
+		WHERE cd_idx = #{cd_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	
+	<select id="getMemberEnglishName" resultMap="memberResultSet">
+		SELECT m_idx, m_english_first_name, m_english_last_name FROM member
+		WHERE m_idx = #{m_idx}
+	</select>
 
-   <update id="cardFinalApply" parameterType="card">
-      UPDATE card SET
-      cd_number = #{cd_number},
-      cd_cvc = #{cd_cvc},
-      cd_pwd = #{cd_pwd},
-      cd_expired_date = #{cd_expired_date},
-      cd_apply_status = '신청완료'
-      WHERE cd_idx = #{cd_idx}
-   </update>
-   
-   <delete id="deleteMemberLostCard" parameterType="card">
-      DELETE FROM card 
-      WHERE cd_idx = #{cd_idx}
-   </delete>
+	<update id="cardFinalApply" parameterType="card">
+		UPDATE card SET
+		cd_number = #{cd_number},
+		cd_cvc = #{cd_cvc},
+		cd_pwd = #{cd_pwd},
+		cd_expired_date = #{cd_expired_date},
+		cd_apply_status = '신청완료'
+		WHERE cd_idx = #{cd_idx}
+	</update>
+	
+	<delete id="deleteMemberLostCard" parameterType="card">
+		DELETE FROM card 
+		WHERE cd_idx = #{cd_idx}
+	</delete>
+
 
 </mapper>

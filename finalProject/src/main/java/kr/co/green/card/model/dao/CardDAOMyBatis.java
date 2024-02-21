@@ -30,36 +30,24 @@ public class CardDAOMyBatis implements CardDAO {
 	@Transactional
 	@Override
 	// 카드 신청을 위한 신청정보 저장 메소드
-	public void insertCardApplyInfo(int m_idx, String cd_color, String cd_design, String m_english_first_name, String m_english_last_name,
-			String m_address, String m_detailed_address) {
-
-		Map<String, Object> params = new HashMap<>();
-		params.put("m_idx", m_idx);
-		params.put("cd_color", cd_color);
-		params.put("cd_design", cd_design);
-		params.put("m_english_last_name", m_english_last_name);
-		params.put("m_english_first_name", m_english_first_name);
-		params.put("m_address", m_address);
-		params.put("m_detailed_address", m_detailed_address);
+	public void insertCardApplyInfo(Map<String, Object> applyMap) {
 
 		try {
-	        int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", params);
-	        if (memberResult <= 0) {
-	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다."
-	            );
-	        }
-
-	        int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", params);
-	        if (cardResult != 1) {
-	            throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
-	        }	
-	    } catch (SQLException e) {
-	        throw new DataAccessResourceFailureException("서버 오류 또는 입력값이 잘못되었습니다.", e);
-	    }		
+			int memberResult = sqlSession.update("cardMapper.cardApplyMemberInfo", applyMap);
+			if (memberResult <= 0) {
+				throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
+			}
+			int cardResult = sqlSession.insert("cardMapper.cardApplyCardInfo", applyMap);
+			if (cardResult != 1) {
+				throw new SQLException("서버 오류 또는 입력값이 잘못되었습니다.");
+			}
+		} catch (SQLException e) {
+			throw new DataAccessResourceFailureException("서버 오류 또는 입력값이 잘못되었습니다.", e);
+		}
 	}
 
 	@Override
-	//회원의 카드 갯수 조회
+	// 회원의 카드 갯수 조회
 	public int getMemberCardNum(int m_idx) {
 		return sqlSession.selectOne("cardMapper.getMemberCardNum", m_idx);
 	}
@@ -71,13 +59,17 @@ public class CardDAOMyBatis implements CardDAO {
 
 	@Override
 	public List<CardDTO> cardInfo(int idx, String statement) {
-		if(statement.equals("보유 카드 조회")) 
+		if (statement.equals("보유 카드 조회"))
 			return sqlSession.selectList("cardMapper.getMemberOwnCard", idx);
-		
-		else if(statement.equals("신청 승인된 카드 조회")) 
+
+		else if (statement.equals("신청 승인된 카드 조회"))
 			return sqlSession.selectList("cardMapper.getMemberApplyCard", idx);
-		
-		else throw new DataAccessResourceFailureException("서버 오류 또는 입력값이 잘못되었습니다."); 
+
+		else if (statement.equals("내카드 조회"))
+			return sqlSession.selectList("cardMapper.getMemberOwnCardAllInfo", idx);
+
+		else
+			throw new DataAccessResourceFailureException("서버 오류 또는 입력값이 잘못되었습니다.");
 	}
 
 	@Override
@@ -85,12 +77,16 @@ public class CardDAOMyBatis implements CardDAO {
 		CardDTO cardDTO = sqlSession.selectOne("cardMapper.getMemberLostCard", cd_idx);
 		int m_idx = sqlSession.selectOne("cardMapper.getMemberIdx", cd_idx);
 		MemberDTO memberDTO = sqlSession.selectOne("cardMapper.getMemberEnglishName", m_idx);
-		
+
 		Map<String, Object> lostCardMap = new HashMap<>();
 		lostCardMap.put("cardDTO", cardDTO);
 		lostCardMap.put("memberDTO", memberDTO);
-		
+
 		return lostCardMap;
-		
-		}
+	}
+
+	@Override
+	public int cardReport(int cd_idx) {
+		return sqlSession.delete("cardMapper.deleteMemberLostCard", cd_idx);
+	}
 }

@@ -46,8 +46,8 @@
                     <li><a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
                         <ul id="sub_menu">
                             <li><a href="/member/myinfoForm.do">내 정보</a></li>
-                            <li><a href="/member/mycardForm.do">내 카드</a></li>
-                            <li><a href="#">이용내역</a></li>
+                            <li><a href="/member/MyCardForm.do">내 카드</a></li>
+                            <li><a href="/member/UsageHistoryForm.do">이용내역</a></li>
                         </ul>
                     </li>
 

@@ -2,8 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +41,9 @@
 <body>
 
    <header>
-        <!-- 헤더 비디오 -->
-        <video class="vd" src="/resources/videos/header.mp4" muted autoplay loop preload width="100%"></video>
+      <!-- 헤더 비디오 -->
+      <video class="vd" src="/resources/videos/header.mp4" muted autoplay
+         loop preload width="100%"></video>
 		<%@ include file="/WEB-INF/views/common/header.jsp"%>
    </header>
 
@@ -135,61 +134,31 @@
    <br>
    <br>
    <br>
-   <div id="jquery-script-menu"></div>
 
 
-
-   <div id="popupA" class="layer">
-      <div class="box1">
-         <a href="#" class="close" style="font-size: 30px;">x</a>
-         <div id="pinpad">
-            <form class="ff11">
-               <input type="password" id="password-input" maxlength="4" /></br> <input
-                  type="button" value="1" id="1" class="pinButton calc" /> <input
-                  type="button" value="2" id="2" class="pinButton calc" /> <input
-                  type="button" value="3" id="3" class="pinButton calc" /><br>
-               <input type="button" value="4" id="4" class="pinButton calc" /> <input
-                  type="button" value="5" id="5" class="pinButton calc" /> <input
-                  type="button" value="6" id="6" class="pinButton calc" /><br>
-               <input type="button" value="7" id="7" class="pinButton calc" /> <input
-                  type="button" value="8" id="8" class="pinButton calc" /> <input
-                  type="button" value="9" id="9" class="pinButton calc" /><br>
-               <input type="button" value="clear" id="clear"
-                  class="pinButton clear" /> <input type="button" value="0" id="0 "
-                  class="pinButton calc" /> <a href="#"> <input type="button"
-                  value="enter" id="enter" class="pinButton enter" />
-               </a>
-            </form>
-         </div>
-         <script type="text/javascript">
-
-                var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', 'UA-36251023-1']);
-                _gaq.push(['_setDomainName', 'jqueryscript.net']);
-                _gaq.push(['_trackPageview']);
-
-                (function () {
-                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                })();
-
-            </script>
-         <script>
-                try {
-                    fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function (response) {
-                        return true;
-                    }).catch(function (e) {
-                        var carbonScript = document.createElement("script");
-                        carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
-                        carbonScript.id = "_carbonads_js";
-                        document.getElementById("carbon-block").appendChild(carbonScript);
-                    });
-                } catch (error) {
-                    console.log(error);
-                }
-            </script>
-         <script>
+	<div id="popupA" class="layer">
+        <div class="box1">
+            <a href="#" class="close" style="font-size: 30px;">x</a>
+            <div id="pinpad">
+                <form class="ff11">
+                    <input type="password" id="password-input" maxlength="4" /></br>
+                    <input type="button" value="1" id="1" class="pinButton calc" />
+                    <input type="button" value="2" id="2" class="pinButton calc" />
+                    <input type="button" value="3" id="3" class="pinButton calc" /><br>
+                    <input type="button" value="4" id="4" class="pinButton calc" />
+                    <input type="button" value="5" id="5" class="pinButton calc" />
+                    <input type="button" value="6" id="6" class="pinButton calc" /><br>
+                    <input type="button" value="7" id="7" class="pinButton calc" />
+                    <input type="button" value="8" id="8" class="pinButton calc" />
+                    <input type="button" value="9" id="9" class="pinButton calc" /><br>
+                    <input type="button" value="clear" id="clear" class="pinButton clear" />
+                    <input type="button" value="0" id="0 " class="pinButton calc" />
+                    <a href="#">
+                        <input type="button" value="enter" id="enter" class="pinButton enter" />
+                    </a>
+                </form>
+            </div>
+            <script>
                  // 카드 이미지 클릭 시 호출할 함수
                  function showCardInfo(cardIdx) {
                     
@@ -249,21 +218,21 @@
                      }
                  }
             </script>
+        </div>
+    </div>
 
-      </div>
-   </div>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
 
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
    <!-- /main -->
 
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    
-	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+   <%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 </body>
 
