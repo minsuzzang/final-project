@@ -1,5 +1,7 @@
 package kr.co.green.card.model.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -97,5 +99,11 @@ public class CardServiceImpl implements CardService {
 		int result = cardDAO.cardReport(cd_idx);
 		if(result != 1)
 			throw new DataAccessResourceFailureException("분실카드 신고 실패");
+	}
+
+	@Override
+	public void formatCardApplyDate(CardDTO cardDTO) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		cardDTO.setCd_apply_date(LocalDate.parse(cardDTO.getStr_cd_apply_date(), formatter));
 	}
 }
