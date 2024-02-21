@@ -74,6 +74,7 @@
         SYSDATE,
         'BASIC',
         #{m_address},
+        #{m_detailed_address},
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},

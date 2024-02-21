@@ -40,10 +40,10 @@ function submitCardInfo(){
             var responseJson = xhr.responseText;
             let response = JSON.parse(responseJson);
             if (response.success) {
-            	alert('최종 신청이 완료되었습니다. 배송현황은 마이페이지에서 확인하세요.')
+            	alert('신청이 완료되었습니다.')
                 window.location.href = response.redirectUrl;
             } else {
-            	alert('최종 신청에 실패하였습니다.')
+            	alert('신청에 실패하였습니다.')
                 window.location.href = response.redirectUrl;
             }
         }

@@ -194,7 +194,7 @@
 		<button onclick="backToTop()" id="btn-back-to-top" title="위로 가기">Top</button>
 
 		<div class="waves">
-			<div class="wave" id="wave1"></div>
+			<div class="wave" id="wave1"></div>wave
 			<div class="wave" id="wave2"></div>
 			<div class="wave" id="wave3"></div>
 			<div class="wave" id="wave4"></div>

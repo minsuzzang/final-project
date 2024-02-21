@@ -8,7 +8,7 @@ import kr.co.green.card.model.dto.CardDTO;
 public interface CardDAO {
 	
 	// 카드 신청을 위한 신청정보 저장 메소드
-	void insertCardApplyInfo(int m_idx, String cd_color, String cd_design, String m_english_first_name, String m_english_last_name, String m_address, String m_detailed_address);
+	void insertCardApplyInfo(Map<String, Object> applyMap);
 
 	int getMemberCardNum(int m_idx);
 
@@ -17,4 +17,6 @@ public interface CardDAO {
 	List<CardDTO> cardInfo(int m_idx, String status);
 
 	Map<String, Object> cardInfo(int cd_idx);
+
+	int cardReport(int cd_idx);
 }
