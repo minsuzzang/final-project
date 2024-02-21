@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,45 +52,43 @@
                 <ul id="menu">
                     <li><a>기업 소개</a>
                         <ul id="sub_menu">
-                            <li><a href="#">현대카드 소개</a></li>
-                            <li><a href="#">기업 문화</a></li>
-                            <li><a href="#">인사 철학</a></li>
+                            <li><a href="/aboutUs.html">현대카드 소개</a></li>
+                            <li><a href="/corporateCulture.html">기업 문화</a></li>
+                            <li><a href="/personnelPhilosophy.html">인사 철학</a></li>
                         </ul>
                     </li>
 
                     <li><a style="font-family: 'YouandiModernTR', sans-serif; font-weight: bold;">My Account</a>
                         <ul id="sub_menu">
-                            <li><a href="#">내 정보</a></li>
-                            <li><a href="#">내 카드</a></li>
-                            <li><a href="#">내 등급</a></li>
-                            <li><a href="#">이용내역</a></li>
-                            <li><a href="#">마일리지</a></li>
+                            <li><a href="/myInfo.html">내 정보</a></li>
+                            <li><a href="/myCard.html">내 카드</a></li>
+                            <li><a href="/myhistory.html">이용내역</a></li>
                         </ul>
                     </li>
 
                     <li><a>카드</a>
                         <ul id="sub_menu">
-                            <li><a href="#">카드 안내</a></li>
+                            <li><a href="/cardInformation.html">카드 안내</a></li>
                             <li><a href="/cardApplication.html">카드 신청</a></li>
-                            <li><a href="#">카드 신청 조회</a></li>
+                            <li><a href="/cardInquiry.html">카드 신청 조회</a></li>
                         </ul>
                     </li>
 
                     <li><a>혜택</a>
                         <ul id="sub_menu">
-                            <li><a href="#">할인 혜택</a></li>
-                            <li><a href="#">적립 혜택</a></li>
-                            <li><a href="#">제휴 상품</a></li>
+                            <li><a href="/DiscountBenefits.html">할인 혜택</a></li>
+                            <li><a href="/AccumulatedBenefits.html">적립 혜택</a></li>
+                            <li><a href="/product.html">제휴 상품</a></li>
                         </ul>
 
                     </li>
 
                     <li><a>고객 지원</a>
                         <ul id="sub_menu">
-                            <li><a href="#">공지사항</a></li>
+                            <li><a href="/announcement.html">공지사항</a></li>
                             <li><a href="/userService.html">고객 문의</a></li>
-                            <li><a href="#" style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
-                            <li><a href="#">카드 도난 • 분실신고</a></li>
+                            <li><a href="/faq.html" style="font-family: 'YouandiModernTR', sans-serif;">FAQ</a></li>
+                            <li><a href="/cardLost.html">카드 도난 • 분실신고</a></li>
                         </ul>
                     </li>
 
@@ -111,50 +109,103 @@
     </header><br><br><br><br>
     <!-- main -->
 
-    <p class="egft1">My Card</p>
+    <p class="egft1">My Info</p>
     <p class="egft2"></p>
 
-    <div class="left12">
-        <a href="userServiceEnroll.html">
-            <button class="custom-btn-b2 btn-9-b">정보수정</button>
-        </a><br>
-        <a href="userServiceEnroll.html">
-            <button class="custom-btn-r2 btn-9-r">회원탈퇴</button>
-        </a>
+    <div class="left13">
+        <div class="dfjc6">
+            <div class="shop2">
+                <figure>
+                    <img src="/resources/images/myinfo.png">
+                </figure>
+                <a href="myinfoEditForm.do">
+                    <button class="custom-btn-b3 btn-9-b" >수정하기</button>
+                </a>
+                <a href="memberdelete.do">
+                    <button class="custom-btn-b3 btn-9-b">회원탈퇴</button>
 
+                </a>
+               
+            </div>
+        </div>
     </div><br><br><br>
-    <div class="right12">
+    <div class="right13">
         <div class="yhb3">
             <div id="board-list">
                 <table class="board-table">
                     <tr>
+                        <th scope="col" class="th-num">이름</th>
+                        <td>${memberinfo.m_name}</td>
+                    </tr>
+                    <tr>
                         <th scope="col" class="th-num">영문이름</th>
-                        <td>#</td>
+                        <td><b>${memberinfo.m_english_first_name}</b> <b>${memberinfo.m_english_last_name}</b></td>
                     </tr>
                     <tr>
-                        <th scope="col" class="th-num">카드번호</th>
-                        <td>#</td>
-                    </tr>
-                    <tr>
-                        <th scope="col" class="th-num">유효기간</th>
-                        <td>#</td>
-                    </tr>
-                    <tr>
-                        <th scope="col" class="th-num">CVC</th>
-                        <td>#</td>
+                        <th scope="col" class="th-num">이메일</th>
+                        <td>${memberinfo.m_email}</td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">비밀번호</th>
-                        <td>#</td>
+                        <td><input class="ininp" type="password" disabled value="${memberinfo.m_pwd}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">주소</th>
+                        <td>${memberinfo.m_address}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">마일리지</th>
+                        <td>${memberinfo.m_mileage}</td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
+    
+    <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <!-- /main -->
-    <footer>
+
+    <br><br><br><br><br><br>
+ 
+    <!-- 푸터 -->
+    <footer class="footer">
+        <!-- top버튼 -->
+        <button onclick="backToTop()" id="btn-back-to-top" title="위로 가기">Top</button>
+
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="social-icon">
+            <li class="social-icon__item">
+                <img src="/images/logo.png" alt="">
+            </li>
+        </ul><br><br>
+        <p>2024 Final Project | JESS FOUR CARDS</p>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="/index.html">홈</a></li>
+            <li class="menu__item"><a class="menu__link" href="/aboutUs.html">기업소개</a></li>
+            <li class="menu__item"><a class="menu__link" href="/corporateCulture.html">기업문화</a></li>
+            <li class="menu__item"><a class="menu__link" href="/personnelPhilosophy.html">인사철학</a></li>
+            <li class="menu__item"><a class="menu__link" href="/userService.html">고객센터</a></li>
+
+        </ul>
+        <div id="sns">
+            <ul id="icon_list">
+                <li><a href="#"><img src="/resources/images/icon_01.png" alt="인스타그램 바로가기"></a></li>
+                <li><a href="#"><img src="/resources/images/icon_02.png" alt="페이스북 바로가기"></a></li>
+                <li><a href="#"><img src="/resources/images/icon_03.png" alt="트위터 바로가기"></a></li>
+                <li><a href="#"><img src="/resources/images/icon_04.png" alt="유투브 바로가기"></a></li>
+            </ul>
+        </div>
     </footer>
+    <!-- /푸터 -->
+
+
 </body>
+
 </html>

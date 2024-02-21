@@ -61,7 +61,12 @@
 	</select>
 	
 	<select id="getMemberOwnCard" resultMap="cardResultSet">
-		SELECT cd_idx, cd_design, cd_color FROM card
+		SELECT cd_idx, cd_design, cd_color FROM card  
+		WHERE m_idx = #{m_idx}
+		AND cd_apply_status = '신청완료'
+	</select>
+	<select id="getMemberOwnCardAllInfo" resultMap="cardResultSet">
+		SELECT * FROM card  
 		WHERE m_idx = #{m_idx}
 		AND cd_apply_status = '신청완료'
 	</select>

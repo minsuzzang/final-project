@@ -1,5 +1,6 @@
 package kr.co.green.purchase.model.dto;
 
+import kr.co.green.product.model.dto.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,31 +11,41 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseDTO {
-	//purchase_history 
+	// purchase_history
 	private int ph_idx;
 	private String ph_in_date;
 	private int ph_total_price;
-	
-	//product
+	private ProductDTO productinfo;
+
+	// product
 	private int p_idx;
 	private String p_name;
 	private int p_price1;
 	private int p_price2;
-	
-	//member
+
+	// member
 	private int m_idx;
 	private String m_email;
 	private String m_name;
 	private String m_phone;
 	private String m_address;
 	private int m_mileage;
-	
-	//card
+
+	// card
 	private int cd_idx;
-	private String cd_color;	
+	private String cd_color;
 	private String cd_design;
 	private String cd_number;
 	private String cd_expired_date;
-	private String cd_cvc ;
+	private String cd_cvc;
 	private String cd_pwd;
+
+	public ProductDTO getProductinfo() { // getProductinfo 메서드 추가
+		return productinfo;
+	}
+
+	public void setProductinfo(ProductDTO productinfo) { // setProductinfo 메서드 추가
+		this.productinfo = productinfo;
+	}
+
 }

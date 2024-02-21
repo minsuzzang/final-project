@@ -1,10 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <!-- 헤더시작 -->
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HYUNDAI CARD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css&font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/media_query.css">
+    <link rel="stylesheet" href="/resources/css/detail.css">
+    <link rel="stylesheet" href="/resources/css/card.css">
+    <link rel="stylesheet" href="/resources/css/popup.css">
+    <link rel="stylesheet" href="/resources/css/password.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- js -->
+    <script src="/resources/lib/jquery-1.11.1.min.js"></script>
+    <script src="/resources/lib/jquery.easing.1.3.min.js"></script>
+    <script src="/resources/js/menuEffect.js"></script>
+    <script src="/resources/js/mousecursor.js"></script>
+    <script src="/resources/js/visual_slide.js"></script>
+    <script src="/resources/js/password.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body style="a {text-decoration-line: none;}">
+
+    <header>
+        <!-- 헤더 비디오 -->
+        <video src="/resources/videos/header.mp4" muted autoplay loop preload width="100%"></video>
         <!--로고삽입-->
         <h1 id="logo">
-            <a href="/"><img src="/resources/images/logo.png" alt="로고"></a>
+            <a class="a2" href="/"><img src="/resources/images/logo.png" alt="로고"></a>
         </h1>
 
         <!--메뉴 버튼-->
@@ -13,22 +45,6 @@
             <span id="m_stick"></span>
             <span id="b_stick"></span>
         </h2>
-
-     	<h2 id="log_btn">
-	        <c:choose>
-		       	<c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'BASIC'}">
-		           		<a href="/member/logout.do">로그아웃</a>
-		       	</c:when>
-		        <c:when test="${sessionScope.m_idx != null && sessionScope.m_type == 'ADMIN'}">
-		           		<a href="/admin">관리자</a>
-		           		<a href="/member/logout.do">로그아웃</a>
-		       	</c:when>
-		       	<c:otherwise>
-		           		<a href="/member/loginForm.do">로그인</a>
-		           		<a href="/member/registerForm.do">회원가입</a>
-		       	</c:otherwise>
-	        </c:choose>
-      	</h2>
 
         <!--메뉴-->
         <div id="menu_wrap">
@@ -92,3 +108,46 @@
                 </ul>
             </div>
         </div>
+    </header><br><br><br><br>
+    <!-- main -->
+
+    <p class="egft1">My Card</p>
+    <p class="egft2"></p>
+    </div><br><br><br>
+    <div class="right12">
+        <div class="yhb3">
+            <div id="board-list">
+                <table class="board-table">
+                    <c:forEach var="row" items="${cards}" varStatus="status">
+                    <tr>
+                        <th scope="col" class="th-num">영문이름</th>
+                        <td>${memberinfo.m_english_first_name}</td><td>${memberinfo.m_english_last_name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">카드번호</th>
+                        <td>${row.cd_number}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">유효기간</th>
+                        <td>${row.cd_expired_date}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">CVC</th>
+                        <td>${row.cd_cvc}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="th-num">비밀번호</th>
+                        <td>${row.cd_pwd}</td>
+                    </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <!-- /main -->
+    <footer>
+    </footer>
+</body>
+</html>
