@@ -35,7 +35,7 @@
 			width="100%"></video>
 		<!--로고삽입-->
 		<h1 id="logo">
-			<a class="a2" href="/index.html"><img
+			<a class="a2" href="/"><img
 				src="/resources/images/logo.png" alt="로고"></a>
 		</h1>
 
@@ -200,13 +200,13 @@
 			<div class="wave" id="wave4"></div>
 		</div>
 		<ul class="social-icon">
-			<li class="social-icon__item"><img src="/images/logo.png" alt="">
+			<li class="social-icon__item"><img src="/resources/images/logo.png" alt="">
 			</li>
 		</ul>
 		<br> <br>
 		<p>2024 Final Project | JESS FOUR CARDS</p>
 		<ul class="menu">
-			<li class="menu__item"><a class="menu__link" href="/index.html">홈</a></li>
+			<li class="menu__item"><a class="menu__link" href="/">홈</a></li>
 			<li class="menu__item"><a class="menu__link"
 				href="/aboutUs.html">기업소개</a></li>
 			<li class="menu__item"><a class="menu__link"
