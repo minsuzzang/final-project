@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.green.card.model.dto.CardDTO;
 import kr.co.green.member.model.dao.MemberDAO;
 import kr.co.green.member.model.dto.MemberDTO;
 
@@ -85,4 +86,8 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.deleteMember(sqlSession, m_idx);
 	}
 
+	@Override
+	public CardDTO getCardDetail(int cd_idx) {
+		return memberDao.getCardDetail(sqlSession, cd_idx);
+	}
 }

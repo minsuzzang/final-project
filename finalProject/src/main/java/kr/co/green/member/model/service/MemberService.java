@@ -1,5 +1,6 @@
 package kr.co.green.member.model.service;
 
+import kr.co.green.card.model.dto.CardDTO;
 import kr.co.green.member.model.dto.MemberDTO;
 
 public interface MemberService {
@@ -35,5 +36,7 @@ public interface MemberService {
 	public int updateMemberInfo(MemberDTO member);
 
 	int deleteMember(int m_idx);
+
+	CardDTO getCardDetail(int cd_idx);
 
 }

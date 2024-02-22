@@ -44,16 +44,24 @@
     </header><br><br><br><br>
     <!-- main -->
 
-	<p class="egft1">My Card</p>
-	<p class="egft2"></p>
-	</div>
-	<br>
-	<br>
-	<br>
-	<div class="right12">
-		<div class="yhb3">
-			<div id="board-list">
-					<table class="board-table">
+	  <p class="egft1">My Card</p>
+    <p class="egft2"></p>
+
+    <div class="left13">
+        <div class="dfjc5">
+            <div class="shop2">
+                <p class="egft3-1">Card 1</p>
+                <figure>
+                  <a href="#"><img
+						class="imgggg" src="/resources/images/the${card.cd_color}/the${card.cd_color}${card.cd_design}.png"></a>
+                </figure>
+            </div>
+        </div>
+    </div><br><br><br>
+    <div class="right13">
+        <div class="yhb3">
+            <div id="board-list">
+                	<table class="board-table">
 						<tr>
 							<th scope="col" class="th-num">영문이름</th>
 							<td>${memberinfo.m_english_first_name}</td>
@@ -61,47 +69,40 @@
 						</tr>
 						<tr>
 							<th scope="col" class="th-num">카드번호</th>
-							<td>${cardDetail.cd_number}</td>
+							<td>${card.cd_number}</td>
 						</tr>
 						<tr>
 							<th scope="col" class="th-num">유효기간</th>
-							<td>${cardDetail.cd_expired_date}</td>
+							<td>${card.cd_expired_date}</td>
 						</tr>
 						<tr>
 							<th scope="col" class="th-num">CVC</th>
-							<td>${cardDetail.cd_cvc}</td>
+							<td>${card.cd_cvc}</td>
 						</tr>
 						<tr>
 							<th scope="col" class="th-num">비밀번호</th>
-							<td>${cardDetail.cd_pwd}</td>
+							<td>${card.cd_pwd}</td>
 						</tr>
 					</table>
 
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
+            </div>
+        </div>
+    </div>
+    <div class="bbbtn">
+        <a href="/member/MyCardForm.do">
+            <button class="custom-btn-b3 btn-9-b">돌아가기</button>
+        </a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br>
 	<!-- /main -->
-	<footer> </footer>
+
+	<footer>
+		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	</footer>
 
 </body>
 </html>

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.green.card.model.dto.CardDTO;
+import kr.co.green.card.model.service.CardGenerator;
 import kr.co.green.card.model.service.CardService;
 import kr.co.green.email.util.EmailSender;
 import kr.co.green.member.model.dto.MemberDTO;
@@ -72,16 +73,22 @@ public class MemberController {
 	}
 
 	@GetMapping("/MyCardinfoForm.do")
-	public String MyCardinfoForm(CardDTO card, MemberDTO member, HttpSession session, Model model) {
-
+	public String MyCardinfoForm(@RequestParam(value = "idx") int cd_idx, MemberDTO member, HttpSession session,
+			Model model) {
 		Integer m_idx = (Integer) session.getAttribute("m_idx");
-		member.setM_idx(m_idx);
-		card.setCd_idx(m_idx);
 
-		List<CardDTO> cards = cardService.cardInfo(m_idx, "내카드 조회");
+		member.setM_idx(m_idx);
+
+		CardDTO card = memberService.getCardDetail(cd_idx);
+
+		// CardGenerator 객체 생성 및 formatCardColorAndDesign 메소드 호출
+		CardGenerator cg = new CardGenerator();
+		cg.formatCardColorAndDesign(card);
+
+		model.addAttribute("card", card);
+
 		MemberDTO memberinfo = memberService.getMemberInfo(member);
 		model.addAttribute("memberinfo", memberinfo);
-		model.addAttribute("cards", cards);
 
 		return "myAccount/myCard";
 	}
@@ -89,15 +96,14 @@ public class MemberController {
 	@GetMapping("/MyCardForm.do")
 	public String MyCardForm(CardDTO card, MemberDTO member, HttpSession session, Model model) {
 
+		CardGenerator cg = new CardGenerator();
 		Integer m_idx = (Integer) session.getAttribute("m_idx");
-		member.setM_idx(m_idx);
-		card.setCd_idx(m_idx);
 
 		List<CardDTO> cards = cardService.cardInfo(m_idx, "내카드 조회");
-		MemberDTO memberinfo = memberService.getMemberInfo(member);
-		model.addAttribute("memberinfo", memberinfo);
+		for (CardDTO ca : cards) {
+			cg.formatCardColorAndDesign(ca);
+		}
 		model.addAttribute("cards", cards);
-
 		return "myAccount/myCardmain";
 	}
 
