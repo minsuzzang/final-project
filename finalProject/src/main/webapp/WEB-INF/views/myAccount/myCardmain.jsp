@@ -32,7 +32,11 @@
 </head>
 <body>
 
-	<header> </header>
+	<header>
+        <!-- 헤더 비디오 -->
+        <video src="/resources/videos/header.mp4" muted autoplay loop preload width="100%"></video>
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+    </header><br><br><br><br>
 
 	<!-- main -->
 	<br>
