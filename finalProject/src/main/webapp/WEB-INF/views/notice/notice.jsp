@@ -71,7 +71,7 @@
 								<c:forEach var="item" items="${list}">
 									<tr onclick="location.href='/notice/detail.do?idx='+${item.n_idx}">
 										<td>${row}</td>
-										<th>${item.n_title}</th>
+										<th>[공지] ${item.n_title}</th>
 										<td>${item.m_name}</td>
 										<td>${item.n_views}</td>
 									</tr>
@@ -127,44 +127,45 @@
         <p class="egft4">Click Card</p>
         <div>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/theBlack1.png">
                 </a>
                 <p class="egft3" style="color: black;">The Black</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/thePurple1.png">
                 </a>
                 <p class="egft3" style="color: rgb(95, 0, 95);">The Purple</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/theRed1.png">
                 </a>
                 <p class="egft3" style="color: rgb(187, 0, 0);">The Red</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href="/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/theGreen1.png">
                 </a>
                 <p class="egft3" style="color: green;">The Green</p>
             </figure>
             <figure class="slide1">
-                <a href="/cardApplication.html">
+                <a href=""/card/cardApplyForm.do">
                     <img class="imgg" src="/resources/images/thePink1.png">
                 </a>
                 <p class="egft3" style="color: rgb(252, 71, 102);">The Pink</p>
             </figure>
         </div>
     </div>
-
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
     <!-- /main -->
 
-    <footer>
-
-
-    </footer>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 
 </body>

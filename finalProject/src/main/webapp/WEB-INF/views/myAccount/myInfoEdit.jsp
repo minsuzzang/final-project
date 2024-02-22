@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,7 @@
     <header>
         <!-- 헤더 비디오 -->
         <video src="/resources/videos/header.mp4" muted autoplay loop preload width="100%"></video>
-       	<%@ include file="/WEB-INF/views/common/header.jsp"%>  
+          <%@ include file="/WEB-INF/views/common/header.jsp"%>  
     </header><br><br><br><br>
     <!-- main -->
 
@@ -49,13 +49,13 @@
                 <a href="javascript:void(0);" onclick="frmChk()">
                     <button type="submit" class="custom-btn-b3 btn-9-b">수정완료</button>
                 </a>
-                  <a href="/member/myinfoForm.do">
+                <a href="/member/myinfoForm.do">
                     <button class="custom-btn-b3 btn-9-b">돌아가기</button>
                 </a>
             </div>
         </div>
     </div><br><br><br>
-    	 <form action="myinfoEdit.do" id="form" name="form" method="post">
+        <form action="myinfoEdit.do" id="form" name="form" method="post">
     <div class="right13">
         <div class="yhb3">
             <div id="board-list">
@@ -96,13 +96,11 @@
     <br><br><br><br><br><br>
 
     <!-- 푸터 -->
-	<footer>
-		
-	</footer>
+   <%@ include file="/WEB-INF/views/common/footer.jsp"%>
     <!-- /푸터 -->
 <script>
 function frmChk(){
-	document.form.submit();
+   document.form.submit();
 }
 </script>
 </body>

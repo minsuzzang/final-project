@@ -13,9 +13,9 @@ $(window).load(function () {
     var visualPagerLi // 페이저 li
     var visualPager // 페이저 a태그
 
-    
+
     $('.loader_bg').delay('1500').fadeOut();// 로딩화면
-    
+
     init() //변수선언
     onPlay()///자동 슬라이드
     InEvent() //이벤트 호출
@@ -24,10 +24,10 @@ $(window).load(function () {
     function init() { //초기 함수 설정
         $visualList = $("#visual_list");
         $visualLi = $visualList.children();
-        imgNum = $visualLi.length;
+        imgNum = $visualLi.size();
         textList = $("#text_list");
         textLi = textList.children('li');
-        textLiA =textLi.find('a');
+        textLiA = textLi.find('a');
         visualPager = $("#visual_pager li a");
         button = $("#visual_btn a");
         prevBtn = $("#prev")
@@ -46,39 +46,39 @@ $(window).load(function () {
         moreBtn.on('mouseenter focus', onStop);
         moreBtn.on('mouseleave blur', onPlay);
     }
-    
+
     //시작 0번째 이미지 초기화
-    $visualLi.eq(0).css({'opacity':1});
-    textLi.eq(0).css({'opacity':1, 'left':0});
-    
+    $visualLi.eq(0).css({ 'opacity': 1 });
+    textLi.eq(0).css({ 'opacity': 1, 'left': 0 });
+
     function goToSlide(index) { //슬라이드 이동 함수
 
         //초기화 
-        $visualLi.css({'opacity': 0});
-        textLi.css({'opacity': 0});
+        $visualLi.css({ 'opacity': 0 });
+        textLi.css({ 'opacity': 0 });
         if (index < 2) {
-            textLi.eq(index).css({'left': '30%'});
+            textLi.eq(index).css({ 'left': '30%' });
         } else {
-            textLi.eq(index).css({'right': '30%'});
+            textLi.eq(index).css({ 'right': '30%' });
         }
-        
-        //애니메이션 효과
-            $visualLi.stop();
-            $visualLi.eq(index).stop().animate({'opacity': 1}, 1500, "easeOutCubic");
 
-            if (index < 2) { //1~2번째 사진 text는 왼쪽에 위치
-                textLi.stop();
-                textLi.eq(index).stop().animate({'opacity': 1,'left': 0}, 1500, "easeOutCubic");
-                
-            } else {//3~4번째 사진 text는 왼쪽에 위치
-                textLi.stop();
-                textLi.eq(index).stop().animate({'opacity': 1,'right': 0}, 1500, "easeOutCubic");
-            }
-            currentIndex = index; //currentIndex를 index값(현재 슬라이드 순서)으로 초기화
-            
-            visualPager.removeClass('active');
-            visualPager.parent('li').eq(currentIndex).children().addClass("active"); //현재 사진 순서에 맞는 pager 활성화 효과
+        //애니메이션 효과
+        $visualLi.stop();
+        $visualLi.eq(index).stop().animate({ 'opacity': 1 }, 5000, "easeOutCubic");
+
+        if (index < 2) { //1~2번째 사진 text는 왼쪽에 위치
+            textLi.stop();
+            textLi.eq(index).stop().animate({ 'opacity': 1, 'left': 0 }, 3000, "easeOutCubic");
+
+        } else {//3~4번째 사진 text는 왼쪽에 위치
+            textLi.stop();
+            textLi.eq(index).stop().animate({ 'opacity': 1, 'right': 0 }, 3000, "easeOutCubic");
         }
+        currentIndex = index; //currentIndex를 index값(현재 슬라이드 순서)으로 초기화
+
+        visualPager.removeClass('active');
+        visualPager.parent('li').eq(currentIndex).children().addClass("active"); //현재 사진 순서에 맞는 pager 활성화 효과
+    }
 
 
     function pager(e) { //페이저 이동 함수
@@ -93,7 +93,7 @@ $(window).load(function () {
             currentIndex = imgNum - 1; // 다음 currentIndex를 마지막 사진으로 초기화
             goToSlide(currentIndex); // 마지막 사진으로 슬라이드됨
 
-        }else { //0번째 사진이 아닐 경우
+        } else { //0번째 사진이 아닐 경우
             goToSlide(currentIndex - 1); //계속해서 1씩 감소
         }
     }
@@ -108,15 +108,15 @@ $(window).load(function () {
         }
     }
 
-    
+
     function onPlay() {
-        timer = setInterval(onVisualNext, 2000)
+        timer = setInterval(onVisualNext, 7000)
     }
 
     function onStop() {
         clearInterval(timer)
     }
-    
+
 
     function onVisualNext() { //다음 페이지로 넘어가는 함수
         currentIndex++;
@@ -131,7 +131,7 @@ $(window).load(function () {
 
 var indices = {};   // 각 슬라이드 쇼의 인덱스를 저장하는 객체
 
-window.onload = function(){
+window.onload = function () {
     slideShow("slide1");
     slideShow("slide2");
     slideShow("slide3");
@@ -140,7 +140,7 @@ window.onload = function(){
 }
 
 function slideShow(slideClassName) {
-    if(!indices.hasOwnProperty(slideClassName)) { // 만약 해당 슬라이드 쇼의 인덱스가 없다면
+    if (!indices.hasOwnProperty(slideClassName)) { // 만약 해당 슬라이드 쇼의 인덱스가 없다면
         indices[slideClassName] = 0; // 초기 인덱스를 설정
     }
 
@@ -153,9 +153,9 @@ function slideShow(slideClassName) {
     indices[slideClassName]++; // 해당 슬라이드 쇼의 인덱스를 증가
     if (indices[slideClassName] > x.length) {
         indices[slideClassName] = 1;
-    }   
-    x[indices[slideClassName]-1].style.display = "block";
-    setTimeout(function() { slideShow(slideClassName); }, 4000);
+    }
+    x[indices[slideClassName] - 1].style.display = "block";
+    setTimeout(function () { slideShow(slideClassName); }, 4000);
 }
 // 카드번호 js
 // 16자리 카드번호
@@ -170,6 +170,29 @@ function formatExpiryDate(input) {
     expiryDate = expiryDate.replace(/\/$/, '');
     input.value = expiryDate;
 }
+// top 버튼
+// 스크롤 이벤트 리스너
+window.addEventListener("scroll", () => {
+    // 스크롤 위치가 100px 이상일 때 위로 가기 버튼을 보이게 함
+    if (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        document.getElementById("btn-back-to-top").style.display = "block";
+    } else {
+        document.getElementById("btn-back-to-top").style.display = "none";
+    }
+});
 
-
+// 클릭 시 페이지 맨 위로 스크롤 (애니메이션 효과 추가)
+function backToTop() {
+    const position =
+        document.documentElement.scrollTop || document.body.scrollTop;
+    if (position) {
+        window.requestAnimationFrame(() => {
+            window.scrollTo(0, position - position / 10);
+            backToTop();
+        });
+    }
+}
 

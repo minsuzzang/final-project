@@ -35,12 +35,11 @@ public class DataValidation {
 	}
 	
 	public void checkParameter(Map<?, ?> parameterMap) {
-		
-		for (Object value : parameterMap.values()) {
-			if (value.equals("")) {
-				throw new NullPointerException("예외 발생");
-			}
-		}
+		if(parameterMap.get("cd_design").equals("")) throw new IllegalArgumentException("디자인을 선택해주세요.");
+		if(parameterMap.get("m_english_first_name").equals("")) throw new IllegalArgumentException("이름을 입력해주세요.");
+		if(parameterMap.get("m_english_last_name").equals("")) throw new IllegalArgumentException("성을 입력해주세요.");
+		if(parameterMap.get("m_address").equals("")) throw new IllegalArgumentException("주소를 입력해주세요.");
+		if(parameterMap.get("m_detailed_address").equals("")) throw new IllegalArgumentException("상세 주소를 입력해주세요.");
 	}
 	
 }

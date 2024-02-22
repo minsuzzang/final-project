@@ -28,4 +28,7 @@ public interface CardService {
 	// 분실신고
 	void cardReport(int cd_idx);
 
+	// 카드 신청일 포맷
+	void formatCardApplyDate(CardDTO cardDTO);
+
 }

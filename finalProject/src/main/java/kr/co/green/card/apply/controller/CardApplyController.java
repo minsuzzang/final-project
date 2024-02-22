@@ -1,7 +1,5 @@
 package kr.co.green.card.apply.controller;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +55,8 @@ public class CardApplyController {
 
 	@PostMapping("/card/cardInfo/submit")
 	public ResponseEntity<String> insertCardInfo(@RequestBody CardDTO cardDTO) {
-
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		cardDTO.setCd_apply_date(LocalDate.parse(cardDTO.getStr_cd_apply_date(), formatter));
+		
+		cardService.formatCardApplyDate(cardDTO);
 
 		int result = cardService.cardApply(cardDTO);
 

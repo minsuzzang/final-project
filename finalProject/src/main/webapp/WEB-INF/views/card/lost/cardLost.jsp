@@ -38,7 +38,11 @@
 </head>
 
 <body>
-<%@include file ="../../common/header.jsp" %>
+    <header>
+        <!-- 헤더 비디오 -->
+        <video class="vd" src="/resources/videos/header.mp4" muted autoplay loop preload width="100%"></video>
+		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+    </header>
 
 	<!-- main -->
 	<br>
@@ -70,8 +74,9 @@
 
 
 	<!-- /main -->
-
-	<footer> </footer>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 
 </body>

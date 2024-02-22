@@ -15,11 +15,6 @@ function submitCardInfo(){
     var address = document.querySelector('input[name="address"]').value;
     var detailedAddress = document.querySelector('input[name="address_detail"]').value;
     
-    if (!englishFirstName || !englishLastName || !address || !detailedAddress) {
-        alert("모든 항목을 입력해주세요.");
-        return;
-    }
-	
     var url = "/card/apply";
 	
     var data = JSON.stringify({
@@ -43,7 +38,7 @@ function submitCardInfo(){
             	alert('신청이 완료되었습니다.')
                 window.location.href = response.redirectUrl;
             } else {
-            	alert('신청에 실패하였습니다.')
+            	alert(response.message)
                 window.location.href = response.redirectUrl;
             }
         }
