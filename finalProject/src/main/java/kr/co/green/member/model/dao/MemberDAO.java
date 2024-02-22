@@ -3,6 +3,7 @@ package kr.co.green.member.model.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.co.green.card.model.dto.CardDTO;
 import kr.co.green.member.model.dto.MemberDTO;
 
 @Repository
@@ -57,6 +58,10 @@ public class MemberDAO {
 
 	public int deleteMember(SqlSessionTemplate sqlSession, int m_idx) {
 		return sqlSession.delete("memberMapper.delete", m_idx);
+	}
+
+	public CardDTO getCardDetail(SqlSessionTemplate sqlSession, int cd_idx) {
+		return sqlSession.selectOne("memberMapper.getCardDetail", cd_idx);
 	}
 
 }

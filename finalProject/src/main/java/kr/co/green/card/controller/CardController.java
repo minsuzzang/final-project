@@ -35,11 +35,9 @@ public class CardController {
 	}
 
 	@GetMapping("/cardGuide.do")
-	public String cardGuidePage(){
+	public String cardGuidePage() {
 		return "card/guide/cardGuide";
 	}
-
-
 
 	@GetMapping("/cardApplyForm.do")
 	public String cardApplyForm(@SessionAttribute("m_idx") int memberIdx, RedirectAttributes redirectAttributes) {
@@ -59,7 +57,7 @@ public class CardController {
 		if (!color.isPresent()) {
 			return "common/error"; // color 값이 없는 경우의 처리
 		}
-		return "card/detail/" + color.get().toLowerCase() + "Detail"; 
+		return "card/detail/" + color.get().toLowerCase() + "Detail";
 	}
 
 	@GetMapping("/design/{color}")
@@ -77,14 +75,14 @@ public class CardController {
 	public String cardApplyResult(Model model) {
 		// upload파일을 동적으로 가져오기 위한 데이터 바인딩
 
-		String color = sessionHandler.getSessionAttribute("cd_color");
-		String design = sessionHandler.getSessionAttribute("cd_design");
+		String color = sessionHandler.getSessionAttribute("cd_color"); // red
+		String design = sessionHandler.getSessionAttribute("cd_design"); // design1
 		String cd_color_upper = String.valueOf(color.charAt(0)).toUpperCase() + color.substring(1, color.length());
 
 		model.addAttribute("cd_color_lower", color);
 		model.addAttribute("cd_color_upper", cd_color_upper);
 		model.addAttribute("cd_design_num", design.charAt(design.length() - 1));
-		
+
 		sessionHandler.removeSessionAttribute("cd_color");
 		sessionHandler.removeSessionAttribute("cd_design");
 
@@ -96,57 +94,50 @@ public class CardController {
 		Gson jsonParser = new Gson();
 		// 카드인덱스, 신청 날짜, 승인 여부 조회
 		List<CardDTO> cards = cardService.cardInfo(memberIdx, "신청 승인된 카드 조회");
-		
-		// 카드 번호, cvc, 유효기간 생성 
+
+		// 카드 번호, cvc, 유효기간 생성
 		cardService.generateCardDetail(cards);
-		
+
 		String jsonCards = jsonParser.toJson(cards);
-	    model.addAttribute("cards", cards);
-	    model.addAttribute("jsonCards", jsonCards);
-		
+		model.addAttribute("cards", cards);
+		model.addAttribute("jsonCards", jsonCards);
+
 		return "card/result/setCardInfo";
-		
+
 	}
-	
+
 	@GetMapping("/lost")
-	public ModelAndView cardLost(@SessionAttribute("m_idx") int memberIdx, ModelAndView mav, RedirectAttributes redirectAttributes) {
-		
+	public ModelAndView cardLost(@SessionAttribute("m_idx") int memberIdx, ModelAndView mav,
+			RedirectAttributes redirectAttributes) {
+
 		List<CardDTO> cards = cardService.cardInfo(memberIdx, "보유 카드 조회");
-		
-		if(cards.size() == 0) {
+
+		if (cards.size() == 0) {
 			redirectAttributes.addFlashAttribute("alertMsg", "보유한 카드가 없습니다.");
 			mav.setViewName("redirect:/");
 			return mav;
 		}
-		
+
 		mav.addObject("cards", cards);
 		mav.setViewName("/card/lost/cardLost");
 		return mav;
 	}
-	
+
 	@GetMapping("/lost/{idx}")
 	public ModelAndView cardLost(@PathVariable("idx") int cardIdx, ModelAndView mav) {
-		
+
 		Map<String, Object> lostCardMap = cardService.cardInfo(cardIdx);
-		
+
 		mav.addAllObjects(lostCardMap);
 		mav.setViewName("/card/lost/cardLostDetail");
 		return mav;
 	}
-	
+
 	@GetMapping("/report/{idx}")
 	public String cardReport(@PathVariable("idx") int cardIdx, RedirectAttributes redirectAttributes) {
 		cardService.cardReport(cardIdx);
-		
+
 		redirectAttributes.addFlashAttribute("alertMsg", "신고되었습니다.");
 		return "redirect:/";
 	}
 }
-
-
-
-
-
-
-
-
