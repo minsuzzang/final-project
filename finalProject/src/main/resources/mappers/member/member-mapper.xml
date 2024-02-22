@@ -78,7 +78,6 @@
         #{m_english_first_name},
         #{m_english_last_name},
         #{m_temporary},
-        #{m_mileage},
         0
        )
    </insert>
@@ -101,7 +100,6 @@
             m_english_first_name = #{m_english_first_name},
             m_english_last_name = #{m_english_last_name},
             m_email = #{m_email},
-            m_pwd = #{m_pwd},
             m_address = #{m_address}
         WHERE m_idx = #{m_idx}
     </update>

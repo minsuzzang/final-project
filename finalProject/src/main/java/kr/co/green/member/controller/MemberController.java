@@ -71,8 +71,9 @@ public class MemberController {
 		return "myAccount/UsageHistory";
 	}
 
-	@GetMapping("/MyCardForm.do")
-	public String MyCardForm(CardDTO card, MemberDTO member, HttpSession session, Model model) {
+	@GetMapping("/MyCardinfoForm.do")
+	public String MyCardinfoForm(CardDTO card, MemberDTO member, HttpSession session, Model model) {
+
 		Integer m_idx = (Integer) session.getAttribute("m_idx");
 		member.setM_idx(m_idx);
 		card.setCd_idx(m_idx);
@@ -83,6 +84,21 @@ public class MemberController {
 		model.addAttribute("cards", cards);
 
 		return "myAccount/myCard";
+	}
+
+	@GetMapping("/MyCardForm.do")
+	public String MyCardForm(CardDTO card, MemberDTO member, HttpSession session, Model model) {
+
+		Integer m_idx = (Integer) session.getAttribute("m_idx");
+		member.setM_idx(m_idx);
+		card.setCd_idx(m_idx);
+
+		List<CardDTO> cards = cardService.cardInfo(m_idx, "내카드 조회");
+		MemberDTO memberinfo = memberService.getMemberInfo(member);
+		model.addAttribute("memberinfo", memberinfo);
+		model.addAttribute("cards", cards);
+
+		return "myAccount/myCardmain";
 	}
 
 	@PostMapping("/myinfoEdit.do")
