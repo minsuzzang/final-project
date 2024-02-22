@@ -87,8 +87,10 @@ function payment(idx){
 			if(res=='failed'){
 				alert('결제에 실패했습니다');
 				location.href="/product/list.do";
-			}else if(res=='success'){
+			} else if(res=='success'){
 				location.href="/product/result.do?idx="+idx;
+			} else if('cardDismatch') {
+				alert('카드정보가 일치하지 않습니다.');
 			}
 		},
 		error: function(err) {

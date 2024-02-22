@@ -203,11 +203,11 @@
 
 
     <!-- /main -->
+    
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
 
-    <footer>
-
-
-    </footer>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 
 </body>

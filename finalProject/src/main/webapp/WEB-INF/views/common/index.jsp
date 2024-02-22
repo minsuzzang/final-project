@@ -29,11 +29,15 @@
 </head>
 
 <body class="ofh">
-
+	<!--로딩화면-->
+    <div class="loader_bg">
+        <div class="loader"></div>
+        <p>페이지 로딩중</p>
+    </div>
 	<header>
 		<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	</header>
-
+	
 	<div id="visual_wrap">
 		<!--비주얼 버튼(공통영역)-->
 		<div id="visual_btn">
@@ -69,6 +73,13 @@
 			<li id="visual_red"><img
 				src="/resources/images/visual_red_01.png" alt="레드카드 사진"> <img
 				src="/resources/images/visual_red_02.png" alt="레드카드 사진"></li>
+				
+		<!--핑크 카드-->
+            <li id="visual_pink">
+                <img src="/resources/images/visual_pink_01.png" alt="핑크카드 사진">
+                <img src="/resources/images/visual_pink_02.png" alt="핑크카드 사진">
+                <img src="/resources/images/visual_pink_03.png" alt="핑크카드 사진">
+            </li>
 
 		</ul>
 
@@ -81,7 +92,7 @@
 					<a href="#">상위 0.05%를 위한<br>국내 최초 VVIP카드
 					</a>
 				</h1> <span class="txt">오직 9999명에게만 주어지는 한정혜택</span> <span
-				class="more_btn"> <a href="#">
+				class="more_btn"> <a href="/card/color/black">
 						<p>자세히 보기</p>
 				</a>
 			</span></li>
@@ -94,7 +105,7 @@
 					<a href="#">갖고 싶지만, 존재하지 않았던<br>Entry 럭셔리카드
 					</a>
 				</h1> <span class="txt">여행, 고메, 해외쇼핑 영역 결제 시 5% M포인트 특별 적립</span> <span
-				class="more_btn"> <a href="#">
+				class="more_btn"> <a href="/card/color/green">
 						<p>자세히 보기</p>
 				</a>
 			</span></li>
@@ -106,7 +117,7 @@
 					</a>
 				</h1> <span class="txt">대한항공형 / 아시아나형 / M포인트형<br>마일리지와 포인트 중
 					선택하여 적립/사용 가능
-			</span> <span class="more_btn"> <a href="#">
+			</span> <span class="more_btn"> <a href="/card/color/purple">
 						<p>자세히 보기</p>
 				</a>
 			</span></li>
@@ -118,10 +129,22 @@
 					<a href="#">온라인 전용 신청으로<br>더 핫하게 돌아온 the Red
 					</a>
 				</h1> <span class="txt">쓰면 쓸수록 커지는 M포인트</span> <span class="more_btn">
-					<a href="#">
+					<a href="/card/color/red">
 						<p>자세히 보기</p>
 				</a>
 			</span></li>
+			
+			<li class="txt_box_right">
+                <span class="sub_tit">Pro Shopper</span>
+                <h1 class="tit"><a href="#">프로쇼퍼들의 필수<br>럭셔리 카드 the Pink</a></h1>
+                <span class="txt">메탈 플레이트 제공</span>
+                <span class="more_btn">
+                    <a href="/card/color/pink">
+                        <p>자세히 보기</p>
+                    </a>
+                </span>
+            </li>
+            
 		</ul>
 
 
@@ -131,6 +154,7 @@
 			<li><a href="#">02</a></li>
 			<li><a href="#">03</a></li>
 			<li><a href="#">04</a></li>
+			<li><a href="#">05</a></li>
 		</ul>
 	</div>
 

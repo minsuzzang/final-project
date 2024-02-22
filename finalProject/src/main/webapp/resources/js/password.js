@@ -9,7 +9,7 @@ $(document).ready(function () {
       }
     });
   
-    $("#enter").on('click', function (event) {
+   $("#enter").on('click', function (event) {
       event.preventDefault();
       if (inner_input.val().length <= 4) {
         outer_input.val(inner_input.val());

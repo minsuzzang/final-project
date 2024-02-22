@@ -612,7 +612,7 @@ header {
 }
 
 #text_list li:nth-child(5)>.more_btn a:before {
-    background: rgb(154, 39, 91);
+    background: rgb(242, 93, 160);
 }
 
 #text_list .more_btn a:hover p,
@@ -760,7 +760,7 @@ header {
     bottom: 0;
     width: 30%;
     min-width: 350px;
-    height: auto;
+    height: auto; 
 }
 #visual_pink img:nth-child(3) {
     position: absolute;
@@ -1205,7 +1205,7 @@ hr {
     width: 100%;
     bottom: 0;
     height: 100px;
-    background: url("/images/wave.png");
+    background: url("/resources/images/wave.png");
     background-size: 1000px 100px;
 }
 

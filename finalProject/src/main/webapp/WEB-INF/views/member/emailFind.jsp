@@ -98,10 +98,10 @@ function findId(){
         	console.log(response);
             if (response == '') {
                 $('#email').val('#존재하지 않는 회원입니다.'); 
-                $('#emailError').text('');
+                
             } else {
                 $('#email').val(response);
-                $('#emailError').text('');
+                
             }
         },
         error: function() {

@@ -13,6 +13,5 @@ public interface PurchaseService {
 
 	PurchaseDTO cardSelect(PurchaseDTO purchase);
 
-	PurchaseDTO payment(PurchaseDTO purchase);
-
+	String payment(PurchaseDTO purchase);
 }

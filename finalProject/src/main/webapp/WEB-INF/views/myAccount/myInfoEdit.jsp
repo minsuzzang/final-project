@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/resources/css/detail.css">
     <link rel="stylesheet" href="/resources/css/card.css">
     <link rel="stylesheet" href="/resources/css/popup.css">
-    <link rel="stylesheet" href="/resources/css/password.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- js -->
     <script src="/resources/lib/jquery-1.11.1.min.js"></script>
@@ -34,63 +33,75 @@
     <header>
         <!-- 헤더 비디오 -->
         <video src="/resources/videos/header.mp4" muted autoplay loop preload width="100%"></video>
-		<%@ include file="/WEB-INF/views/common/header.jsp"%>
+          <%@ include file="/WEB-INF/views/common/header.jsp"%>  
     </header><br><br><br><br>
     <!-- main -->
 
-    <p class="egft1">My Card</p>
+<p class="egft1">My Info</p>
     <p class="egft2"></p>
-     <div class="left13">
-        <div class="dfjc5">
+
+    <div class="left13">
+        <div class="dfjc6">
             <div class="shop2">
-                <p class="egft3-1">Card 1</p>
                 <figure>
-                    <a href="/myCardDetail.html"><img class="imgggg" src="/resources/images/theBlack/theBlack1.png"></a>
+                    <img src="/resources/images/myinfo.png">
                 </figure>
+                <a href="javascript:void(0);" onclick="frmChk()">
+                    <button type="submit" class="custom-btn-b3 btn-9-b">수정완료</button>
+                </a>
+                <a href="/member/myinfoForm.do">
+                    <button class="custom-btn-b3 btn-9-b">돌아가기</button>
+                </a>
             </div>
         </div>
-    </div>
-    <br><br><br>
+    </div><br><br><br>
+        <form action="myinfoEdit.do" id="form" name="form" method="post">
     <div class="right13">
         <div class="yhb3">
             <div id="board-list">
                 <table class="board-table">
-                    <c:forEach var="row" items="${cards}" varStatus="status">
+                    <tr>
+                        <th scope="col" class="th-num">이름</th>
+                        <td><input type="text" name="m_name" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_name}"></td>
+                    </tr>
                     <tr>
                         <th scope="col" class="th-num">영문이름</th>
-                        <td>${memberinfo.m_english_first_name}  ${memberinfo.m_english_last_name}</td>
+                        <td>
+                            <input type="text" name="m_english_first_name" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_english_first_name}">
+                            <input type="text" name="m_english_last_name" style="width: 30%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_english_last_name}">
+                        </td>
                     </tr>
                     <tr>
-                        <th scope="col" class="th-num">카드번호</th>
-                        <td>${row.cd_number}</td>
-                    </tr>
-                    <tr>
-                        <th scope="col" class="th-num">유효기간</th>
-                        <td>${row.cd_expired_date}</td>
-                    </tr>
-                    <tr>
-                        <th scope="col" class="th-num">CVC</th>
-                        <td>${row.cd_cvc}</td>
+                        <th scope="col" class="th-num">이메일</th>
+                        <td><input type="text" name="m_email" style="width: 50%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_email}"></td>
                     </tr>
                     <tr>
                         <th scope="col" class="th-num">비밀번호</th>
-                        <td>${row.cd_pwd}</td>
+                        <td><input type="password" name="m_pwd" style="width: 50%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_pwd}" disabled></td>
                     </tr>
-                    </c:forEach>
+                    <tr>
+                        <th scope="col" class="th-num">주소</th>
+                        <td><input type="text" name="m_address" style="width: 70%; background-color: rgb(239, 239, 239);" value="${memberinfo.m_address}"></td>
+                    </tr>
                 </table>
             </div>
         </div>
-    </div>
-    <div class="bbbtn">
-        <a href="/myCard.html">
-            <button class="custom-btn-b3 btn-9-b" formaction="/myInfo.html">돌아가기</button>
-        </a>
-    </div>
+    </div>     
+</form>
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br>
     <!-- /main -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+
+    <br><br><br><br><br><br>
+
+    <!-- 푸터 -->
+   <%@ include file="/WEB-INF/views/common/footer.jsp"%>
+    <!-- /푸터 -->
+<script>
+function frmChk(){
+   document.form.submit();
+}
+</script>
 </body>
 </html>

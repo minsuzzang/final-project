@@ -59,15 +59,20 @@
             </div>
         </div>
     </form>
-
-
+    
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
 
     <!-- /main -->
 
-    <footer>
-
-
-    </footer>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 
 
 </body>

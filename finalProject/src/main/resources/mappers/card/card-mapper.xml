@@ -3,49 +3,49 @@
 
 <mapper namespace="cardMapper">
 
-	<resultMap type="card" id="cardResultSet">
-		<result column="CD_IDX" property="cd_idx"></result>
-		<result column="CD_NUMBER" property="cd_number"></result>
-		<result column="CD_CVC" property="cd_cvc"></result>
-		<result column="CD_PWD" property="cd_pwd"></result>
-		<result column="CD_COLOR" property="cd_color"></result>
-		<result column="CD_DESIGN" property="cd_design"></result>
-		<result column="CD_APPROVE" property="cd_approve"></result>
-		<result column="CD_APPLY_DATE" property="cd_apply_date"></result>
-		<result column="CD_EXPIRED_DATE" property="cd_expired_date"></result>
-	</resultMap>
-	
-	<resultMap type="member" id="memberResultSet">
-		<result column="M_IDX" property="m_idx"></result>
-		<result column="M_EMAIL" property="m_email"></result>
-		<result column="M_PWD" property="m_pwd"></result>
-		<result column="M_NAME" property="m_name"></result>
-		<result column="M_PHONE" property="m_phone"></result>
-		<result column="M_IN_DATE" property="m_in_date"></result>
-		<result column="M_TYPE" property="m_type"></result>
-		<result column="M_ADDRESS" property="m_address"></result>
-		<result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
-		<result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
-		<result column="M_TEMPORARY" property="m_temporary" />
-	</resultMap>
-	
+   <resultMap type="card" id="cardResultSet">
+      <result column="CD_IDX" property="cd_idx"></result>
+      <result column="CD_NUMBER" property="cd_number"></result>
+      <result column="CD_CVC" property="cd_cvc"></result>
+      <result column="CD_PWD" property="cd_pwd"></result>
+      <result column="CD_COLOR" property="cd_color"></result>
+      <result column="CD_DESIGN" property="cd_design"></result>
+      <result column="CD_APPROVE" property="cd_approve"></result>
+      <result column="CD_APPLY_DATE" property="cd_apply_date"></result>
+      <result column="CD_EXPIRED_DATE" property="cd_expired_date"></result>
+   </resultMap>
+   
+   <resultMap type="member" id="memberResultSet">
+      <result column="M_IDX" property="m_idx"></result>
+      <result column="M_EMAIL" property="m_email"></result>
+      <result column="M_PWD" property="m_pwd"></result>
+      <result column="M_NAME" property="m_name"></result>
+      <result column="M_PHONE" property="m_phone"></result>
+      <result column="M_IN_DATE" property="m_in_date"></result>
+      <result column="M_TYPE" property="m_type"></result>
+      <result column="M_ADDRESS" property="m_address"></result>
+      <result column="M_ENGLISH_FIRST_NAME" property="m_english_first_name"></result>
+      <result column="M_ENGLISH_LAST_NAME" property="m_english_last_name"></result>
+      <result column="M_TEMPORARY" property="m_temporary" />
+   </resultMap>
+   
 
-	<insert id="cardApplyCardInfo" parameterType="map">
-		INSERT INTO card
-		(cd_idx, cd_color, cd_design, cd_approve, m_idx, cd_apply_date)
-		VALUES
-		(card_seq.nextval, #{cd_color}, #{cd_design}, DEFAULT, #{m_idx},
-		DEFAULT)
-	</insert>
+   <insert id="cardApplyCardInfo" parameterType="map">
+      INSERT INTO card
+      (cd_idx, cd_color, cd_design, cd_approve, m_idx, cd_apply_date)
+      VALUES
+      (card_seq.nextval, #{cd_color}, #{cd_design}, DEFAULT, #{m_idx},
+      DEFAULT)
+   </insert>
 
-	<update id="cardApplyMemberInfo" parameterType="map">
-		UPDATE member SET
-		m_english_first_name = #{m_english_first_name},
-		m_english_last_name = #{m_english_last_name},
-		m_address = #{m_address},
-		m_detailed_address = #{m_detailed_address}
-		WHERE m_idx = #{m_idx}
-	</update>
+   <update id="cardApplyMemberInfo" parameterType="map">
+      UPDATE member SET
+      m_english_first_name = #{m_english_first_name},
+      m_english_last_name = #{m_english_last_name},
+      m_address = #{m_address},
+      m_detailed_address = #{m_detailed_address}
+      WHERE m_idx = #{m_idx}
+   </update>
 
 	<select id="getMemberCardNum" resultType="_int">
 		SELECT COUNT(*) FROM
@@ -102,5 +102,6 @@
 		DELETE FROM card 
 		WHERE cd_idx = #{cd_idx}
 	</delete>
+
 
 </mapper>
