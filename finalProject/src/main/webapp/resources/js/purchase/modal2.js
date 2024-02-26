@@ -58,12 +58,10 @@ function mileageUse(){
 	ph_total_price = totalPrice;
 	document.getElementById("totalPrice").innerHTML = totalPrice;
 	document.getElementById("mileage").innerHTML = 0;
-
 	//적립율 받아오기
 	const accumulation = document.getElementById("accumulation").innerText;
 	//적립
 	m_mileage = totalPrice*parseInt(accumulation)/100;
-
 }
 
 function payment(idx){

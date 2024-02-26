@@ -121,8 +121,8 @@ video {
     color: #F1F1F2;
     position: relative;
     width: 50%;
-    top: -5%;
-    height: 580px;
+    top: -12%;
+    height: 630px;
   }
   .right3 {
     background: #3b233bc0;
@@ -181,6 +181,13 @@ video {
   .form {
     margin: 40px;
     position: absolute;
+    font-family: 'YouandiModernTR', sans-serif;
+  }
+  .ssppan {
+    font-size: 14px;
+  }
+  .lpts {
+    font-size: 11px;
   }
  
   label {
